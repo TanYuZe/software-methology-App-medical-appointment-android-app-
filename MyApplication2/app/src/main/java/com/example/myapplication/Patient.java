@@ -3,7 +3,7 @@ package com.example.myapplication;
 
 class Patient extends BasicInfo
 {
-    public Patient(String email, String password, String name, int phonenumber, String role)
+    public Patient(String name, String email, String password, int phonenumber, String role)
     {
         super (email, password, name, phonenumber, role);
     }
@@ -11,29 +11,29 @@ class Patient extends BasicInfo
     public String getEmail()
     {
 
-        return email;
+        return super.getEmail();
     }
 
     public String getPassword()
     {
 
-        return password;
+        return super.getPassword();
     }
 
     public String getName ()
     {
 
-        return name;
+        return super.getName();
     }
 
     public int getPhonenumber ()
     {
 
-        return phonenumber;
+        return super.getPhonenumber();
     }
     public String getRole ()
     {
 
-        return role;
+        return super.getRole();
     }
 }

@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class Phamarcist extends BasicInfo
 {
-    public Phamarcist(String email, String password, String name, int phonenumber, String role)
+    public Phamarcist(String name, String email, String password, int phonenumber, String role)
     {
         super (email, password, name, phonenumber, role);
     }
@@ -10,29 +10,29 @@ public class Phamarcist extends BasicInfo
     public String getEmail()
     {
 
-        return email;
+        return super.getEmail();
     }
 
     public String getPassword()
     {
 
-        return password;
+        return super.getPassword();
     }
 
     public String getName ()
     {
 
-        return name;
+        return super.getName();
     }
 
     public int getPhonenumber ()
     {
 
-        return phonenumber;
+        return super.getPhonenumber();
     }
     public String getRole ()
     {
 
-        return role;
+        return super.getRole();
     }
 }

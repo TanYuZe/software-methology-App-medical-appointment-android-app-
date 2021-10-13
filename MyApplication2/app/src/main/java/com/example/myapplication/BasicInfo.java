@@ -10,7 +10,7 @@ public class BasicInfo
 
 
 //constructor
-    public BasicInfo(String email, String password, String name, int phonenumber, String role)
+    public BasicInfo(String name, String email, String password, int phonenumber, String role)
     {
         this.email = email;
         this.password = password;
@@ -23,6 +23,7 @@ public class BasicInfo
     {
         this(info.email ,info.password, info.name ,info.phonenumber, info.role);
     }
+
 
     public String getEmail()
     {

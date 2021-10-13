@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,12 +19,37 @@ public class MainActivity extends AppCompatActivity
         EditText User_Pw = (EditText) findViewById(R.id.User_Pw);
         String user_email = User_Email.getText().toString();
         String user_password = User_Pw.getText().toString();
-        if (user_email == "" || user_password == "")
+        if (user_email.isEmpty() || user_password.isEmpty())
         {
             Toast.makeText(this, "A username and a password are required." ,Toast.LENGTH_SHORT).show();
         }
-        Log.i("my activity", user_email);
-        Log.i("my activity", user_password);
+
+
+//        if (User.getRole().equals("Admin"))
+//        {
+//            Intent intent = new Intent(MainActivity.this, Admin_Main.class);
+//
+//            startActivity(intent);
+//        }
+//        elif(User.getRole().equals("Patient"))
+//        {
+//
+//            Intent intent = new Intent(MainActivity.this, Patient_Main.class);
+//        }
+//        elif(User.getRole().equals("Doctor"))
+//        {
+//
+//            Intent intent = new Intent(MainActivity.this, Doctor_Main.class);
+//        }
+//        elif(User.getRole().equals("Pharmacist"))
+//        {
+//
+//            Intent intent = new Intent(MainActivity.this, Pharmacist_Main.class);
+//        }
+
+
+
+
 
 
 
