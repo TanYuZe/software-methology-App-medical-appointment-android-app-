@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -91,39 +92,57 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         String pwConfirm_input = Pwconfirm_input.getText().toString();
         int phone_input = Integer.parseInt(Phone_input.getText().toString());
 
-        if(pw_input.equals(pwConfirm_input))
+        if(validateEmailAddress(Email_input))
         {
-            //BasicInfo User = new BasicInfo(name_input, email_input, pw_input, phone_input, User_roles);
-            switch (User_roles)
+            if(pw_input.equals(pwConfirm_input))
             {
-                case "Patient":
-                    dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                    doTheFetch();
-                    break;
-                case "Doctor":
-                    dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                    doTheFetch();
-                    break;
-
+                //BasicInfo User = new BasicInfo(name_input, email_input, pw_input, phone_input, User_roles);
+                switch (User_roles)
+                {
+                    case "Patient":
+                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                        doTheFetch();
+                        break;
+                    case "Doctor":
+                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                        doTheFetch();
+                        break;
                     case "Admin":
-                dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                doTheFetch();
-                break;
+                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                        doTheFetch();
+                        break;
 
-                case "Pharmacist":
-                dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                doTheFetch();
-                break;
-
+                    case "Pharmacist":
+                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                        doTheFetch();
+                        break;
+                }
+            }
+            else
+            {
+                Toast.makeText(this, "Password does not match." ,Toast.LENGTH_SHORT).show();
+                Log.i("",pw_input);
+                Log.i("",pwConfirm_input);
             }
         }
         else
         {
-            Toast.makeText(this, "Password does not match." ,Toast.LENGTH_SHORT).show();
-            Log.i("",pw_input);
-            Log.i("",pwConfirm_input);
+            Toast.makeText(this,"Invalid Email Address, Please Try again", Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private boolean validateEmailAddress(EditText email)
+    {
+        String emailInput = email.getText().toString();
+
+        if(!emailInput.isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) //Invalid Email
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     //events for dropbox -----------------------------------
