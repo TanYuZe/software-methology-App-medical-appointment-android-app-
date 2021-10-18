@@ -1,10 +1,15 @@
 package com.example.myapplication;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.EditText;
+import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,52 +17,48 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 {
     String User_roles;
 
-    //Signup button event
-//    public void Registration(View view)
-//    {
-//        EditText Name_input = (EditText) findViewById(R.id.name_input);
-//        EditText Email_input = (EditText) findViewById(R.id.email_input);
-//        EditText Pw_input = (EditText) findViewById(R.id.pw_input);
-//        EditText Pwconfirm_input = (EditText) findViewById(R.id.pw_confirmText);
-//        EditText Phone_input = (EditText) findViewById(R.id.phone_input);
-//        String name_input = Name_input.getText().toString();
-//        String email_input = Email_input.getText().toString();
-//        String pw_input = Pw_input.getText().toString();
-//        int phone_input = Integer.parseInt(Phone_input.getText().toString());
-//
-//        Log.i("", name_input);
-//        Log.i("", email_input);
-//        Log.i("", pw_input);
-//
-//        Log.i("", User_roles);
-//
-//        BasicInfo User = new BasicInfo(name_input, email_input, pw_input, phone_input, User_roles);
-//        if(User_roles == "Patient")
-//        		{
-//        			return new Patient(name_input, email_input, pw_input, phone_input, User_roles);
-//        		}
-//        		else if(User_roles == "Doctor")
-//        		{
-//        			return new Doctor(name_input, email_input, pw_input, phone_input, User_roles);
-//        		}
-//        		else if(User_roles == "Admin")
-//        		{
-//            		return new Admin(name_input, email_input, pw_input, phone_input, User_roles);
-//        		}
-//                else if(User_roles == "Pharmacist")
-//        		{
-//           		return new Pharmacist(name_input, email_input, pw_input, phone_input, User_roles);
-//        		}
-//        	}
-//    }
+    DatabaseManager dbManager;
+    EditText Name_input;
+    EditText Email_input;
+    EditText Pw_input;
+    EditText Pwconfirm_input;
+    EditText Phone_input;
 
+
+    public void doTheFetch()
+    {
+        Cursor cursor = dbManager.fetch();
+        if(cursor.moveToFirst())
+        {
+            do
+            {
+                String ID = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID));
+                String FullName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_FULLNAME));
+
+                Log.i("DATABASE_Tag" , "I have inserted ID: " + ID + ", Name: " + FullName);
+            }while(cursor.moveToNext());
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
+        Name_input = (EditText) findViewById(R.id.name_input);
+        Email_input = (EditText) findViewById(R.id.email_input);
+        Pw_input = (EditText) findViewById(R.id.pw_input);
+        Pwconfirm_input = (EditText) findViewById(R.id.pw_confirmText);
+        Phone_input = (EditText) findViewById(R.id.phone_input);
+        dbManager = new DatabaseManager(this);
+        try{
+            dbManager.open();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         //Adding an Array into the dropdown box(spinner)
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);
@@ -65,9 +66,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
         spinner.setOnItemSelectedListener(this);
-
-
-
     }
 
     //events for the dropbox ----------------------------
@@ -82,6 +80,52 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
+    //Signup button event
+    public void Registration(View view)
+    {
+        String name_input = Name_input.getText().toString();
+        String email_input = Email_input.getText().toString();
+        String pw_input = Pw_input.getText().toString();
+        String pwConfirm_input = Pwconfirm_input.getText().toString();
+        int phone_input = Integer.parseInt(Phone_input.getText().toString());
+
+        if(pw_input.equals(pwConfirm_input))
+        {
+            //BasicInfo User = new BasicInfo(name_input, email_input, pw_input, phone_input, User_roles);
+            switch (User_roles)
+            {
+                case "Patient":
+                    dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                    doTheFetch();
+                    break;
+                case "Doctor":
+                    dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                    doTheFetch();
+                    break;
+
+                    case "Admin":
+                dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                doTheFetch();
+                break;
+
+                case "Pharmacist":
+                dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                doTheFetch();
+                break;
+
+            }
+        }
+        else
+        {
+            Toast.makeText(this, "Password does not match." ,Toast.LENGTH_SHORT).show();
+            Log.i("",pw_input);
+            Log.i("",pwConfirm_input);
+        }
+
+    }
+
     //events for dropbox -----------------------------------
 
 
