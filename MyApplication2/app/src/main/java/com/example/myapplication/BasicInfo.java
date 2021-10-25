@@ -2,16 +2,21 @@ package com.example.myapplication;
 
 public class BasicInfo
 {
-    public final String email;
-    public final String password;
-    public final String name;
-    public final int phonenumber;
-    public final String role;
+    public int id;
+    public String email;
+    public String password;
+    public String name;
+    public int phonenumber;
+    public String role;
 
-
-//constructor
-    public BasicInfo(String name, String email, String password, int phonenumber, String role)
+    public BasicInfo()
     {
+
+    }
+//constructor
+    public BasicInfo(int id, String name, String email, String password, int phonenumber, String role)
+    {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -21,7 +26,20 @@ public class BasicInfo
 
     public BasicInfo(BasicInfo info)
     {
-        this(info.email ,info.password, info.name ,info.phonenumber, info.role);
+        this(info.id, info.email ,info.password, info.name ,info.phonenumber, info.role);
+    }
+
+
+
+    public int getId()
+    {
+
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
 
@@ -31,10 +49,20 @@ public class BasicInfo
         return email;
     }
 
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
     public String getPassword()
     {
 
         return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     public String getName ()
@@ -42,19 +70,34 @@ public class BasicInfo
 
         return name;
     }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
     public int getPhonenumber ()
     {
 
         return phonenumber;
     }
+    public void setPhonenumber(int phonenumber)
+    {
+        this.phonenumber = phonenumber;
+    }
+
     public String getRole ()
     {
 
         return role;
     }
+    public void setRole(String role)
+    {
+        this.role = role;
+    }
 
-    //This is a comment
+
+
+
 }
 
 

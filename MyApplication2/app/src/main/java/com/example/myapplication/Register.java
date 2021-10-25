@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,10 +8,9 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +24,10 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     EditText Pw_input;
     EditText Pwconfirm_input;
     EditText Phone_input;
+    Spinner spinner;
+    boolean signupOK;
+
+            //, inputLayoutEmail, inputLayoutPhone, inputLayoutPw, inputLayoutPwconfirm;
 
 
     public void doTheFetch()
@@ -52,6 +56,14 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         Pw_input = (EditText) findViewById(R.id.pw_input);
         Pwconfirm_input = (EditText) findViewById(R.id.pw_confirmText);
         Phone_input = (EditText) findViewById(R.id.phone_input);
+
+
+//        inputLayoutName = (TextInputLayout) findViewById(R.id.inputLayoutName);
+//        inputLayoutEmail = (TextInputLayout) findViewById(R.id.inputLayoutEmail);
+//        inputLayoutPhone = (TextInputLayout) findViewById(R.id.inputLayoutPhone);
+//        inputLayoutPw = (TextInputLayout) findViewById(R.id.inputLayoutPw);
+//        inputLayoutPwconfirm = (TextInputLayout) findViewById(R.id.inputLayoutPwconfirm);
+
         dbManager = new DatabaseManager(this);
         try{
             dbManager.open();
@@ -62,7 +74,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         }
 
         //Adding an Array into the dropdown box(spinner)
-        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+        spinner = (Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Register.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.roles));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
@@ -75,7 +87,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     {
         //get the value select from dropbox
         User_roles = parent.getItemAtPosition(position).toString();
-        //Toast.makeText(parent.getContext(), User_roles, Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
@@ -86,57 +98,80 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     //Signup button event
     public void Registration(View view)
     {
+
         String name_input = Name_input.getText().toString();
         String email_input = Email_input.getText().toString();
         String pw_input = Pw_input.getText().toString();
         String pwConfirm_input = Pwconfirm_input.getText().toString();
         int phone_input = Integer.parseInt(Phone_input.getText().toString());
+        Intent intent = new Intent(Register.this, MainActivity.class);
 
-        if(validateEmailAddress(Email_input))
-        {
-            if(pw_input.equals(pwConfirm_input))
+        signupOK = false;
+
+//        if (validateName(Name_input)) {
+            if (validateEmailAddress(Email_input))
             {
-                //BasicInfo User = new BasicInfo(name_input, email_input, pw_input, phone_input, User_roles);
-                switch (User_roles)
-                {
-                    case "Patient":
-                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                        doTheFetch();
-                        break;
-                    case "Doctor":
-                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                        doTheFetch();
-                        break;
-                    case "Admin":
-                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                        doTheFetch();
-                        break;
 
-                    case "Pharmacist":
-                        dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                        doTheFetch();
-                        break;
+                if (pw_input.equals(pwConfirm_input)) {
+
+                    //BasicInfo User = new BasicInfo(name_input, email_input, pw_input, phone_input, User_roles);
+                    switch (User_roles) {
+                        case "Patient":
+                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                            doTheFetch();
+                            signupOK = true;
+                            break;
+                        case "Doctor":
+                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                            doTheFetch();
+                            signupOK = true;
+                            break;
+                        case "Admin":
+                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                            doTheFetch();
+                            signupOK = true;
+                            break;
+
+                        case "Pharmacist":
+                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                            doTheFetch();
+                            signupOK = true;
+                            break;
+
+
+                    }
+                } else
+                    {
+                    Toast.makeText(this, "Password does not match.", Toast.LENGTH_SHORT).show();
+                    Log.i("", pw_input);
+                    Log.i("", pwConfirm_input);
+                    return;
                 }
+            } else {
+                Toast.makeText(this, "Invalid Email Address, Please Try again", Toast.LENGTH_SHORT).show();
+                return;
             }
-            else
-            {
-                Toast.makeText(this, "Password does not match." ,Toast.LENGTH_SHORT).show();
-                Log.i("",pw_input);
-                Log.i("",pwConfirm_input);
-            }
-        }
-        else
+
+//             else
+//            {
+//                Toast.makeText(this, "Name cannot be empty, Please Try again", Toast.LENGTH_SHORT).show();
+//            }
+        if(signupOK)//if sign up okay boolean = true navigate back to main login page
         {
-            Toast.makeText(this,"Invalid Email Address, Please Try again", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+            Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
         }
+        return;
     }
 
+//validation
     private boolean validateEmailAddress(EditText email)
     {
         String emailInput = email.getText().toString();
 
         if(!emailInput.isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) //Invalid Email
         {
+
             return false;
         }
         else
@@ -144,6 +179,51 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
             return true;
         }
     }
+
+    /**
+     * This method is to empty all input edit text
+     */
+//    private void emptyInputEditText() {
+//        textInputEditTextName.setText(null);
+//        textInputEditTextEmail.setText(null);
+//        textInputEditTextPassword.setText(null);
+//        textInputEditTextConfirmPassword.setText(null);
+//    }
+
+//    private Boolean validateName(EditText name) {
+//        String val = name.getText().toString();
+//
+//        if (val.isEmpty())
+//        {
+//            return false;
+//        }
+//        else
+//        {
+//            return true;
+//        }
+//    }
+//
+//    private Boolean validatePassword(EditText password) {
+//        String val = password.getText().toString();
+//        String passwordVal = "^" +
+//                //"(?=.*[0-9])" +         //at least 1 digit
+//                //"(?=.*[a-z])" +         //at least 1 lower case letter
+//                "(?=.*[A-Z])" +         //at least 1 upper case letter
+//                "(?=.*[a-zA-Z])" +      //any letter
+//                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+//                "(?=\\S+$)" +           //no white spaces
+//                ".{4,}" +               //at least 4 characters
+//                "$";
+//
+//        if (val.isEmpty()) {
+//            return false;
+//        } else if (!val.matches(passwordVal)) {
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
+
 
     //events for dropbox -----------------------------------
 

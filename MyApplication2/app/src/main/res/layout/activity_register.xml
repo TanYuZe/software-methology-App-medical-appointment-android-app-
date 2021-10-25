@@ -8,75 +8,73 @@
 
     <EditText
         android:id="@+id/pw_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="111dp"
+        android:layout_width="250dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_input" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_input"
+        />
 
     <EditText
         android:id="@+id/name_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="111dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="250dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/email_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/email_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginEnd="111dp"
-        android:layout_marginBottom="18dp"
+        android:layout_width="250dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/phone_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_input" />
 
     <EditText
         android:id="@+id/phone_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="21dp"
+        android:layout_width="250dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="Phone Number"
+        android:hyphenationFrequency="normal"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/pw_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_input" />
 
     <EditText
         android:id="@+id/pw_confirmText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="111dp"
+        android:layout_width="250dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="Password confirmation"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pw_input" />
 
@@ -85,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="146dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="171dp"
         android:layout_marginBottom="104dp"
         android:onClick="Registration"
@@ -92,20 +91,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="91dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="126dp"
-        android:layout_marginBottom="30dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/signUp_Btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pw_confirmText" />
 
@@ -116,10 +115,4 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
