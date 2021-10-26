@@ -3,9 +3,9 @@ package com.example.myapplication;
 public class Doctor extends BasicInfo
 {
 
-    public Doctor(String name, String email, String password, int phonenumber, String role)
+    public Doctor(int id, String name, String email, String password, int phonenumber, String role)
     {
-        super (email, password, name, phonenumber, role);
+        super (id, email, password, name, phonenumber, role);
     }
 
     public String getEmail()

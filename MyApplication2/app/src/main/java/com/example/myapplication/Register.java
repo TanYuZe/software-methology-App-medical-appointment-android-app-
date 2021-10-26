@@ -43,6 +43,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
                 Log.i("DATABASE_Tag" , "I have inserted ID: " + ID + ", Name: " + FullName);
             }while(cursor.moveToNext());
         }
+        cursor.close();
 
     }
     @Override
@@ -137,8 +138,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
                             doTheFetch();
                             signupOK = true;
                             break;
-
-
                     }
                 } else
                     {

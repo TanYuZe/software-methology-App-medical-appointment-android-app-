@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_DB_QUERY = "CREATE TABLE "
             + DATABASE_TABLE + " ( "
-            + USER_ROLE + " TEXT NOT NULL, "
+            + USER_ROLE + " TEXT PRIMARY KEY NOT NULL, "
             + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + USER_FULLNAME + " TEXT NOT NULL, "
             + USER_EMAIL + " TEXT NOT NULL, "

@@ -73,6 +73,7 @@ public class DatabaseManager {
      *
      * @return list
      */
+    /**
     public List<BasicInfo> getAllUser() {
         // array of columns to fetch
         String[] columns = {
@@ -83,47 +84,36 @@ public class DatabaseManager {
                 DatabaseHelper.USER_PASSWORD,
                 DatabaseHelper.USER_CONTACT};
 
-        // sorting orders
-        String sortOrder =
-                DatabaseHelper.USER_FULLNAME + " ASC";
-        List<BasicInfo> userList = new ArrayList<BasicInfo>();
+
+
         SQLiteDatabase db = this.dbHelper.getReadableDatabase();
         // query the user table
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id,user_name,user_email,user_password FROM user ORDER BY user_name;
-         */
         Cursor cursor = db.query(DatabaseHelper.DATABASE_TABLE, //Table to query
-                columns,    //columns to return
-                null,        //columns for the WHERE clause
-                null,        //The values for the WHERE clause
+                columns,            //columns to return
+                null,       //columns for the WHERE clause
+                null,    //The values for the WHERE clause
                 null,       //group the rows
-                null,       //filter by row groups
-                sortOrder); //The sort order
+                null,        //filter by row groups
+                null); //The sort order
         // Traversing through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
-                BasicInfo user = new BasicInfo(Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_ID))),
-                        cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_FULLNAME)), );
+        List<BasicInfo> userList = new ArrayList<BasicInfo>();
+
+        int numberOfColumns = cursor.getColumnCount();
+        for(cursor.moveToFirst(); !cursor.moveToLast(); cursor.moveToNext())
+        {
+            BasicInfo user = new BasicInfo();
 
 
-                user.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_ID))));
-                user.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_FULLNAME)));
-                user.setEmail(cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_EMAIL)));
-                user.setPassword(cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_PASSWORD)));
-                user.setPhonenumber(Integer.parseInt(cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_CONTACT))));
-                user.setRole(cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_ROLE)));
-
-                // Adding user record to list
-                userList.add(user);
-            } while (cursor.moveToNext());
+            userList.add(cursor.getcolumn);
         }
+
         cursor.close();
         db.close();
         // return user list
         return userList;
     }
+
+     */
 
     public void updateUser(BasicInfo user) {
         SQLiteDatabase db = this.dbHelper.getWritableDatabase();
@@ -150,6 +140,7 @@ public class DatabaseManager {
         db.close();
     }
 
+    /**
     public static boolean checkUser(String email, String password) {
 
         // array of columns to fetch
@@ -170,6 +161,7 @@ public class DatabaseManager {
          * SQL query equivalent to this query function is
          * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com';
          */
+    /**
         Cursor cursor = db.query(DatabaseHelper.DATABASE_TABLE, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
@@ -187,7 +179,7 @@ public class DatabaseManager {
 
         return false;
     }
-
+    */
 
 
 }
