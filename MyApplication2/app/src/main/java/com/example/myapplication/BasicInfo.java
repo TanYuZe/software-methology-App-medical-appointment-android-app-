@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 public class BasicInfo
 {
-    public int id;
     public String email;
     public String password;
     public String name;
@@ -14,9 +13,8 @@ public class BasicInfo
 
     }
 //constructor
-    public BasicInfo(int id, String name, String email, String password, int phonenumber, String role)
+    public BasicInfo(String name, String email, String password, int phonenumber, String role)
     {
-        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -26,21 +24,21 @@ public class BasicInfo
 
     public BasicInfo(BasicInfo info)
     {
-        this(info.id, info.email ,info.password, info.name ,info.phonenumber, info.role);
+        this(info.email ,info.password, info.name ,info.phonenumber, info.role);
     }
 
 
 
-    public int getId()
-    {
-
-        return id;
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
-    }
+//    public int getId()
+//    {
+//
+//        return id;
+//    }
+//
+//    public void setId(int id)
+//    {
+//        this.id = id;
+//    }
 
 
     public String getEmail()
