@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Admin_ViewUser"
+            android:exported="true" />
+        <activity
+            android:name=".Admin_DeleteUser"
+            android:exported="true" />
+        <activity
+            android:name=".Admin_AddUser"
+            android:exported="true" />
+        <activity
             android:name=".Admin_Main"
             android:exported="true" />
         <activity

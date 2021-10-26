@@ -27,7 +27,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     Spinner spinner;
     boolean signupOK;
 
-            //, inputLayoutEmail, inputLayoutPhone, inputLayoutPw, inputLayoutPwconfirm;
+
 
 
     public void doTheFetch()
@@ -108,14 +108,19 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
         signupOK = false;
 
-//        if (validateName(Name_input)) {
-            if (validateEmailAddress(Email_input))
+        if(signupOK)//if sign up okay boolean = true navigate back to main login page
+        {
+            startActivity(intent);
+            Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
+        }
+
+        if(!validateName(Name_input) | !validatePassword(Pw_input) | !validatePhoneNo(Phone_input) | !validateEmailAddress(Email_input))
+        {
+
+            if(pw_input.equals(pwConfirm_input))
             {
-
-                if (pw_input.equals(pwConfirm_input)) {
-
-                    //BasicInfo User = new BasicInfo(name_input, email_input, pw_input, phone_input, User_roles);
-                    switch (User_roles) {
+                switch (User_roles)
+                    {
                         case "Patient":
                             dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
                             doTheFetch();
@@ -137,31 +142,16 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
                             doTheFetch();
                             signupOK = true;
                             break;
-
-
                     }
-                } else
-                    {
-                    Toast.makeText(this, "Password does not match.", Toast.LENGTH_SHORT).show();
-                    Log.i("", pw_input);
-                    Log.i("", pwConfirm_input);
-                    return;
-                }
-            } else {
-                Toast.makeText(this, "Invalid Email Address, Please Try again", Toast.LENGTH_SHORT).show();
-                return;
-            }
 
-//             else
-//            {
-//                Toast.makeText(this, "Name cannot be empty, Please Try again", Toast.LENGTH_SHORT).show();
-//            }
-        if(signupOK)//if sign up okay boolean = true navigate back to main login page
-        {
-            startActivity(intent);
-            Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Pwconfirm_input.setError("Passwords does not match, please confirm your password again!");
+            }
+            return;
         }
-        return;
+
+
     }
 
 //validation
@@ -169,9 +159,9 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     {
         String emailInput = email.getText().toString();
 
-        if(!emailInput.isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) //Invalid Email
+        if(!emailInput.equals("") && !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) //Invalid Email
         {
-
+            Email_input.setError("Wrong email Format");
             return false;
         }
         else
@@ -180,50 +170,65 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    /**
-     * This method is to empty all input edit text
-     */
-//    private void emptyInputEditText() {
-//        textInputEditTextName.setText(null);
-//        textInputEditTextEmail.setText(null);
-//        textInputEditTextPassword.setText(null);
-//        textInputEditTextConfirmPassword.setText(null);
-//    }
+    private Boolean validateName(EditText name) {
+        String val = name.getText().toString();
 
-//    private Boolean validateName(EditText name) {
-//        String val = name.getText().toString();
-//
-//        if (val.isEmpty())
-//        {
-//            return false;
-//        }
-//        else
-//        {
-//            return true;
-//        }
-//    }
-//
-//    private Boolean validatePassword(EditText password) {
-//        String val = password.getText().toString();
-//        String passwordVal = "^" +
-//                //"(?=.*[0-9])" +         //at least 1 digit
-//                //"(?=.*[a-z])" +         //at least 1 lower case letter
-//                "(?=.*[A-Z])" +         //at least 1 upper case letter
-//                "(?=.*[a-zA-Z])" +      //any letter
-//                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
-//                "(?=\\S+$)" +           //no white spaces
-//                ".{4,}" +               //at least 4 characters
-//                "$";
-//
-//        if (val.isEmpty()) {
-//            return false;
-//        } else if (!val.matches(passwordVal)) {
-//            return false;
-//        } else {
-//            return true;
-//        }
-//    }
+        if (val.equals(""))
+        {
+            Name_input.setError("Name cannot be empty");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
+    private Boolean validatePassword(EditText password) {
+        String val = password.getText().toString();
+        String passwordVal = "^" +
+                //"(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{8,}" +               //at least 4 characters
+                "$";
+
+        if (val.equals("")) {
+            Pw_input.setError("Password cannot be empty");
+            return false;
+        } else if (!val.matches(passwordVal)) {
+            Pw_input.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    private Boolean validatePhoneNo(EditText phonenum) {
+        String val = Phone_input.getText().toString();
+        String passwordVal = "^" +
+                //"(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                //"(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{8,}" +               //at least 4 characters
+                "$";
+        if (val.equals("")) {
+            Phone_input.setError("Field cannot be empty");
+            return false;
+        }
+        else if (!val.matches(passwordVal)) {
+            Phone_input.setError("Please a valid phone number format");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
     //events for dropbox -----------------------------------
 

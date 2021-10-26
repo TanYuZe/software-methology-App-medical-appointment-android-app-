@@ -8,8 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.snackbar.Snackbar;
-
 public class MainActivity extends AppCompatActivity
 {
 
@@ -37,25 +35,24 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "A username and a password are required.", Toast.LENGTH_SHORT).show();
         }
 
-        if (DatabaseManager.checkUser(user_email, user_password)) {
+//        if (DatabaseManager.checkUser(user_email, user_password)) {
+//
+//
 
-
-            Intent accountsIntent = new Intent(this, UsersListActivity.class);
-            accountsIntent.putExtra("EMAIL", user_email);
-            emptyInputEditText();
-            startActivity(accountsIntent);
-
-
-        } else {
-
-
-        }
+//            accountsIntent.putExtra("EMAIL", user_email);
+//            //emptyInputEditText();
+//            startActivity(accountsIntent);
+//
+//
+//        }
 
 
 
+            Intent intent = new Intent(MainActivity.this, Admin_Main.class);
+            startActivity(intent);
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                            1
+
 
 
 
