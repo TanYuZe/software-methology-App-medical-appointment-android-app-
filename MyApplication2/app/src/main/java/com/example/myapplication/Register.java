@@ -25,10 +25,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     EditText Pwconfirm_input;
     EditText Phone_input;
     Spinner spinner;
-    boolean signupOK;
-
-
-
 
     public void doTheFetch()
     {
@@ -58,12 +54,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         Pwconfirm_input = (EditText) findViewById(R.id.pw_confirmText);
         Phone_input = (EditText) findViewById(R.id.phone_input);
 
-
-//        inputLayoutName = (TextInputLayout) findViewById(R.id.inputLayoutName);
-//        inputLayoutEmail = (TextInputLayout) findViewById(R.id.inputLayoutEmail);
-//        inputLayoutPhone = (TextInputLayout) findViewById(R.id.inputLayoutPhone);
-//        inputLayoutPw = (TextInputLayout) findViewById(R.id.inputLayoutPw);
-//        inputLayoutPwconfirm = (TextInputLayout) findViewById(R.id.inputLayoutPwconfirm);
 
         dbManager = new DatabaseManager(this);
         try{
@@ -107,44 +97,16 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         int phone_input = Integer.parseInt(Phone_input.getText().toString());
         Intent intent = new Intent(Register.this, MainActivity.class);
 
-        signupOK = false;
 
-        if(signupOK)//if sign up okay boolean = true navigate back to main login page
-        {
-            startActivity(intent);
-            Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
-        }
-
-        if(!validateName(Name_input) | !validatePassword(Pw_input) | !validatePhoneNo(Phone_input) | !validateEmailAddress(Email_input))
+        if(validateName(Name_input) && validatePassword(Pw_input) && validatePhoneNo(Phone_input) && validateEmailAddress(Email_input))
         {
 
             if(pw_input.equals(pwConfirm_input))
             {
-                switch (User_roles)
-                    {
-                        case "Patient":
-                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                            doTheFetch();
-                            signupOK = true;
-                            break;
-                        case "Doctor":
-                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                            doTheFetch();
-                            signupOK = true;
-                            break;
-                        case "Admin":
-                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                            doTheFetch();
-                            signupOK = true;
-                            break;
-
-                        case "Pharmacist":
-                            dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                            doTheFetch();
-                            signupOK = true;
-                            break;
-                    }
-
+                dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
+                doTheFetch();
+                startActivity(intent);
+                Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
             }
             else{
                 Pwconfirm_input.setError("Passwords does not match, please confirm your password again!");
@@ -230,7 +192,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
             return true;
         }
     }
-
     //events for dropbox -----------------------------------
 
 

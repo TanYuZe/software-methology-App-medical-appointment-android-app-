@@ -5,7 +5,7 @@ public class Admin extends BasicInfo
 
     public Admin(int id, String name, String email, String password, int phonenumber, String role)
     {
-        super (id, email, password, name, phonenumber, role);
+        super (id, name, email, password, phonenumber, role);
     }
 
     public String getEmail()

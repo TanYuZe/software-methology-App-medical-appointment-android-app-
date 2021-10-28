@@ -16,10 +16,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static String USER_CONTACT = "contactNum";
     static String USER_ROLE = "role";
 
-    private static final String CREATE_DB_QUERY = "CREATE TABLE "
+    private static final String CREATE_DB_QUERY = "CREATE TABLE IF NOT EXISTS "
             + DATABASE_TABLE + " ( "
-            + USER_ROLE + " TEXT PRIMARY KEY NOT NULL, "
             + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + USER_ROLE + " TEXT NOT NULL, "
             + USER_FULLNAME + " TEXT NOT NULL, "
             + USER_EMAIL + " TEXT NOT NULL, "
             + USER_PASSWORD + " TEXT NOT NULL,"
@@ -32,12 +32,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(CREATE_DB_QUERY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        onCreate(db);
     }
 }

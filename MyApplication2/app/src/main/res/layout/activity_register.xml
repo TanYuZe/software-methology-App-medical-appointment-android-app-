@@ -7,31 +7,17 @@
     tools:context=".Register">
 
     <EditText
-        android:id="@+id/pw_input"
-        android:layout_width="250dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="98dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_input"
-        />
-
-    <EditText
         android:id="@+id/name_input"
         android:layout_width="250dp"
         android:layout_height="39dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,6 +51,21 @@
         app:layout_constraintTop_toBottomOf="@+id/email_input" />
 
     <EditText
+        android:id="@+id/pw_input"
+        android:layout_width="250dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="98dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone_input"
+        />
+
+    <EditText
         android:id="@+id/pw_confirmText"
         android:layout_width="250dp"
         android:layout_height="39dp"
@@ -77,6 +78,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pw_input" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="126dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pw_confirmText" />
 
     <Button
         android:id="@+id/signUp_Btn"
@@ -92,21 +107,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="126dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pw_confirmText" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

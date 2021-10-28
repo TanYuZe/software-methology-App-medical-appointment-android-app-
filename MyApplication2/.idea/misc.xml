@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SchoolRelated/CSCI314/A1/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_main.xml" value="0.19270833333333334" />
+        <entry key="..\:/SchoolRelated/CSCI314/A1/software-metho/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/SchoolRelated/CSCI314/A1/software-metho/MyApplication2/app/src/main/res/layout/activity_register.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -38,5 +40,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.20520833333333333" />
+      </ProjectState>
+    </option>
   </component>
 </project>

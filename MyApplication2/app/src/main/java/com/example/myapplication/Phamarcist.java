@@ -4,7 +4,7 @@ public class Phamarcist extends BasicInfo
 {
     public Phamarcist(int id, String name, String email, String password, int phonenumber, String role)
     {
-        super (id, email, password, name, phonenumber, role);
+        super (id, name, email, password, phonenumber, role);
     }
 
     public String getEmail()

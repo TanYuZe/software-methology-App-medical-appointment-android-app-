@@ -13,6 +13,11 @@ import com.google.android.material.snackbar.Snackbar;
 public class MainActivity extends AppCompatActivity
 {
 
+
+        EditText editUserID;
+        EditText editUserPwd;
+        DatabaseManager dbManager;
+
 //    private void verifyUser()
 //    {
 //        if (DatabaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "A username and a password are required.", Toast.LENGTH_SHORT).show();
         }
 
+        /**
         if (DatabaseManager.checkUser(user_email, user_password)) {
 
 
@@ -50,15 +56,8 @@ public class MainActivity extends AppCompatActivity
 
 
         }
+         */
     }
-
-
-
-
-
-
-
-
 
 //        if (User.getRole().equals("Admin"))
 //        {
@@ -82,14 +81,6 @@ public class MainActivity extends AppCompatActivity
 //            Intent intent = new Intent(MainActivity.this, Pharmacist_Main.class);
 //        }
 
-
-
-
-
-
-
-
-
     public void SignUpFunction(View v)
     {
         Intent intent = new Intent(MainActivity.this, Register.class);
@@ -97,14 +88,20 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        editUserID = (EditText) findViewById(R.id.User_Email);
+        editUserPwd = (EditText) findViewById(R.id.User_Pw);
+        dbManager = new DatabaseManager(this);
+        try{
+            dbManager.open();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
 
     }
