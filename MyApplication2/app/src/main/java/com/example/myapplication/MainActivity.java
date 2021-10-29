@@ -3,60 +3,104 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.example.myapplication.Admin.Admin_Main;
 
 public class MainActivity extends AppCompatActivity
 {
 
-
-        EditText editUserID;
-        EditText editUserPwd;
-        DatabaseManager dbManager;
-
-//    private void verifyUser()
-//    {
-//        if (DatabaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
-//                , textInputEditTextPassword.getText().toString().trim())) {
-//            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
-//            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
-//            emptyInputEditText();
-//            startActivity(accountsIntent);
-//        } else {
-//            // Snack Bar to show success message that record is wrong
-//            Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
-//        }
-//    }
-
-    public void SignInFunction(View v) {
-        EditText User_Email = (EditText) findViewById(R.id.User_Email);
-        EditText User_Pw = (EditText) findViewById(R.id.User_Pw);
-        String user_email = User_Email.getText().toString().trim();
-        String user_password = User_Pw.getText().toString().trim();
-        if (user_email.isEmpty() || user_password.isEmpty())
-        {
-            Toast.makeText(this, "A username and a password are required.", Toast.LENGTH_SHORT).show();
-        }
+    Button Login_btn, Register_btn;
+    EditText editUserID;
+    EditText editUserPwd;
+    DatabaseManager dbManager;
+    DatabaseHelper dbhelper;
 
 
-        if (dbManager.checkUser(user_email, user_password)) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        editUserID = (EditText) findViewById(R.id.User_Email);
+        editUserPwd = (EditText) findViewById(R.id.User_Pw);
+        Login_btn = (Button) findViewById(R.id.Login_Button);
+        Register_btn = (Button) findViewById(R.id.Register_button);
+
+        //click function for Register button
+        Register_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
+            }
+        });
 
 
-            Intent accountsIntent = new Intent(this, BasicInfo.class);
-            accountsIntent.putExtra("EMAIL", user_email);
-            startActivity(accountsIntent);
 
+        Login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user_email = editUserID.getText().toString().trim();
+                String user_password = editUserPwd.getText().toString().trim();
+//                if (user_email.equals("") || user_password.equals(""))
+//                {
+//                    Toast.makeText(MainActivity.this, "A username and a password are required.", Toast.LENGTH_SHORT).show();
+//                }
+//                else if(onLogin(user_email, user_password)) {
+//                    displaySuccess();
+//                }
+//
+//                else
+//                {
+//                    displayInvalidCredentials();
+//                }
 
-        } else {
+                //to test admin functions
+                if(user_email.equals("admin") & (user_password.equals("admin")))
+                {
+                    Intent intent = new Intent(MainActivity.this, Admin_Main.class);
+                    startActivity(intent);
+                }
 
+            }
 
-        }
+        });
+
 
     }
+
+
+
+    boolean onLogin(String email, String password) {
+        LoginController control= new LoginController();
+        return control.validateLogin(email ,password,MainActivity.this);
+    }
+
+
+    void displayemptyerror() {
+        Toast.makeText(MainActivity.this, "email or password cannot be empty" , Toast.LENGTH_SHORT).show();
+    }
+
+
+    void displaySuccess() {
+        Toast.makeText(MainActivity.this, "Login Success " , Toast.LENGTH_SHORT).show();
+    }
+    void displayInvalidCredentials() {
+        Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+}
+
+
+
+
+
 
 //        if (User.getRole().equals("Admin"))
 //        {
@@ -80,28 +124,27 @@ public class MainActivity extends AppCompatActivity
 //            Intent intent = new Intent(MainActivity.this, Pharmacist_Main.class);
 //        }
 
-    public void SignUpFunction(View v)
-    {
-        Intent intent = new Intent(MainActivity.this, Register.class);
-        startActivity(intent);
+//    dbManager = new DatabaseManager(this);
+//        try{
+//    dbManager.open();
+//}
+//        catch (Exception e)
+//    {
+//        e.printStackTrace();
+//    }
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        editUserID = (EditText) findViewById(R.id.User_Email);
-        editUserPwd = (EditText) findViewById(R.id.User_Pw);
-        dbManager = new DatabaseManager(this);
-        try{
-            dbManager.open();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+/**
+ if (DatabaseManager.checkUser(user_email, user_password)) {
 
 
-    }
-}
+ Intent accountsIntent = new Intent(this, UsersListActivity.class);
+ accountsIntent.putExtra("EMAIL", user_email);
+ emptyInputEditText();
+ startActivity(accountsIntent);
+
+
+ } else {
+
+
+ }
+ */

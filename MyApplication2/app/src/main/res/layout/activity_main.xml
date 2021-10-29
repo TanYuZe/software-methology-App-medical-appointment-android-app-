@@ -48,19 +48,18 @@
         android:ems="10"
         android:hint="Password?"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/Button"
+        app:layout_constraintBottom_toTopOf="@+id/Login_Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/Button"
+        android:id="@+id/Login_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="131dp"
         android:layout_marginEnd="190dp"
         android:layout_marginBottom="84dp"
-        android:onClick="SignInFunction"
         android:text="Sign In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,16 +68,17 @@
 
     <Button
         android:id="@+id/Register_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginEnd="173dp"
+        android:layout_width="106dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginEnd="174dp"
         android:layout_marginBottom="24dp"
-        android:onClick="SignUpFunction"
         android:text="Register"
+        android:textColor="#F3EDED"
+        android:visibility="visible"
+        app:iconTint="#6A3939"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 

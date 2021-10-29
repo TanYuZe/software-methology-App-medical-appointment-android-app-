@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLDataException;
-import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DatabaseManager {
     private DatabaseHelper dbHelper;
@@ -54,39 +51,15 @@ public class DatabaseManager {
         return cursor;
     }
 
-    public boolean checkUser(String email, String password) {
 
-        // array of columns to fetch
-        String[] columns = {
-                DatabaseHelper.USER_ID
-        };
+    public void DeleteUser(String email)
+    {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "DELETE FROM DATABASE_TABLE WHERE USER_EMAIL = '" + email;
+        Cursor cursor = db.rawQuery(query, null);
+    }
 
 
-        // selection criteria
-        String selection = DatabaseHelper.USER_EMAIL + " = ?" + "AND" + DatabaseHelper.USER_PASSWORD + " = ?";
-
-        // selection argument
-        String[] selectionArgs = {email, password};
-
-        // query user table with condition
-
-         Cursor cursor = database.query(DatabaseHelper.DATABASE_TABLE, //Table to query
-         columns,                    //columns to return
-         selection,                  //columns for the WHERE clause
-         selectionArgs,              //The values for the WHERE clause
-         null,                       //group the rows
-         null,                      //filter by row groups
-         null);                      //The sort order
-         int cursorCount = cursor.getCount();
-         cursor.close();
-        database.close();
-
-         if (cursorCount > 0) {
-         return true;
-         }
-
-         return false;
-         }
 
 }
 
