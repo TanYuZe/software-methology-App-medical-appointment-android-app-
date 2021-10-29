@@ -42,13 +42,12 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "A username and a password are required.", Toast.LENGTH_SHORT).show();
         }
 
-        /**
-        if (DatabaseManager.checkUser(user_email, user_password)) {
+
+        if (dbManager.checkUser(user_email, user_password)) {
 
 
-            Intent accountsIntent = new Intent(this, UsersListActivity.class);
+            Intent accountsIntent = new Intent(this, BasicInfo.class);
             accountsIntent.putExtra("EMAIL", user_email);
-            emptyInputEditText();
             startActivity(accountsIntent);
 
 
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-         */
+
     }
 
 //        if (User.getRole().equals("Admin"))
