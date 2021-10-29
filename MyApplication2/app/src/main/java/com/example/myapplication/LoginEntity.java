@@ -34,22 +34,12 @@ public class LoginEntity {
             e.printStackTrace();
         }
 
-        if(validateUser(email, password))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-
-
+       return validateUser(email, password);
     }
 
     public boolean validateUser(String email, String password) {
         SQLiteDatabase db = DBHelper.getWritableDatabase();
-        String query = "SELECT * FROM DATABASE_TABLE WHERE USER_EMAIL = '" + email + "' and USER_PASSWORD ='"+ password+"'";
+        String query = "SELECT * FROM DATABASE_TABLE WHERE email = '" + email + "' and password ='"+ password+"'";
         Cursor cursor = db.rawQuery(query, null);
         int CursorCount = cursor.getCount();
         if (CursorCount > 0)

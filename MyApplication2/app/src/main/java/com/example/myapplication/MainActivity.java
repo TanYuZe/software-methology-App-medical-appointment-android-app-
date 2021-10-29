@@ -30,6 +30,15 @@ public class MainActivity extends AppCompatActivity
         Login_btn = (Button) findViewById(R.id.Login_Button);
         Register_btn = (Button) findViewById(R.id.Register_button);
 
+        dbManager = new DatabaseManager(this);
+        try{
+            dbManager.open();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         //click function for Register button
         Register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
