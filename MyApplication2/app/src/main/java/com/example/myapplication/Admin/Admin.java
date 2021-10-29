@@ -1,4 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.Admin;
+
+import com.example.myapplication.BasicInfo;
 
 public class Admin extends BasicInfo
 {

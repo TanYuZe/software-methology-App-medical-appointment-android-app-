@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLDataException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DatabaseManager {
     private DatabaseHelper dbHelper;
@@ -52,6 +50,16 @@ public class DatabaseManager {
         }
         return cursor;
     }
+
+
+    public void DeleteUser(String email)
+    {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "DELETE FROM DATABASE_TABLE WHERE USER_EMAIL = '" + email;
+        Cursor cursor = db.rawQuery(query, null);
+    }
+
+
 
 }
 

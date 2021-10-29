@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Admin;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,8 +6,12 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.DatabaseManager;
+import com.example.myapplication.R;
+
 public class Admin_DeleteUser extends AppCompatActivity {
     EditText user_email;
+    DatabaseManager db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,18 +21,12 @@ public class Admin_DeleteUser extends AppCompatActivity {
 
     }
 
+    //delete user base on email
     public void Delete(View v)
     {
         String email = user_email.getText().toString().trim();
-//        try
-//        {
-//            String d="DELETE FROM  WHERE ="+ email;
-//            db.execSQL(d);
-//        }
-//        catch(Exception e)
-//        {
-//            System.out.print("Error..................");
-//        }
+        db = new DatabaseManager(this);
+        db.DeleteUser(email);
 
     }
 }
