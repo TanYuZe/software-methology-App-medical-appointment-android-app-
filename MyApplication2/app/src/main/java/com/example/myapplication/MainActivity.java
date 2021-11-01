@@ -74,6 +74,12 @@ public class MainActivity extends AppCompatActivity
                     Intent intent = new Intent(MainActivity.this, Admin_Main.class);
                     startActivity(intent);
                 }
+                else if(user_email.equals("patient") & (user_password.equals("patient")))
+                {
+                    Intent intent = new Intent(MainActivity.this, Patient_Main.class);
+                    startActivity(intent);
+                }
+
 
             }
 

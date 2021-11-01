@@ -1,9 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,22 +24,22 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     EditText Phone_input;
     Spinner spinner;
 
-    public void doTheFetch()
-    {
-        Cursor cursor = dbManager.fetch();
-        if(cursor.moveToFirst())
-        {
-            do
-            {
-                String ID = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID));
-                String FullName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_FULLNAME));
-
-                Log.i("DATABASE_Tag" , "I have inserted ID: " + ID + ", Name: " + FullName);
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
-
-    }
+//    public void doTheFetch()
+//    {
+//        Cursor cursor = dbManager.fetch();
+//        if(cursor.moveToFirst())
+//        {
+//            do
+//            {
+//                String ID = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID));
+//                String FullName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_FULLNAME));
+//
+//                Log.i("DATABASE_Tag" , "I have inserted ID: " + ID + ", Name: " + FullName);
+//            }while(cursor.moveToNext());
+//        }
+//        cursor.close();
+//
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -55,14 +53,14 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         Phone_input = (EditText) findViewById(R.id.phone_input);
 
 
-        dbManager = new DatabaseManager(this);
-        try{
-            dbManager.open();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+//        dbManager = new DatabaseManager(this);
+//        try{
+//            dbManager.open();
+//        }
+//        catch (Exception e)
+//        {
+//            e.printStackTrace();
+//        }
 
         //Adding an Array into the dropdown box(spinner)
         spinner = (Spinner) findViewById(R.id.spinner1);
@@ -94,8 +92,17 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         String email_input = Email_input.getText().toString();
         String pw_input = Pw_input.getText().toString();
         String pwConfirm_input = Pwconfirm_input.getText().toString();
-        int phone_input = Integer.parseInt(Phone_input.getText().toString());
+        String phone_input = Phone_input.getText().toString();
         Intent intent = new Intent(Register.this, MainActivity.class);
+
+
+
+        validateName(Name_input);
+        validatePassword(Pw_input);
+        validatePhoneNo(Phone_input);
+        validateEmailAddress(Email_input);
+        RegisterController RegCon = new RegisterController();
+
 
 
         if(validateName(Name_input) && validatePassword(Pw_input) && validatePhoneNo(Phone_input) && validateEmailAddress(Email_input))
@@ -103,15 +110,22 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
             if(pw_input.equals(pwConfirm_input))
             {
-                dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                doTheFetch();
-                startActivity(intent);
-                Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
+                if(RegCon.validateRegistration(name_input, email_input, pw_input, Integer.parseInt(phone_input), User_roles))
+                {
+
+                    startActivity(intent);
+                    Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Email_input.setError("Email already exist, please try a new one");
+                }
             }
-            else{
+            else
+                {
                 Pwconfirm_input.setError("Passwords does not match, please confirm your password again!");
             }
-            return;
+
         }
 
 
@@ -122,10 +136,15 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     {
         String emailInput = email.getText().toString();
 
-        if(!emailInput.equals("") && !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) //Invalid Email
+        if(emailInput.equals("")) //Invalid Email
         {
-            Email_input.setError("Wrong email Format");
+            Email_input.setError("Field cannot be empty");
             return false;
+        }
+        else if(!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches())
+        {
+        Email_input.setError("Wrong email Format");
+        return false;
         }
         else
         {
@@ -150,13 +169,11 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     private Boolean validatePassword(EditText password) {
         String val = password.getText().toString();
         String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
                 "(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +      //any letter
                 //"(?=.*[@#$%^&+=])" +    //at least 1 special character
                 "(?=\\S+$)" +           //no white spaces
-                ".{8,}" +               //at least 4 characters
+                ".{8,}" +               //at least 8 characters
                 "$";
 
         if (val.equals("")) {
@@ -170,15 +187,10 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
     private Boolean validatePhoneNo(EditText phonenum) {
-        String val = Phone_input.getText().toString();
+        String val = phonenum.getText().toString();
         String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                //"(?=.*[a-zA-Z])" +      //any letter
-                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{8,}" +               //at least 4 characters
+                "[0-9]" +
+                "{8}" +
                 "$";
         if (val.equals("")) {
             Phone_input.setError("Field cannot be empty");

@@ -48,6 +48,7 @@
         android:ems="10"
         android:hint="Password?"
         android:inputType="textPersonName"
+        android:selectAllOnFocus="true"
         app:layout_constraintBottom_toTopOf="@+id/Login_Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

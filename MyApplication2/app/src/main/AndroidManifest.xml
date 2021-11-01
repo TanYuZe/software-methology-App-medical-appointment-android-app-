@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Patient_QRcode"
+            android:exported="true" />
+        <activity
+            android:name=".Patient_ViewPrescription"
+            android:exported="true" />
+        <activity
+            android:name=".Patient_ViewProfile"
+            android:exported="true" />
+        <activity
+            android:name=".Patient_Main"
+            android:exported="true" />
+        <activity
             android:name=".Admin.Admin_ViewUser"
             android:exported="true" />
         <activity
@@ -26,9 +38,6 @@
             android:exported="true" />
         <activity
             android:name=".Pharmacist_Main"
-            android:exported="true" />
-        <activity
-            android:name=".Patient_Main"
             android:exported="true" />
         <activity
             android:name=".Register"

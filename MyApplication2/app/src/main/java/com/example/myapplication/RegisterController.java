@@ -1,8 +1,20 @@
 package com.example.myapplication;
 
 public class RegisterController {
-    boolean validateRegistration()
+
+    DatabaseManager dbmanager;
+    boolean validateRegistration(String name, String email, String password, int phonenum, String role)
     {
-        return false;
+        if(dbmanager.valEmailExist(email))
+        {
+            return false;
+        }
+        else
+        {
+
+            dbmanager.doTheFetch();
+            dbmanager.insert(name, email, password, phonenum, role);
+            return true;
+        }
     }
 }
