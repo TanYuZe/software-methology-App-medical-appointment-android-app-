@@ -8,8 +8,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myapplication.Admin.Admin_Main;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity
     EditText editUserPwd;
     DatabaseManager dbManager;
     DatabaseHelper dbhelper;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference refrence;
 
 
     @Override

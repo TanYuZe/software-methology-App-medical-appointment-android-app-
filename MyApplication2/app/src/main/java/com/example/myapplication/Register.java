@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Register extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     String User_roles;
@@ -25,6 +28,9 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     EditText Pwconfirm_input;
     EditText Phone_input;
     Spinner spinner;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference refrence;
 
     public void doTheFetch()
     {
@@ -104,7 +110,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
             if(pw_input.equals(pwConfirm_input))
             {
                 dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                doTheFetch();
+                //doTheFetch();
                 startActivity(intent);
                 Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
             }
@@ -117,7 +123,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
     }
 
-//validation
+    //validation
     private boolean validateEmailAddress(EditText email)
     {
         String emailInput = email.getText().toString();

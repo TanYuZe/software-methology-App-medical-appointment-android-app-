@@ -9,8 +9,6 @@ public class BasicInfo
     public int phonenumber;
     public String role;
 
-    //hi
-
     public BasicInfo()
     {
 
