@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.sql.SQLDataException;
 
@@ -55,9 +56,43 @@ public class DatabaseManager {
     public void DeleteUser(String email)
     {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "DELETE FROM DATABASE_TABLE WHERE USER_EMAIL = '" + email;
+        String query = "DELETE FROM DATABASE_TABLE WHERE email = '" + email;
         Cursor cursor = db.rawQuery(query, null);
     }
+
+    public void doTheFetch()
+    {
+        Cursor cursor = fetch();
+        if(cursor.moveToFirst())
+        {
+            do
+            {
+                String ID = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID));
+                String FullName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_FULLNAME));
+
+                Log.i("DATABASE_Tag" , "I have inserted ID: " + ID + ", Name: " + FullName);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+
+    }
+
+
+    //for resgiter class to check whether email alr exit anot
+    public boolean valEmailExist(String email)
+    {
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "SELECT * FROM DATABASE_TABLE WHERE email = '" + email;
+        Cursor cursor = db.rawQuery(query, null);
+        int CursorCount = cursor.getCount();
+        if (CursorCount > 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
 
 
 

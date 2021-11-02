@@ -22,15 +22,27 @@
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_doctor_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_main2.xml" value="0.16302083333333334" />
-        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_main.xml" value="0.2" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_main.xml" value="0.264" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_qrcode.xml" value="0.176" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_view_prescription.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_view_profile.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_pharmacist_main.xml" value="0.20380434782608695" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_reg.xml" value="0.2" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_register.xml" value="0.536" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/app_bar_patient_main.xml" value="0.20380434782608695" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/content_patient_main.xml" value="0.20380434782608695" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_add_user_.xml" value="0.2" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_admin_adduser.xml" value="0.2" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_admin_deleteuser.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_admin_viewuser.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_delete_user_.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_gallery.xml" value="0.20380434782608695" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_home.xml" value="0.20380434782608695" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_item_list.xml" value="0.176" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_slideshow.xml" value="0.20380434782608695" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/nav_header_patient_main.xml" value="0.536" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/menu/activity_main_drawer.xml" value="0.28177083333333336" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/menu/patient__main.xml" value="0.28177083333333336" />
       </map>
     </option>
   </component>

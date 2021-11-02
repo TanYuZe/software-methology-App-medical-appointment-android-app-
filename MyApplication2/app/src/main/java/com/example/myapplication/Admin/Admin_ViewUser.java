@@ -26,8 +26,8 @@ public class Admin_ViewUser extends AppCompatActivity {
         t_name = findViewById(R.id.t_name);
         t_role = findViewById(R.id.t_role);
         t_password = findViewById(R.id.t_password);
-        t_email = findViewById(R.id.t_email);
-        t_phoneno = findViewById(R.id.t_phoneno);
+        t_email = findViewById(R.id.t_phoneno);
+        t_phoneno = findViewById(R.id.t_roles);
 
         View_btn = findViewById(R.id.ViewAcc_btn);
 

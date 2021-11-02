@@ -15,12 +15,6 @@ public class LoginEntity {
     private String contact;
     DatabaseHelper DBHelper;
 
-    public enum user_role {
-        Patient,
-        Doctor,
-        Admin,
-        Pharmacist,
-    }
 
     public boolean Login(String email, String password, Context context)
     {
