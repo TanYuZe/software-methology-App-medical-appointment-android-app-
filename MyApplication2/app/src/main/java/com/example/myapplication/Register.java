@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
+    RegisterController RegObject = RegisterController.getINSTANCE();
+
     String User_roles;
 
     DatabaseManager dbManager;
@@ -109,8 +111,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
             if(pw_input.equals(pwConfirm_input))
             {
-                dbManager.insert(name_input, email_input, pw_input, phone_input, User_roles);
-                //doTheFetch();
+                RegObject.validateSuccess(email_input, pw_input, name_input, phone_input, User_roles, Register.this);
                 startActivity(intent);
                 Toast.makeText(this, "Account created! Please Log In", Toast.LENGTH_SHORT).show();
             }
@@ -120,6 +121,11 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
             return;
         }
 
+
+    }
+
+    void onaddUser()
+    {
 
     }
 
