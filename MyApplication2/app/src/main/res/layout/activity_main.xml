@@ -47,7 +47,7 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Password?"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:selectAllOnFocus="true"
         app:layout_constraintBottom_toTopOf="@+id/Login_Button"
         app:layout_constraintEnd_toEndOf="parent"

@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -132,6 +133,7 @@ public class RegisterEntity {
 
                             Patient patient = new Patient(finalIdResult3, name, email, password, contactNum, role);
                             refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(patient);
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
                         }
                     }
                 });
@@ -155,6 +157,7 @@ public class RegisterEntity {
                         {
                             Doctor doctor = new Doctor(finalIdResult, name, email, password, contactNum, role);
                             refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(doctor);
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
                         }
                     }
                 });
@@ -177,6 +180,7 @@ public class RegisterEntity {
                         {
                             Phamarcist pharmacist = new Phamarcist(finalIdResult1, name, email, password, contactNum, role);
                             refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(pharmacist);
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
                         }
                     }
                 });
@@ -199,6 +203,7 @@ public class RegisterEntity {
                         {
                             Admin admin = new Admin(finalIdResult2, name, email, password, contactNum, role);
                             refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(admin);
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
                         }
                     }
                 });

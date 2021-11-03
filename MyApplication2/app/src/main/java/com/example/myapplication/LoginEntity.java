@@ -15,11 +15,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.ktx.Firebase;
 
 public class LoginEntity {
     DatabaseManager dbManager;
@@ -73,33 +75,42 @@ public class LoginEntity {
                 {
                     if(task.isSuccessful())
                     {
-                        String[] tempRole = {""};
-                        DatabaseReference zaReference = refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("role");
-                        zaReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String zaRole = snapshot.getValue(String.class);
-                                tempRole[0] = zaRole;switch(tempRole[0])
-                                {
-                                    case "Admin":
-                                        Intent intent = new Intent(context, Admin_Main.class);
-                                        context.startActivity(intent);
-                                        break;
-                                    case "Pharmacist":
-                                        break;
-                                    case "Doctor":
-                                        break;
-                                    case "Patient":
-                                        break;
+                        FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+
+                        if(user.isEmailVerified())
+                        {
+                            String[] tempRole = {""};
+                            DatabaseReference zaReference = refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("role");
+                            zaReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String zaRole = snapshot.getValue(String.class);
+                                    tempRole[0] = zaRole;switch(tempRole[0])
+                                    {
+                                        case "Admin":
+                                            Intent intent = new Intent(context, Admin_Main.class);
+                                            context.startActivity(intent);
+                                            break;
+                                        case "Pharmacist":
+                                            break;
+                                        case "Doctor":
+                                            break;
+                                        case "Patient":
+                                            break;
+                                    }
                                 }
-                            }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
-
+                                }
+                            });
+                        }
+                        else
+                        {
+                            user.sendEmailVerification();
+                            Toast.makeText(context, "Check your email!", Toast.LENGTH_LONG).show();
+                        }
                     }
                     else
                     {
