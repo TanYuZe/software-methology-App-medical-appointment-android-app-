@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="137dp"
         android:layout_marginEnd="137dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="180dp"
         android:text="Generate QR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,11 +36,12 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="56dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/textView12"
@@ -48,11 +49,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="312dp"
+        android:layout_marginBottom="264dp"
         android:text="Token ID:"
         android:textColor="#090909"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/QRstring_input"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="172dp"
+        android:text="QR code"
+        android:textColor="#090909"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
