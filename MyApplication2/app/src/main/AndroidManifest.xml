@@ -11,6 +11,9 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Doctor_AssignMedicine"
+            android:exported="true" />
+        <activity
             android:name=".Pharmacist_ViewProfile"
             android:exported="true" />
         <activity
