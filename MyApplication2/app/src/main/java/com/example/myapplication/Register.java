@@ -124,11 +124,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
     }
 
-    void onaddUser()
-    {
-
-    }
-
     //validation
     private boolean validateEmailAddress(EditText email)
     {

@@ -3,9 +3,14 @@ package com.example.myapplication;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.example.myapplication.Admin.Admin;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,6 +25,8 @@ public class RegisterEntity {
     DatabaseManager dbManager;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
+    
+    FirebaseAuth mAuth;
 
     public RegisterEntity(Context context)
     {
@@ -91,6 +98,8 @@ public class RegisterEntity {
 
         SQLiteDatabase db = DBHelper.getWritableDatabase();
 
+        mAuth = FirebaseAuth.getInstance();
+
         String query = "SELECT _ID FROM Users WHERE fullName = '" + name
                 + "' AND email = '" + email
                 + "' AND password = '" + password
@@ -112,8 +121,20 @@ public class RegisterEntity {
                 result = cursor.getString(0);
                 idResult = Integer.parseInt(result);
 
-                Patient patient = new Patient(idResult, name, email, password, contactNum, role);
-                refrence_.child(String.valueOf(idResult)).setValue(patient);
+                int finalIdResult3 = idResult;
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if(task.isSuccessful())
+                        {
+
+                            Patient patient = new Patient(finalIdResult3, name, email, password, contactNum, role);
+                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(patient);
+                        }
+                    }
+                });
                 break;
 
             case "Doctor":
@@ -124,20 +145,41 @@ public class RegisterEntity {
                 result = cursor.getString(0);
                 idResult = Integer.parseInt(result);
 
-                Doctor doctor = new Doctor(idResult, name, email, password, contactNum, role);
-                refrence_.child(String.valueOf(idResult)).setValue(doctor);
+                int finalIdResult = idResult;
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if(task.isSuccessful())
+                        {
+                            Doctor doctor = new Doctor(finalIdResult, name, email, password, contactNum, role);
+                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(doctor);
+                        }
+                    }
+                });
                 break;
 
-            case "Phamarcist":
+            case "Pharmacist":
                 dbManager.insert(name, email, password, contactNum, role);
 
                 cursor = db.rawQuery(query, null);
                 cursor.moveToFirst();
                 result = cursor.getString(0);
                 idResult = Integer.parseInt(result);
-
-                Phamarcist pharmacist = new Phamarcist(idResult, name, email, password, contactNum, role);
-                refrence_.child(String.valueOf(idResult)).setValue(pharmacist);
+                int finalIdResult1 = idResult;
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if(task.isSuccessful())
+                        {
+                            Phamarcist pharmacist = new Phamarcist(finalIdResult1, name, email, password, contactNum, role);
+                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(pharmacist);
+                        }
+                    }
+                });
                 break;
 
             case "Admin":
@@ -147,12 +189,20 @@ public class RegisterEntity {
                 cursor.moveToFirst();
                 result = cursor.getString(0);
                 idResult = Integer.parseInt(result);
-
-                Admin admin = new Admin(idResult, name, email, password, contactNum, role);
-                refrence_.child(String.valueOf(idResult)).setValue(admin);
+                int finalIdResult2 = idResult;
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if(task.isSuccessful())
+                        {
+                            Admin admin = new Admin(finalIdResult2, name, email, password, contactNum, role);
+                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(admin);
+                        }
+                    }
+                });
                 break;
         }
-        //BasicInfo basicInfo = new BasicInfo();
-        //refrence_.setValue(basicInfo);
     }
 }

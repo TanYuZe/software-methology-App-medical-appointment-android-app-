@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.Admin.Admin_Main;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity
 
     FirebaseDatabase rootNode;
     DatabaseReference refrence;
+
+    FirebaseAuth mAuth;
 
 
     @Override
@@ -60,18 +63,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 String user_email = editUserID.getText().toString().trim();
                 String user_password = editUserPwd.getText().toString().trim();
-//                if (user_email.equals("") || user_password.equals(""))
-//                {
-//                    Toast.makeText(MainActivity.this, "A username and a password are required.", Toast.LENGTH_SHORT).show();
-//                }
-//                else if(onLogin(user_email, user_password)) {
-//                    displaySuccess();
-//                }
-//
-//                else
-//                {
-//                    displayInvalidCredentials();
-//                }
+
+                onLogin(user_email, user_password);
 
                 //to test admin functions
                 if(user_email.equals("admin") & (user_password.equals("admin")))
@@ -93,12 +86,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-
-    boolean onLogin(String email, String password) {
+    void onLogin(String email, String password) {
         LoginController control= new LoginController();
-        return control.validateLogin(email ,password,MainActivity.this);
+        control.validateLogin(email ,password,MainActivity.this);
     }
+
+
 
 
     void displayemptyerror() {
@@ -112,59 +105,4 @@ public class MainActivity extends AppCompatActivity
     void displayInvalidCredentials() {
         Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
     }
-
-
-
 }
-
-
-
-
-
-
-//        if (User.getRole().equals("Admin"))
-//        {
-//            Intent intent = new Intent(MainActivity.this, Admin_Main.class);
-//
-//            startActivity(intent);
-//        }
-//        elif(User.getRole().equals("Patient"))
-//        {
-//
-//            Intent intent = new Intent(MainActivity.this, Patient_Main.class);
-//        }
-//        elif(User.getRole().equals("Doctor"))
-//        {
-//
-//            Intent intent = new Intent(MainActivity.this, Doctor_Main.class);
-//        }
-//        elif(User.getRole().equals("Pharmacist"))
-//        {
-//
-//            Intent intent = new Intent(MainActivity.this, Pharmacist_Main.class);
-//        }
-
-//    dbManager = new DatabaseManager(this);
-//        try{
-//    dbManager.open();
-//}
-//        catch (Exception e)
-//    {
-//        e.printStackTrace();
-//    }
-
-/**
- if (DatabaseManager.checkUser(user_email, user_password)) {
-
-
- Intent accountsIntent = new Intent(this, UsersListActivity.class);
- accountsIntent.putExtra("EMAIL", user_email);
- emptyInputEditText();
- startActivity(accountsIntent);
-
-
- } else {
-
-
- }
- */
