@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Pharmacist_ViewProfile"
+            android:exported="true" />
+        <activity
+            android:name=".Pharmacist_ViewUserPresc"
+            android:exported="true" />
+        <activity
             android:name=".Patient_QRcode"
             android:exported="true" />
         <activity

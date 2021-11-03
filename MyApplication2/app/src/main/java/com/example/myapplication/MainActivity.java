@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapplication.Admin.Admin_Main;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,13 +27,16 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         editUserID = (EditText) findViewById(R.id.User_Email);
         editUserPwd = (EditText) findViewById(R.id.User_Pw);
         Login_btn = (Button) findViewById(R.id.Login_Button);
         Register_btn = (Button) findViewById(R.id.Register_button);
+
+
 
         dbManager = new DatabaseManager(this);
         try{
@@ -60,30 +63,52 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 String user_email = editUserID.getText().toString().trim();
                 String user_password = editUserPwd.getText().toString().trim();
-//                if (user_email.equals("") || user_password.equals(""))
-//                {
-//                    Toast.makeText(MainActivity.this, "A username and a password are required.", Toast.LENGTH_SHORT).show();
-//                }
-//                else if(onLogin(user_email, user_password)) {
-//                    displaySuccess();
-//                }
-//
-//                else
-//                {
-//                    displayInvalidCredentials();
-//                }
+                if (user_email.equals("") || user_password.equals("")) {
+                    displayemptyerror();
+                }
+                else if(onLogin(user_email, user_password)) {
+                    LoginController control = LoginController.getInstance();
+                    LoginEntity user = control.presentUser;
+                    Intent intent1 = new Intent(MainActivity.this, Patient_Main.class);
+                    Intent intent2 = new Intent(MainActivity.this, Admin_Main.class);
+                    Intent intent3 = new Intent(MainActivity.this, Doctor_Main.class);
+                    Intent intent4 = new Intent(MainActivity.this, Pharmacist_Main.class);
+                    switch (user.role) {
+                        case "Patient":
 
-                //to test admin functions
-                if(user_email.equals("admin") & (user_password.equals("admin")))
-                {
-                    Intent intent = new Intent(MainActivity.this, Admin_Main.class);
-                    startActivity(intent);
+                            startActivity(intent1);
+                            break;
+                        case "Admin":
+
+                            startActivity(intent2);
+                            break;
+                        case "Doctor":
+
+                            startActivity(intent3);
+                            break;
+                        case "Pharmacist":
+                            startActivity(intent4);
+                            break;
+                    }
+                    displaySuccess();
                 }
-                else if(user_email.equals("patient") & (user_password.equals("patient")))
+
+                else
                 {
-                    Intent intent = new Intent(MainActivity.this, Patient_Main.class);
-                    startActivity(intent);
+                    displayInvalidCredentials();
                 }
+
+//                //to test admin functions
+//                if(user_email.equals("admin") & (user_password.equals("admin")))
+//                {
+//                    Intent intent = new Intent(MainActivity.this, Admin_Main.class);
+//                    startActivity(intent);
+//                }
+//                else if(user_email.equals("patient") & (user_password.equals("patient")))
+//                {
+//                    Intent intent = new Intent(MainActivity.this, Patient_Main.class);
+//                    startActivity(intent);
+//                }
 
 
             }
@@ -96,8 +121,11 @@ public class MainActivity extends AppCompatActivity
 
 
     boolean onLogin(String email, String password) {
-        LoginController control= new LoginController();
+        LoginController control= LoginController.getInstance();
         return control.validateLogin(email ,password,MainActivity.this);
+
+
+
     }
 
 

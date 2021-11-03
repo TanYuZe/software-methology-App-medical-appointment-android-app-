@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class LoginEntity {
     DatabaseManager dbManager;
     private String ID;
-    private String role;
+    String role;
     private String name;
     private String email;
     private String password;
@@ -27,19 +27,39 @@ public class LoginEntity {
         {
             e.printStackTrace();
         }
-
-       return validateUser(email, password);
+        LoginEntity user = validateUser(email,password);
+        LoginController.getInstance().presentUser= user;
+        return user != null;
     }
-
-    public boolean validateUser(String email, String password) {
+    LoginEntity validateUser(String email, String password) {
         SQLiteDatabase db = DBHelper.getWritableDatabase();
         String query = "SELECT * FROM DATABASE_TABLE WHERE email = '" + email + "' and password ='"+ password+"'";
         Cursor cursor = db.rawQuery(query, null);
-        int CursorCount = cursor.getCount();
-        if (CursorCount > 0)
-        {
-            return true;
+        if(cursor != null && cursor.moveToFirst()) {
+            LoginEntity user = new LoginEntity();
+            user.ID = cursor.getString(0);
+            user.role = cursor.getString(1);
+            user.name = cursor.getString(2);
+            user.email = cursor.getString(3);
+            user.password = cursor.getString(4);
+            user.contact = cursor.getString(5);
+
+            cursor.close();
+            return user;
         }
-        return false;
+        else {
+            return null;
+        }
     }
+//    public boolean validateUser(String email, String password) {
+//        SQLiteDatabase db = DBHelper.getWritableDatabase();
+//        String query = "SELECT * FROM DATABASE_TABLE WHERE email = '" + email + "' and password ='"+ password+"'";
+//        Cursor cursor = db.rawQuery(query, null);
+//        int CursorCount = cursor.getCount();
+//        if (CursorCount > 0)
+//        {
+//            return true;
+//        }
+//        return false;
+//    }
 }
