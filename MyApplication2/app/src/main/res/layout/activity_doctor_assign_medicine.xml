@@ -5,19 +5,37 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Doctor_AssignMedicine">
+    tools:context=".Doctor.Doctor_AssignMedicine">
+
+    <EditText
+        android:id="@+id/patient_email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter User Email Here" />
+
 
     <EditText
         android:id="@+id/filter_text"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:layout_below="@+id/patient_email"
+        android:hint="Search Filter" />
 
     <ListView
+        android:id="@+id/ListViewMed"
+        android:layout_width="match_parent"
+        android:layout_height="548dp"
+        android:layout_below="@+id/filter_text"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice" />
+
+    <Button
+        android:id="@+id/Assignmed_btn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/filter_text"
-        android:id="@+id/ListViewMed"
-        android:choiceMode="multipleChoice"/>
+        android:layout_below="@+id/ListViewMed"
+        android:text="Assign Medicine" />
+
 
 </RelativeLayout>
 <!--<?xml version="1.0" encoding="utf-8"?>-->

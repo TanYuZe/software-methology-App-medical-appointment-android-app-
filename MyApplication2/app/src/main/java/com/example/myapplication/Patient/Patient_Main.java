@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Patient;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.R;
 
 public class Patient_Main extends AppCompatActivity {
     

@@ -1,12 +1,16 @@
-package com.example.myapplication;
+package com.example.myapplication.Patient;
 
-public class Doctor extends BasicInfo
+
+import com.example.myapplication.BasicInfo;
+
+public class Patient extends BasicInfo
 {
-
-    public Doctor(int id, String name, String email, String password, int phonenumber, String role)
+    public Patient(int id, String name, String email, String password, int phonenumber, String role)
     {
         super (id, name, email, password, phonenumber, role);
     }
+
+
 
     public String getEmail()
     {
