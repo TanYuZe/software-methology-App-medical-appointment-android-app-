@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Patient;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.R;
 import com.google.zxing.WriterException;
 
 import androidmads.library.qrgenearator.QRGContents;

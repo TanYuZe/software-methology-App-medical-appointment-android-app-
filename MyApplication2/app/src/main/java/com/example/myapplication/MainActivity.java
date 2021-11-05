@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Admin.Admin_Main;
+import com.example.myapplication.Doctor.Doctor_Main;
+import com.example.myapplication.Patient.Patient_Main;
+import com.example.myapplication.Pharmacist.Pharmacist_Main;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity
 
                 onLogin(user_email, user_password);
 
-                //to test admin functions
+                //to test functions
                 if(user_email.equals("admin") & (user_password.equals("admin")))
                 {
                     Intent intent = new Intent(MainActivity.this, Admin_Main.class);
@@ -77,6 +80,17 @@ public class MainActivity extends AppCompatActivity
                     Intent intent = new Intent(MainActivity.this, Patient_Main.class);
                     startActivity(intent);
                 }
+                else if(user_email.equals("doctor") & (user_password.equals("doctor")))
+                {
+                    Intent intent = new Intent(MainActivity.this, Doctor_Main.class);
+                    startActivity(intent);
+                }
+                else if(user_email.equals("phar") & (user_password.equals("phar")))
+                {
+                    Intent intent = new Intent(MainActivity.this, Pharmacist_Main.class);
+                    startActivity(intent);
+                }
+
 
 
             }

@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.Admin.Admin;
+import com.example.myapplication.Doctor.Doctor;
+import com.example.myapplication.Patient.Patient;
+import com.example.myapplication.Pharmacist.Phamarcist;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

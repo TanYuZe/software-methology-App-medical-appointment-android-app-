@@ -1,4 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.Pharmacist;
+
+import com.example.myapplication.BasicInfo;
 
 public class Phamarcist extends BasicInfo
 {

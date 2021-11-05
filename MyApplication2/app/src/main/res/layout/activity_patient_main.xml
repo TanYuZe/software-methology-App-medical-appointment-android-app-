@@ -5,7 +5,7 @@
     android:id="@+id/ViewQR"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Patient_Main">
+    tools:context=".Patient.Patient_Main">
 
     <Button
         android:id="@+id/admin_Logout"

@@ -11,25 +11,28 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Doctor_AssignMedicine"
+            android:name=".Doctor.Doctor_ViewProfile"
             android:exported="true" />
         <activity
-            android:name=".Pharmacist_ViewProfile"
+            android:name=".Doctor.Doctor_AssignMedicine"
             android:exported="true" />
         <activity
-            android:name=".Pharmacist_ViewUserPresc"
+            android:name=".Pharmacist.Pharmacist_ViewProfile"
             android:exported="true" />
         <activity
-            android:name=".Patient_QRcode"
+            android:name=".Pharmacist.Pharmacist_ViewUserPresc"
             android:exported="true" />
         <activity
-            android:name=".Patient_ViewPrescription"
+            android:name=".Patient.Patient_QRcode"
             android:exported="true" />
         <activity
-            android:name=".Patient_ViewProfile"
+            android:name=".Patient.Patient_ViewPrescription"
             android:exported="true" />
         <activity
-            android:name=".Patient_Main"
+            android:name=".Patient.Patient_ViewProfile"
+            android:exported="true" />
+        <activity
+            android:name=".Patient.Patient_Main"
             android:exported="true" />
         <activity
             android:name=".Admin.Admin_ViewUser"
@@ -44,10 +47,10 @@
             android:name=".Admin.Admin_Main"
             android:exported="true" />
         <activity
-            android:name=".Doctor_Main"
+            android:name=".Doctor.Doctor_Main"
             android:exported="true" />
         <activity
-            android:name=".Pharmacist_Main"
+            android:name=".Pharmacist.Pharmacist_Main"
             android:exported="true" />
         <activity
             android:name=".Register"

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Pharmacist;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
