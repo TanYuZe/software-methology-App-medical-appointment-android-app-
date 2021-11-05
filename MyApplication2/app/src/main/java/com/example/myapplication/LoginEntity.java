@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.Admin.Admin_Main;
+import com.example.myapplication.Doctor.Doctor_Main;
+import com.example.myapplication.Patient.Patient_Main;
+import com.example.myapplication.Pharmacist.Pharmacist_Main;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
