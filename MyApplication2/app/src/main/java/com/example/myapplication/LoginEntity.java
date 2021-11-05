@@ -24,14 +24,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
 public class LoginEntity {
-    DatabaseManager dbManager;
     private String ID;
     private String role;
     private String name;
     private String email;
     private String password;
     private String contact;
-    DatabaseHelper DBHelper;
     FirebaseAuth mAuth;
 
     FirebaseDatabase rootNode_;
@@ -42,26 +40,6 @@ public class LoginEntity {
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
         mAuth = FirebaseAuth.getInstance();
-
-        //dbManager = new DatabaseManager(context);
-        //try{
-        //    dbManager.open();
-        //}
-        //catch (Exception e)
-        //{
-        //    e.printStackTrace();
-        //}
-
-        // SQLiteDatabase db = DBHelper.getWritableDatabase();
-        // String query = "SELECT * FROM DATABASE_TABLE WHERE email = '" + email + "' and password ='"+ password+"'";
-        // Cursor cursor = db.rawQuery(query, null);
-        // int CursorCount = cursor.getCount();
-        // if (CursorCount > 0)
-        // {
-        //     return true;
-        // }
-        // return false;
-        // }
         if(email.equals("") || password.equals(""))
         {
             Toast.makeText(context, "Failed to log in", Toast.LENGTH_LONG).show();
@@ -92,10 +70,16 @@ public class LoginEntity {
                                             context.startActivity(intent);
                                             break;
                                         case "Pharmacist":
+                                            Intent intent1 = new Intent(context, Pharmacist_Main.class);
+                                            context.startActivity(intent1);
                                             break;
                                         case "Doctor":
+                                            Intent intent2 = new Intent(context, Doctor_Main.class);
+                                            context.startActivity(intent2);
                                             break;
                                         case "Patient":
+                                            Intent intent3 = new Intent(context, Patient_Main.class);
+                                            context.startActivity(intent3);
                                             break;
                                     }
                                 }
