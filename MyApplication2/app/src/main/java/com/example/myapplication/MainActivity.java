@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity
 
     FirebaseDatabase rootNode;
     DatabaseReference refrence;
+    String user_email;
 
     FirebaseAuth mAuth;
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         Login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user_email = editUserID.getText().toString().trim();
+                user_email = editUserID.getText().toString().trim();
                 String user_password = editUserPwd.getText().toString().trim();
 
                 onLogin(user_email, user_password);
