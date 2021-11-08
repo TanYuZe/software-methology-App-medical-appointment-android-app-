@@ -11,10 +11,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -26,6 +33,8 @@ public class Doctor_AssignMedicine extends AppCompatActivity
     ArrayAdapter<String> adapter;
     ArrayList<String> medlist;
     String itemSelected;
+    FirebaseDatabase rootNode_;
+    DatabaseReference refrence_;
 
 
     @Override
@@ -37,9 +46,28 @@ public class Doctor_AssignMedicine extends AppCompatActivity
         filter_text = (EditText) findViewById(R.id.filter_text);
         medlist = new ArrayList<String>();
 
-        for (int i = 1; i < 50; i++) {
-            medlist.add("Medicine" + i);
-        }
+        rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
+        refrence_ = rootNode_.getReference("Prescription");
+
+
+        refrence_.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot snapshot1 : snapshot.getChildren())
+                {
+                    Prescription prescription;
+                    prescription = snapshot1.getValue(Prescription.class);
+                    medlist.add(prescription.getDrugPrescribed());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, medlist);
         listview_med.setAdapter(adapter);
