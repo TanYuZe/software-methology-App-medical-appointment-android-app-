@@ -10,9 +10,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Pharmacist_Main extends AppCompatActivity {
-    Button PharmaLogout, PharmacistProfile, RetrievePresc;
+    Button PharmaLogout, PharmacistProfile, RetrievePresc, prescdata_btn;
 
 
     @Override
@@ -23,13 +24,21 @@ public class Pharmacist_Main extends AppCompatActivity {
         PharmaLogout = findViewById(R.id.Pharmacist_Logout);
         PharmacistProfile = findViewById(R.id.PharmacistProfile);
         RetrievePresc = findViewById(R.id.RetrievePresc);
+        prescdata_btn = findViewById(R.id.prescdata_btn);
         Intent intent2 = new Intent(Pharmacist_Main.this, Pharmacist_ViewUserPresc.class);
+        Intent intent1 = new Intent(Pharmacist_Main.this, Pharmacist_PrescData.class);
 
 
 
 
 
+        prescdata_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent1);
 
+            }
+        });
 
 
 
@@ -56,7 +65,9 @@ public class Pharmacist_Main extends AppCompatActivity {
                         setMessage("Are you sure you want to logout?");
                 builder.setPositiveButton("Yes, Log Me Out",
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                FirebaseAuth.getInstance().signOut();
                                 finish();
                             }
                         });

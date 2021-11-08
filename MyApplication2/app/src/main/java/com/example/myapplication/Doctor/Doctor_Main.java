@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Doctor_Main extends AppCompatActivity {
     Button Assign_med, doctor_logout;
@@ -38,7 +39,9 @@ public class Doctor_Main extends AppCompatActivity {
                         setMessage("Are you sure you want to logout?");
                 builder.setPositiveButton("Yes, Log Me Out",
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                FirebaseAuth.getInstance().signOut();
                                 finish();
                             }
                         });
