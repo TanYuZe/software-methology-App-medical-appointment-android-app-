@@ -6,16 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".Admin.Admin_Main">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/User_Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo" />
+
     <Button
         android:id="@+id/AddUser"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
         android:layout_marginEnd="107dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="48dp"
         android:text="Add new user"
         app:layout_constraintBottom_toTopOf="@+id/ViewUser"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -23,10 +40,11 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="496dp"
         android:layout_marginEnd="107dp"
         android:text="Delete User"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,10 +54,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
         android:layout_marginEnd="107dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="188dp"
         android:text="View Users"
         app:layout_constraintBottom_toTopOf="@+id/Admin_Logout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -53,5 +72,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome!"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="244dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
