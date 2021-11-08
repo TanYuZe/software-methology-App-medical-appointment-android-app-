@@ -2,12 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
-    <!--Permission for camera-->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <!--Permission to vibrate-->
-    <uses-permission android:name="android.permission.VIBRATE"/>
 
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android"/>
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+    <!-- Permission for camera -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -17,9 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-
-
-
+        <activity
+            android:name=".Pharmacist.Pharmacist_PrescData"
+            android:exported="true" />
         <activity
             android:name=".Admin.Admin_ChangePassword"
             android:exported="true" />
@@ -37,10 +36,7 @@
             android:exported="true" />
         <activity
             android:name=".Pharmacist.Pharmacist_ViewUserPresc"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".Patient.Patient_QRcode"
             android:exported="true" />
@@ -77,15 +73,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
-
-
-
             </intent-filter>
         </activity>
     </application>

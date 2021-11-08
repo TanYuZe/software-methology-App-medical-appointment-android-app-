@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 
 public class Pharmacist_Main extends AppCompatActivity {
-    Button PharmaLogout, PharmacistProfile, RetrievePresc;
+    Button PharmaLogout, PharmacistProfile, RetrievePresc, prescdata_btn;
 
 
     @Override
@@ -23,13 +23,21 @@ public class Pharmacist_Main extends AppCompatActivity {
         PharmaLogout = findViewById(R.id.Pharmacist_Logout);
         PharmacistProfile = findViewById(R.id.PharmacistProfile);
         RetrievePresc = findViewById(R.id.RetrievePresc);
+        prescdata_btn = findViewById(R.id.prescdata_btn);
         Intent intent2 = new Intent(Pharmacist_Main.this, Pharmacist_ViewUserPresc.class);
+        Intent intent1 = new Intent(Pharmacist_Main.this, Pharmacist_PrescData.class);
 
 
 
 
 
+        prescdata_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent1);
 
+            }
+        });
 
 
 
