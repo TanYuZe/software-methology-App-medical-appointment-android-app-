@@ -7,6 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".Patient.Patient_Main">
 
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="41dp"
+        android:text="Welcome!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/viewProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/User_Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo" />
+
     <Button
         android:id="@+id/admin_Logout"
         android:layout_width="wrap_content"
@@ -25,10 +56,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
         android:layout_marginEnd="107dp"
-        android:layout_marginBottom="217dp"
+        android:layout_marginBottom="68dp"
         android:text="QR code and token"
         app:layout_constraintBottom_toTopOf="@+id/admin_Logout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -36,7 +68,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="185dp"
         android:layout_marginEnd="107dp"
         android:layout_marginBottom="42dp"
         android:text="Profile"
@@ -44,7 +76,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/ViewPresc"
@@ -54,6 +87,7 @@
         android:text="View Prescriptions"
         app:layout_constraintBottom_toTopOf="@+id/viewQR"
         app:layout_constraintEnd_toEndOf="@+id/viewQR"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/viewQR" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

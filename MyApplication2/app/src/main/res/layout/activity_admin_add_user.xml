@@ -13,7 +13,6 @@
         android:layout_marginStart="125dp"
         android:layout_marginEnd="152dp"
         android:layout_marginBottom="57dp"
-        android:onClick="CreateUser"
         android:text="Create User"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,21 +24,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
+        android:layout_marginTop="87dp"
         android:layout_marginEnd="116dp"
-        android:layout_marginBottom="31dp"
         android:ems="10"
         android:hint="Enter Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/add_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/add_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="116dp"
         android:layout_marginBottom="31dp"
         android:ems="10"
@@ -48,7 +48,8 @@
         app:layout_constraintBottom_toTopOf="@+id/add_phonenum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_name" />
 
     <EditText
         android:id="@+id/add_phonenum"
@@ -70,30 +71,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="116dp"
-        android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/add_role"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_phonenum" />
 
-    <EditText
+    <Spinner
         android:id="@+id/add_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginBottom="33dp"
-        android:ems="10"
-        android:hint="Enter Role"
-        android:inputType="textPersonName"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@+id/create_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_password" />
 
     <TextView
         android:id="@+id/textView"
