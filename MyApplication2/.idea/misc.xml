@@ -5,21 +5,23 @@
       <map>
         <entry key="..\:/SchoolRelated/CSCI314/A1/software-metho/MyApplication2/app/src/main/res/layout/activity_register.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_add_user.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_change_password.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_delete_user.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_main.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_view_profile.xml" value="0.14628623188405798" />
+        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_view_profile.xml" value="0.2" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_view_user.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_doctor_assign_medicine.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_doctor_main.xml" value="0.2" />
-        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_doctor_view_profile.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_doctor_view_profile.xml" value="0.264" />
+        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_main.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_qrcode.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_view_prescription.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_view_profile.xml" value="0.14628623188405798" />
+        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_view_profile.xml" value="0.2" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_pharmacist_main.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_pharmacist_view_profile.xml" value="0.264" />
-        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_register.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_pharmacist_view_user_presc.xml" value="0.2" />
+        <entry key="..\:/Users/derri/Documents/GitHub/software-metho/MyApplication2/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_register.xml" value="0.264" />

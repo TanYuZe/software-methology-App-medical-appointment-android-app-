@@ -8,12 +8,19 @@
     tools:context=".Doctor.Doctor_Main">
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="38dp"
         android:text="Welcome!"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="298dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -36,10 +43,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="141dp"
         android:text="Assign Medicine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -60,7 +68,7 @@
         android:layout_width="163dp"
         android:layout_height="46dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="384dp"
         android:layout_marginEnd="151dp"
         android:text="View Profile"
         app:layout_constraintEnd_toEndOf="parent"

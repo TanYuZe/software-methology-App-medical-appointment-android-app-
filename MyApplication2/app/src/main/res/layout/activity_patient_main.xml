@@ -8,12 +8,19 @@
     tools:context=".Patient.Patient_Main">
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="41dp"
         android:text="Welcome!"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="233dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/viewProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -49,11 +56,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="104dp"
         android:layout_marginEnd="107dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="68dp"
         android:text="QR code and token"
         app:layout_constraintBottom_toTopOf="@+id/admin_Logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
