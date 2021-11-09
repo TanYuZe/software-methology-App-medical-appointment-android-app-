@@ -31,7 +31,9 @@ public class Pharmacist_PrescData extends AppCompatActivity {
     String itemSelected;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
-    ArrayAdapter<String> adapter; ArrayList<String>  medlist;
+    ArrayAdapter<String> adapter;
+    ArrayList<String>  medlist;
+    ArrayList<Prescription> prescriptionArrayList;
     Long maxID;
 
 
@@ -49,6 +51,7 @@ public class Pharmacist_PrescData extends AppCompatActivity {
 
 
         medlist = new ArrayList<String>();
+        prescriptionArrayList = new ArrayList<Prescription>();
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference().child("Prescription");
@@ -63,6 +66,7 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                 {
                     Prescription prescription = snapshot1.getValue(Prescription.class);
                     medlist.add(prescription.getDrugPrescribed());
+                    prescriptionArrayList.add(prescription);
                     adapter = new ArrayAdapter<String>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, medlist);
                     presc_list.setAdapter(adapter);
                     maxID = snapshot.getChildrenCount();
@@ -103,11 +107,32 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                 newPrescription.setDrugPrescribed(prescdata.getText().toString());
                 newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
                 newPrescription.setDrugId(maxID + 1);
-                refrence_.child(String.valueOf(maxID + 1)).setValue(newPrescription);
 
-                Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
-                startActivity(intent);
+                for(int i = 0; i < medlist.size(); i++)
+                {
+                    for(int j = 0; j < prescriptionArrayList.size(); j++)
+                    {
+                        if(     medlist.get(i).equals(newPrescription.getDrugPrescribed())
+                                && prescriptionArrayList.get(j).getDrugPrescribed().equals(newPrescription.getDrugPrescribed())
+                                && prescriptionArrayList.get(j).getDosage().equals(newPrescription.getDosage()))
+                        {
+                            Toast.makeText(getApplicationContext(), "Medication already exist. Try again", Toast.LENGTH_LONG).show();
+                            break;
+                        }
+                        if(     i == medlist.size() - 1
+                                && medlist.get(i) != newPrescription.getDrugPrescribed()
+                                && j == prescriptionArrayList.size() - 1
+                                && prescriptionArrayList.get(j).getDrugPrescribed() != newPrescription.getDrugPrescribed()
+                                && prescriptionArrayList.get(j).getDosage() != newPrescription.getDosage()  )
+                        {
+                            refrence_.child(String.valueOf(maxID + 1)).setValue(newPrescription);
+
+                            Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
             }
         });
 
@@ -117,11 +142,14 @@ public class Pharmacist_PrescData extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                for (int i = 0; i < presc_list.getCount(); i++) {
-                    if (presc_list.isItemChecked(i)) {
-                        medlist.remove(presc_list.getItemAtPosition(i));
-                    }
-                }
+                Prescription newPrescription = new Prescription();
+                newPrescription.setDrugPrescribed(prescdata.getText().toString());
+                newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
+                DatabaseReference ref1 = refrence_;
+                ref1.orderByChild("drugPrescribed").equalTo(newPrescription.getDrugPrescribed());
+                newPrescription.setDrugId(Long.parseLong(ref1.getKey()));
+
+                refrence_.child(newPrescription.getDrugId().toString()).removeValue();
             }
         });
 
