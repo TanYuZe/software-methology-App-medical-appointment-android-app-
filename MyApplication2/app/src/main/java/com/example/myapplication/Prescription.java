@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class Prescription
 {
-    int drugId;
+    Long drugId;
     String drugPrescribed;
     Long dosage;
 
@@ -10,11 +10,11 @@ public class Prescription
 
     }
 
-    public int getDrugId() {
+    public Long getDrugId() {
         return drugId;
     }
 
-    public void setDrugId(int drugId) {
+    public void setDrugId(Long drugId) {
         this.drugId = drugId;
     }
 

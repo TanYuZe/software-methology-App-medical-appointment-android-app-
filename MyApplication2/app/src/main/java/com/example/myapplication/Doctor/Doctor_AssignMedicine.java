@@ -61,6 +61,8 @@ public class Doctor_AssignMedicine extends AppCompatActivity
                     Prescription prescription;
                     prescription = snapshot1.getValue(Prescription.class);
                     medlist.add(prescription.getDrugPrescribed());
+                    adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, medlist);
+                    listview_med.setAdapter(adapter);
                 }
             }
 
@@ -70,8 +72,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity
             }
         });
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, medlist);
-        listview_med.setAdapter(adapter);
+
 
         filter_text.addTextChangedListener(new TextWatcher() {
             @Override

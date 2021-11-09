@@ -24,6 +24,7 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="12dp"
         android:ems="10"
+        android:hint="Drug Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/add_btn"
         app:layout_constraintStart_toEndOf="@+id/textView27"
@@ -46,19 +47,19 @@
         android:layout_width="407dp"
         android:layout_height="536dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="2dp"
+        android:choiceMode="multipleChoice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28"
-        android:choiceMode="multipleChoice"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="76dp"
         android:layout_marginBottom="12dp"
         android:text="Prescription Data"
         app:layout_constraintBottom_toTopOf="@+id/_dynamic"
@@ -78,5 +79,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
+
+    <EditText
+        android:id="@+id/drugDosage1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Dosage"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/textView28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Presc_name"
+        app:layout_constraintVertical_bias="0.354" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

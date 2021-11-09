@@ -1,11 +1,13 @@
 package com.example.myapplication.Pharmacist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,11 +25,15 @@ import java.util.List;
 
 public class Pharmacist_PrescData extends AppCompatActivity {
     EditText prescdata;
+    EditText drugDosage;
     Button add_btn, delete_btn;
     ListView presc_list;
     String itemSelected;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
+    ArrayAdapter<String> adapter; ArrayList<String>  medlist;
+    Long maxID;
+
 
 
     @Override
@@ -35,19 +41,20 @@ public class Pharmacist_PrescData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacist_presc_data);
         prescdata = (EditText) findViewById(R.id.Presc_name);
+        drugDosage = (EditText) findViewById(R.id.drugDosage1);
         add_btn = findViewById(R.id.add_btn);
         delete_btn = findViewById(R.id.delete_btn);
         presc_list = findViewById(R.id.Presc_List);
 
 
 
-        ArrayList<String>  medlist = new ArrayList<String>();
+        medlist = new ArrayList<String>();
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
-        refrence_ = rootNode_.getReference();
+        refrence_ = rootNode_.getReference().child("Prescription");
 
 
-        refrence_.child("Prescription").addListenerForSingleValueEvent(new ValueEventListener()
+        refrence_.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
@@ -56,19 +63,51 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                 {
                     Prescription prescription = snapshot1.getValue(Prescription.class);
                     medlist.add(prescription.getDrugPrescribed());
+                    adapter = new ArrayAdapter<String>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, medlist);
+                    presc_list.setAdapter(adapter);
+                    maxID = snapshot.getChildrenCount();
                 }
             }
-
+//
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+//
             }
         });
+
+        //refrence_.addValueEventListener(new ValueEventListener() {
+        //    @Override
+        //    public void onDataChange(@NonNull DataSnapshot snapshot)
+        //    {
+        //        for(DataSnapshot snapshot1 : snapshot.getChildren())
+        //        {
+        //            Prescription prescription = snapshot1.getValue(Prescription.class);
+        //            medlist.add(prescription.getDrugPrescribed());
+        //            adapter = new ArrayAdapter<String>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, medlist);
+        //            presc_list.setAdapter(adapter);
+        //            maxID = snapshot.getChildrenCount();
+        //        }
+        //    }
+////
+        //    @Override
+        //    public void onCancelled(@NonNull DatabaseError error) {
+////
+        //    }
+        //});
 
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                medlist.add(prescdata.getText().toString());
+                //medlist.add(prescdata.getText().toString());
+                Prescription newPrescription = new Prescription();
+                newPrescription.setDrugPrescribed(prescdata.getText().toString());
+                newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
+                newPrescription.setDrugId(maxID + 1);
+                refrence_.child(String.valueOf(maxID + 1)).setValue(newPrescription);
+
+                Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
+                startActivity(intent);
             }
         });
 
@@ -86,8 +125,7 @@ public class Pharmacist_PrescData extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, medlist);
-        presc_list.setAdapter(adapter);
+
 
     }
 }
