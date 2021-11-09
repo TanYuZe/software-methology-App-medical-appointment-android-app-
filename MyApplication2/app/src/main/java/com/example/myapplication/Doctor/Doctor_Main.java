@@ -13,7 +13,7 @@ import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Doctor_Main extends AppCompatActivity {
-    Button Assign_med, doctor_logout;
+    Button Assign_med, doctor_logout, addMedicine, deleteMedicine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,6 @@ public class Doctor_Main extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_main);
         Assign_med = findViewById(R.id.AssignMed_btn);
         doctor_logout = findViewById(R.id.Doctor_Logout);
-
 
         Assign_med.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +54,5 @@ public class Doctor_Main extends AppCompatActivity {
                 alert11.show();
             }
         });
-
-
     }
 }
