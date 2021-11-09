@@ -16,7 +16,7 @@ public class AdminController {
         return (INSTANCE);
     }
 
-    public void addUser(String email, String password, String name, int contactNum, String role, Context context )
+    public void AddUser(String email, String password, String name, int contactNum, String role, Context context )
     {
         RegisterEntity registerEntity = new RegisterEntity(context);
         registerEntity.addUser(email, password, name, contactNum, role, context);
