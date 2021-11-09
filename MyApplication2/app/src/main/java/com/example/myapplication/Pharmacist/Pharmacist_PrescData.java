@@ -30,21 +30,23 @@ public class Pharmacist_PrescData extends AppCompatActivity {
         add_btn = findViewById(R.id.add_btn);
         delete_btn = findViewById(R.id.delete_btn);
         presc_list = findViewById(R.id.Presc_List);
-
         medlist = new ArrayList<String>();
+
         adapter = new ArrayAdapter<String>(Pharmacist_PrescData.this, android.R.layout.simple_list_item_multiple_choice, medlist);
         presc_list.setAdapter(adapter);
 
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 1; i < 5; i++) {
             medlist.add("Medicine" + i);
-            prescdata.setText("");
+
         }
 
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 medlist.add(prescdata.getText().toString());
+                adapter.notifyDataSetChanged();
+                prescdata.setText("");
             }
         });
 
@@ -56,9 +58,10 @@ public class Pharmacist_PrescData extends AppCompatActivity {
 
                 for (int i = 0; i < presc_list.getCount(); i++) {
                     if (presc_list.isItemChecked(i)) {
-                        medlist.remove(presc_list.getItemAtPosition(i));
+                        medlist.remove(presc_list.getItemAtPosition(i).toString());
                     }
                 }
+                adapter.notifyDataSetChanged();
             }
         });
 

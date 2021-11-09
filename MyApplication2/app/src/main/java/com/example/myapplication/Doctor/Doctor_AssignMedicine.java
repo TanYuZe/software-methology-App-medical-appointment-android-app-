@@ -33,6 +33,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity
     ArrayAdapter<String> adapter;
     ArrayList<String> medlist;
     String itemSelected;
+    String items;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
 
@@ -96,31 +97,38 @@ public class Doctor_AssignMedicine extends AppCompatActivity
 
                 //set and get items from listview checkbox
                 itemSelected = "Selected Prescriptions: \n";
+
                 for (int i = 0; i < listview_med.getCount(); i++) {
                     if (listview_med.isItemChecked(i)) {
-                        itemSelected += listview_med.getItemAtPosition(i) + "\n";
+                        items = listview_med.getItemAtPosition(i).toString();
+                        itemSelected += items  + "\n";
                     }
                 }
 
-                //
-                AlertDialog.Builder builder = new AlertDialog.Builder(Doctor_AssignMedicine.this);
-                builder.setTitle("Confirm Prescription!").
-                        setMessage(itemSelected);
-                builder.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                finish();
-                                Toast.makeText(Doctor_AssignMedicine.this, "Prescription added to User", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                builder.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = builder.create();
-                alert11.show();
+                if(!items.equals("")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Doctor_AssignMedicine.this);
+                    builder.setTitle("Confirm Prescription!").setMessage(itemSelected);
+                    builder.setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                    Toast.makeText(Doctor_AssignMedicine.this, "Prescription added to User", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                    builder.setNegativeButton("No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert11 = builder.create();
+                    alert11.show();
+                }
+                else
+                {
+                    Toast.makeText(Doctor_AssignMedicine.this, "No Prescription Assigned to User", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

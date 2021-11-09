@@ -37,6 +37,15 @@ public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnIt
         create_btn = findViewById(R.id.create_btn);
         AdminController RegObject = AdminController.getINSTANCE();
 
+        dbManager = new DatabaseManager(Admin_AddUser.this);
+        try{
+            dbManager.open();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Admin_AddUser.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.roles));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addrole.setAdapter(myAdapter);
@@ -49,12 +58,11 @@ public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnIt
                 String name_input = addname.getText().toString();
                 String email_input = addemail.getText().toString();
                 String pw_input =  addpassword.getText().toString();
-
                 String phone_input = addphonenum.getText().toString();
                 Intent intent = new Intent(Admin_AddUser.this, Admin_Main.class);
 
 
-                RegObject.addUser(name_input, email_input, pw_input, Integer.parseInt(phone_input), user_role, Admin_AddUser.this);
+                RegObject.AddUser(name_input, email_input, pw_input, Integer.parseInt(phone_input), user_role, Admin_AddUser.this);
 
                 Toast.makeText(Admin_AddUser.this, "User Inserted", Toast.LENGTH_SHORT).show();
                 emptyInputEditText();
