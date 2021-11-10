@@ -4,9 +4,6 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-//import android.database.Cursor;
-//import android.database.sqlite.SQLiteDatabase;
-//import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -24,7 +21,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.ktx.Firebase;
+
+//import android.database.Cursor;
+//import android.database.sqlite.SQLiteDatabase;
+//import android.widget.Toast;
 
 public class LoginEntity {
     private String ID;
@@ -38,7 +38,7 @@ public class LoginEntity {
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
 
-    public void Login(String email, String password, Context context)
+    public boolean Login(String email, String password, Context context)
     {
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
@@ -46,6 +46,7 @@ public class LoginEntity {
         if(email.equals("") || password.equals(""))
         {
             Toast.makeText(context, "Failed to log in", Toast.LENGTH_LONG).show();
+            return false;
         }
         else
         {
@@ -97,6 +98,7 @@ public class LoginEntity {
                         {
                             user.sendEmailVerification();
                             Toast.makeText(context, "Check your email!", Toast.LENGTH_LONG).show();
+
                         }
                     }
                     else
@@ -105,6 +107,7 @@ public class LoginEntity {
                     }
                 }
             });
+            return true;
         }
 
     }

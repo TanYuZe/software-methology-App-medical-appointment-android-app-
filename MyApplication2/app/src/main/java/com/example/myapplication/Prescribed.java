@@ -6,4 +6,5 @@ public class Prescribed
     int drugID;
     int quantity;
     boolean isPrescribed;
+
 }

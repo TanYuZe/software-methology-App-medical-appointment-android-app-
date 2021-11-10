@@ -10,7 +10,7 @@ import com.example.myapplication.R;
 
 public class Patient_ViewProfile extends AppCompatActivity {
     TextView pat_name, pat_email, pat_password, pat_role, pat_phoneno;
-    Button btn_update, btn_changepass, btn_home;
+    Button btn_update, btn_changepass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ public class Patient_ViewProfile extends AppCompatActivity {
 
         btn_update = findViewById(R.id.btn_update);
         btn_changepass = findViewById(R.id.btn_changepass);
-        btn_home = findViewById(R.id.btn_homepage);
 
 
     }

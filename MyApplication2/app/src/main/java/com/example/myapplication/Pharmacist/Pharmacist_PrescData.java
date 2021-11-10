@@ -1,6 +1,5 @@
 package com.example.myapplication.Pharmacist;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,7 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Pharmacist_PrescData extends AppCompatActivity {
     EditText prescdata;
@@ -55,6 +53,7 @@ public class Pharmacist_PrescData extends AppCompatActivity {
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference().child("Prescription");
+
 
 
         refrence_.addListenerForSingleValueEvent(new ValueEventListener()
@@ -109,8 +108,9 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                             refrence_.child(String.valueOf(maxID + 1)).setValue(newPrescription);
 
                             Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
-                            startActivity(intent);
+//                            Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
+//                            startActivity(intent);
+                            adapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -134,6 +134,9 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                 newPrescription.setDrugId(Long.parseLong(ref1.getKey()));
 
                 refrence_.child(newPrescription.getDrugId().toString()).removeValue();
+
+                adapter.notifyDataSetChanged();
+
             }
         });
 

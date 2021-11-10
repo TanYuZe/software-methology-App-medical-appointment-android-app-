@@ -101,9 +101,9 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    void onLogin(String email, String password) {
+    boolean onLogin(String email, String password) {
         LoginController control= new LoginController();
-        control.validateLogin(email ,password,MainActivity.this);
+        return control.validateLogin(email ,password,MainActivity.this);
     }
 
 

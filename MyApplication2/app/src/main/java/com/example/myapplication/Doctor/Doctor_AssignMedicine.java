@@ -36,6 +36,11 @@ public class Doctor_AssignMedicine extends AppCompatActivity
     String items;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
+    ArrayList<Medicine> userArrayList;
+    ListViewAdapter listAdapter;
+
+
+
 
 
     @Override
@@ -51,6 +56,18 @@ public class Doctor_AssignMedicine extends AppCompatActivity
         refrence_ = rootNode_.getReference("Prescription");
 
 
+//        userArrayList = new ArrayList<>();
+//
+//        for(int i = 0; i< 50; i++){
+//
+//            Medicine med = new Medicine("name" + i , 0);
+//            userArrayList.add(med);
+//
+//        }
+        //listAdapter = new ListViewAdapter(Doctor_AssignMedicine.this,userArrayList);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, medlist);
+        listview_med.setAdapter(adapter);
+
         refrence_.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
@@ -61,8 +78,6 @@ public class Doctor_AssignMedicine extends AppCompatActivity
                     Prescription prescription;
                     prescription = snapshot1.getValue(Prescription.class);
                     medlist.add(prescription.getDrugPrescribed());
-                    adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, medlist);
-                    listview_med.setAdapter(adapter);
                 }
             }
 

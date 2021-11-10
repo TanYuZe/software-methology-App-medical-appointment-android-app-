@@ -6,116 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".Pharmacist.Pharmacist_ViewProfile">
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/phar_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
-        android:id="@+id/phar_role"
+        android:id="@+id/phar_name"
         android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="120dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/btn_update2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phar_password" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
-        android:text="Role:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <Button
-        android:id="@+id/btn_homepage2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="154dp"
-        android:layout_marginEnd="170dp"
-        android:layout_marginBottom="71dp"
-        android:text="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/phar_email"
         android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="107dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="120dp"
         android:text="Textview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/phar_name" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="34dp"
-        android:text="Email:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="33dp"
-        android:text="Password:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <Button
-        android:id="@+id/btn_changepass2"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="21dp"
-        android:text="Change Password"
-        app:layout_constraintBottom_toTopOf="@+id/btn_homepage2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="66dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="204dp"
         android:layout_marginEnd="55dp"
         android:text="Name:"
         app:layout_constraintEnd_toStartOf="@+id/phar_name"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/phar_password"
-        android:layout_width="133dp"
+        android:id="@+id/phar_role"
+        android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="116dp"
-        android:inputType="textPassword"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="76dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/btn_update2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phar_phoneno" />
-
-    <TextView
-        android:id="@+id/phar_phoneno"
-        android:layout_width="162dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="87dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phar_email" />
+        app:layout_constraintTop_toBottomOf="@+id/phar_password"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_update2"
@@ -123,29 +73,83 @@
         android:layout_height="45dp"
         android:layout_marginStart="80dp"
         android:layout_marginEnd="81dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="36dp"
         android:text="Update Particulars"
         app:layout_constraintBottom_toTopOf="@+id/btn_changepass2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/phar_phoneno"
+        android:layout_width="162dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="100dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phar_email" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="36dp"
         android:text="Phone no:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/phar_name"
-        android:layout_width="142dp"
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
+        android:text="Email:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/phar_password"
+        android:layout_width="133dp"
         android:layout_height="27dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="107dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="128dp"
+        android:inputType="textPassword"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/phar_phoneno" />
+
+    <Button
+        android:id="@+id/btn_changepass2"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="81dp"
+        android:text="Change Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="582dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="36dp"
+        android:text="Password:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
+        android:text="Role:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 </androidx.constraintlayout.widget.ConstraintLayout>
