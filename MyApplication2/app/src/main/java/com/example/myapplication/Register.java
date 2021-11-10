@@ -102,11 +102,12 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         String email_input = Email_input.getText().toString();
         String pw_input = Pw_input.getText().toString();
         String pwConfirm_input = Pwconfirm_input.getText().toString();
+        String phonenum = Phone_input.getText().toString();
         int phone_input = Integer.parseInt(Phone_input.getText().toString());
         Intent intent = new Intent(Register.this, MainActivity.class);
 
 
-        if(validateName(Name_input) && validatePassword(Pw_input) && validatePhoneNo(Phone_input) && validateEmailAddress(Email_input))
+        if(validateName(name_input) && validatePassword(pw_input) && validatePhoneNo(phonenum) && validateEmailAddress(email_input))
         {
 
             if(pw_input.equals(pwConfirm_input))
@@ -125,9 +126,9 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     //validation
-    private boolean validateEmailAddress(EditText email)
+    public boolean validateEmailAddress(String email)
     {
-        String emailInput = email.getText().toString();
+        String emailInput = email;
 
         if(!emailInput.equals("") && !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) //Invalid Email
         {
@@ -140,8 +141,8 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    private Boolean validateName(EditText name) {
-        String val = name.getText().toString();
+    public Boolean validateName(String name) {
+        String val = name;
 
         if (val.equals(""))
         {
@@ -154,8 +155,8 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    private Boolean validatePassword(EditText password) {
-        String val = password.getText().toString();
+    public Boolean validatePassword(String password) {
+        String val = password;
         String passwordVal = "^" +
                 //"(?=.*[0-9])" +         //at least 1 digit
                 //"(?=.*[a-z])" +         //at least 1 lower case letter
@@ -176,17 +177,19 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
             return true;
         }
     }
-    private Boolean validatePhoneNo(EditText phonenum) {
-        String val = Phone_input.getText().toString();
-        String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                //"(?=.*[a-zA-Z])" +      //any letter
-                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{8,}" +               //at least 4 characters
-                "$";
+    public Boolean validatePhoneNo(String phonenum) {
+        String val = phonenum;
+        //String passwordVal = "^\\d{8}$";
+        String passwordVal = "^[0-9]{8}$";
+//        String passwordVal = "^" +
+//                //"(?=.*[0-9])" +         //at least 1 digit
+//                //"(?=.*[a-z])" +         //at least 1 lower case letter
+//                //"(?=.*[A-Z])" +         //at least 1 upper case letter
+//                //"(?=.*[a-zA-Z])" +      //any letter
+//                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+//                "(?=\\S+$)" +           //no white spaces
+//                ".{8}" +               //at least 4 characters
+//                "$";
         if (val.equals("")) {
             Phone_input.setError("Field cannot be empty");
             return false;
