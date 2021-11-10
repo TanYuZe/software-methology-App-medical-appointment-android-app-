@@ -79,25 +79,6 @@ public class Pharmacist_PrescData extends AppCompatActivity {
             }
         });
 
-        //refrence_.addValueEventListener(new ValueEventListener() {
-        //    @Override
-        //    public void onDataChange(@NonNull DataSnapshot snapshot)
-        //    {
-        //        for(DataSnapshot snapshot1 : snapshot.getChildren())
-        //        {
-        //            Prescription prescription = snapshot1.getValue(Prescription.class);
-        //            medlist.add(prescription.getDrugPrescribed());
-        //            adapter = new ArrayAdapter<String>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, medlist);
-        //            presc_list.setAdapter(adapter);
-        //            maxID = snapshot.getChildrenCount();
-        //        }
-        //    }
-////
-        //    @Override
-        //    public void onCancelled(@NonNull DatabaseError error) {
-////
-        //    }
-        //});
 
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +124,9 @@ public class Pharmacist_PrescData extends AppCompatActivity {
             public void onClick(View v) {
 
                 Prescription newPrescription = new Prescription();
+
+                presc_list.checked();
+
                 newPrescription.setDrugPrescribed(prescdata.getText().toString());
                 newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
                 DatabaseReference ref1 = refrence_;
