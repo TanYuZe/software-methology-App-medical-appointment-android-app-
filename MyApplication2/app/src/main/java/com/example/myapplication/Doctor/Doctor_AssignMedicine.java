@@ -5,16 +5,19 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Prescribed;
 import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
@@ -31,9 +34,13 @@ public class Doctor_AssignMedicine extends AppCompatActivity
     ListView listview_med;
     Button assign_med_btn;
     ArrayAdapter<String> adapter;
+    ArrayAdapter<Prescription> adapter2;
     ArrayList<String> medlist;
     String itemSelected;
     String items;
+    ArrayList<String> drugsSelected;
+    ArrayList<Prescription> prescriptionArrayList;
+    ArrayList<Prescribed> prescribedArrayList;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
     ArrayList<Medicine> userArrayList;
@@ -51,22 +58,13 @@ public class Doctor_AssignMedicine extends AppCompatActivity
         listview_med = findViewById(R.id.ListViewMed);
         filter_text = (EditText) findViewById(R.id.filter_text);
         medlist = new ArrayList<String>();
+        drugsSelected = new ArrayList<String>();
+        prescriptionArrayList = new ArrayList<Prescription>();
+        prescribedArrayList = new ArrayList<Prescribed>();
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Prescription");
 
-
-//        userArrayList = new ArrayList<>();
-//
-//        for(int i = 0; i< 50; i++){
-//
-//            Medicine med = new Medicine("name" + i , 0);
-//            userArrayList.add(med);
-//
-//        }
-        //listAdapter = new ListViewAdapter(Doctor_AssignMedicine.this,userArrayList);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, medlist);
-        listview_med.setAdapter(adapter);
 
         refrence_.addListenerForSingleValueEvent(new ValueEventListener()
         {
@@ -78,6 +76,24 @@ public class Doctor_AssignMedicine extends AppCompatActivity
                     Prescription prescription;
                     prescription = snapshot1.getValue(Prescription.class);
                     medlist.add(prescription.getDrugPrescribed());
+                    prescriptionArrayList.add(prescription);
+                    //adapter = new ArrayAdapter<String>(getApplication(), android.R.layout.simple_list_item_multiple_choice, medlist);
+                    adapter2 = new ArrayAdapter<Prescription>(getApplication(), android.R.layout.simple_list_item_multiple_choice, prescriptionArrayList)
+                    {
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent)
+                        {
+                            View view = super.getView(position, convertView, parent);
+
+                            TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                            String texto = prescriptionArrayList.get(position).getDrugPrescribed();
+                            tv.setText(texto);
+
+                            return view;
+                        }
+                    };
+                    listview_med.setAdapter(adapter2);
                 }
             }
 
@@ -115,9 +131,15 @@ public class Doctor_AssignMedicine extends AppCompatActivity
                 itemSelected = "Selected Prescriptions: \n";
 
                 for (int i = 0; i < listview_med.getCount(); i++) {
-                    if (listview_med.isItemChecked(i)) {
+                    if (listview_med.isItemChecked(i))
+                    {
+                        for(int j = 0; j < prescriptionArrayList.size(); j++)
+                        {
+
+                        }
                         items = listview_med.getItemAtPosition(i).toString();
                         itemSelected += items  + "\n";
+                        drugsSelected.add(items);
                     }
                 }
 

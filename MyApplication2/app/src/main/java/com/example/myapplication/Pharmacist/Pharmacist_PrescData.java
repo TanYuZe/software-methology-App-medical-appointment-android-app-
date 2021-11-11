@@ -125,7 +125,7 @@ public class Pharmacist_PrescData extends AppCompatActivity {
 
                 Prescription newPrescription = new Prescription();
 
-                presc_list.checked();
+                //presc_list.checked();
 
                 newPrescription.setDrugPrescribed(prescdata.getText().toString());
                 newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));

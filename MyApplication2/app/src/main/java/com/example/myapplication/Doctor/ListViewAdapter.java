@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -44,7 +45,6 @@ public class ListViewAdapter extends ArrayAdapter<Medicine> {
 
         medname.setText(medicine.medname);
 
-
-        return convertView;
+       return convertView;
     }
 }

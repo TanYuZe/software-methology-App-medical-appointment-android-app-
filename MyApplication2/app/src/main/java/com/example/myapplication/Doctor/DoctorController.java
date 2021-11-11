@@ -1,5 +1,7 @@
 package com.example.myapplication.Doctor;
 
+import java.util.ArrayList;
+
 public class DoctorController {
     private static DoctorController INSTANCE = null;
 
@@ -12,4 +14,10 @@ public class DoctorController {
         }
         return (INSTANCE);
     }
+
+    public void validateAddMedicine(ArrayList<String> StringArray)
+    {
+
+    }
+
 }

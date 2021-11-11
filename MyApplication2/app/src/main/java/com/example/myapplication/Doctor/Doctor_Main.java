@@ -13,7 +13,7 @@ import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Doctor_Main extends AppCompatActivity {
-    Button Assign_med, doctor_logout, addMedicine, deleteMedicine;
+    Button Assign_med, doctor_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
