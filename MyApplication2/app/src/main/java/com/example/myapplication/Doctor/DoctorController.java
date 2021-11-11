@@ -1,6 +1,7 @@
 package com.example.myapplication.Doctor;
 
 import android.provider.ContactsContract;
+import android.view.animation.ScaleAnimation;
 
 import androidx.annotation.NonNull;
 
@@ -17,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DoctorController {
     private static DoctorController INSTANCE = null;
@@ -75,29 +78,13 @@ public class DoctorController {
 
                                     prescribedArrayList.add(newPrescribed);
 
-                                    refrence_2.addListenerForSingleValueEvent(new ValueEventListener()
+                                    Date currentTime = Calendar.getInstance().getTime();
+                                    String currentTimeS = currentTime.toString();
+                                    sUID[0] = snapshot2.getKey() + "_" + currentTimeS;
+                                    if(finalJ == prescriptionArrayList.size()-1)
                                     {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot3)
-                                        {
-                                            maxID[0] = snapshot3.getChildrenCount();
-                                            if(snapshot3.hasChild((snapshot2.getKey() + "_" + finalJ )))
-                                            {
-                                                sUID[0] = snapshot2.getKey() + "_" + String.valueOf(maxID[0]);
-                                            }
-                                            else if(!snapshot3.hasChild((snapshot2.getKey() + "_" + 0 )))
-                                            {
-                                                sUID[0] = (snapshot2.getKey() + "_" + 0);
-                                            }
-
-                                            refrence_2.child(sUID[0]).setValue(prescribedArrayList);
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                        }
-                                    });
+                                        refrence_2.child(sUID[0]).setValue(prescribedArrayList);
+                                    }
                                 }
 
                                 @Override
