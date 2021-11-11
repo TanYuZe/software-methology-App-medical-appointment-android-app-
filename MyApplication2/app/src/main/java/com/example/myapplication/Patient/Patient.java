@@ -5,6 +5,12 @@ import com.example.myapplication.BasicInfo;
 
 public class Patient extends BasicInfo
 {
+
+    public Patient()
+    {
+
+    }
+
     public Patient(int id, String name, String email, String password, int phonenumber, String role)
     {
         super (id, name, email, password, phonenumber, role);

@@ -34,7 +34,6 @@ public class Pharmacist_ViewUserPresc extends AppCompatActivity {
         listview = findViewById(R.id.listview);
 
         ArrayList<String> list = new ArrayList<>();
-        //listview.add(xxxxx);
         ArrayAdapter arrayadapter = new ArrayAdapter(Pharmacist_ViewUserPresc.this, android.R.layout.simple_expandable_list_item_1, list);
         listview.setAdapter(arrayadapter);
 

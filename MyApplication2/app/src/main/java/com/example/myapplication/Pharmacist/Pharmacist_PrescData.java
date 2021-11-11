@@ -71,10 +71,8 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                     maxID = snapshot.getChildrenCount();
                 }
             }
-//
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-//
             }
         });
 
