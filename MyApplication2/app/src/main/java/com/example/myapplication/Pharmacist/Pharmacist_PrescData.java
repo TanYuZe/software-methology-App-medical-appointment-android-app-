@@ -80,7 +80,6 @@ public class Pharmacist_PrescData extends AppCompatActivity {
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //medlist.add(prescdata.getText().toString());
                 Prescription newPrescription = new Prescription();
                 newPrescription.setDrugPrescribed(prescdata.getText().toString());
                 newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
@@ -122,8 +121,6 @@ public class Pharmacist_PrescData extends AppCompatActivity {
             public void onClick(View v) {
 
                 Prescription newPrescription = new Prescription();
-
-                //presc_list.checked();
 
                 newPrescription.setDrugPrescribed(prescdata.getText().toString());
                 newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));

@@ -43,7 +43,6 @@ public class DoctorController {
         refrence_2 = rootNode_.getReference("Prescribed");
         prescribedArrayList = new ArrayList<Prescribed>();
 
-        Prescribed newPrescribed = new Prescribed();
         final Long[] maxID = new Long[1];
 
         for(int i = 0; i < stringArrayList.size(); i++)
@@ -68,6 +67,14 @@ public class DoctorController {
                                 {
                                     final String[] sUID = {snapshot2.getKey() + "_" + String.valueOf(finalI)};
 
+                                    Prescribed newPrescribed = new Prescribed();
+                                    newPrescribed.set_ID(snapshot2.getKey());
+                                    newPrescribed.setDrugID(prescriptionArrayList.get(finalJ).getDrugId());
+                                    newPrescribed.setQuantity(1);
+                                    newPrescribed.setPrescribed(false);
+
+                                    prescribedArrayList.add(newPrescribed);
+
                                     refrence_2.addListenerForSingleValueEvent(new ValueEventListener()
                                     {
                                         @Override
@@ -77,26 +84,13 @@ public class DoctorController {
                                             if(snapshot3.hasChild((snapshot2.getKey() + "_" + finalJ )))
                                             {
                                                 sUID[0] = snapshot2.getKey() + "_" + String.valueOf(maxID[0]);
-
-                                                newPrescribed.set_ID(snapshot2.getKey());
-                                                newPrescribed.setDrugID(prescriptionArrayList.get(finalJ).getDrugId());
-                                                newPrescribed.setQuantity(1);
-                                                newPrescribed.setPrescribed(false);
-
-                                                prescribedArrayList.add(newPrescribed);
                                             }
-                                            else if(!snapshot3.hasChild((snapshot2.getKey() + "_" + finalJ )))
+                                            else if(!snapshot3.hasChild((snapshot2.getKey() + "_" + 0 )))
                                             {
-                                                sUID[0] = (snapshot2.getKey() + "_" + finalJ);
-                                                newPrescribed.set_ID(snapshot2.getKey());
-                                                newPrescribed.setDrugID(prescriptionArrayList.get(finalJ).getDrugId());
-                                                newPrescribed.setQuantity(1);
-                                                newPrescribed.setPrescribed(false);
-
-                                                prescribedArrayList.add(newPrescribed);
+                                                sUID[0] = (snapshot2.getKey() + "_" + 0);
                                             }
 
-                                            refrence_2.child(sUID[0]).setValue(prescriptionArrayList);
+                                            refrence_2.child(sUID[0]).setValue(prescribedArrayList);
                                         }
 
                                         @Override
