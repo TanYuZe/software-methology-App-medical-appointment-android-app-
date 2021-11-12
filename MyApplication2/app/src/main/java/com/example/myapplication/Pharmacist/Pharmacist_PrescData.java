@@ -48,7 +48,6 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
         prescdata = (EditText) findViewById(R.id.Presc_name);
         drugDosage = (EditText) findViewById(R.id.drugDosage1);
         add_btn = findViewById(R.id.add_btn);
-        delete_btn = findViewById(R.id.delete_btn);
         presc_list = findViewById(R.id.presc_list);
 
 

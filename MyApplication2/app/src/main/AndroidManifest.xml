@@ -18,7 +18,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Pharmacist.Pharmacist_PrescData"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".Admin.Admin_ChangePassword"
             android:exported="true" />
