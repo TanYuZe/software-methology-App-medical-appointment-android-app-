@@ -1,20 +1,15 @@
 package com.example.myapplication;
 
-public class Prescription
-{
+public class Prescription {
     Long drugId;
     String drugPrescribed;
     Long dosage;
     int quantity = 0;
-
     public Prescription(Long drugId, String drugPrescribed, Long dosage, int quantity) {
         this.drugId = drugId;
         this.drugPrescribed = drugPrescribed;
         this.dosage = dosage;
         this.quantity = quantity;
-
-
-
     }
 
     public Prescription() {

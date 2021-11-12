@@ -45,7 +45,7 @@ public class ListViewAdapter extends ArrayAdapter<Prescription> {
     public View getView(int position, @Nullable View convertview, ViewGroup parent) {
 
         if(convertview == null) {
-            convertview = LayoutInflater.from(getContext()).inflate(R.layout.mylist,
+            convertview = LayoutInflater.from(getContext()).inflate(R.layout.listview_doc,
                     parent, false);
         }
 
@@ -53,7 +53,7 @@ public class ListViewAdapter extends ArrayAdapter<Prescription> {
 
         Prescription presc1 = getItem(position);
         TextView titleText = (TextView) convertview.findViewById(R.id.title);
-        TextView subtitleText = (TextView) convertview.findViewById(R.id.subtitle);
+        //TextView subtitleText = (TextView) convertview.findViewById(R.id.subtitle);
         EditText q_input = (EditText) convertview.findViewById(R.id.Quantity_input);
         ImageButton btnPlus = convertview.findViewById(R.id.ib_addnew1);
         ImageButton btnMinus = convertview.findViewById(R.id.ib_remove1);
@@ -131,7 +131,7 @@ public class ListViewAdapter extends ArrayAdapter<Prescription> {
 
 
         titleText.setText(presc1.drugPrescribed);
-        subtitleText.setText(presc1.dosage.toString());
+//        subtitleText.setText(presc1.dosage.toString());
 
 
 

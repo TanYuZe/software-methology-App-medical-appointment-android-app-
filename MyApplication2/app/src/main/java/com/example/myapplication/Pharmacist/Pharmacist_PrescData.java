@@ -1,16 +1,18 @@
 package com.example.myapplication.Pharmacist;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.ListViewAdapter_Phar;
 import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
@@ -21,18 +23,21 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Pharmacist_PrescData extends AppCompatActivity {
+public class Pharmacist_PrescData extends AppCompatActivity implements ListViewAdapter_Phar.CheckboxCheckListner{
     EditText prescdata;
     EditText drugDosage;
     Button add_btn, delete_btn;
     ListView presc_list;
-    String itemSelected;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
-    ArrayAdapter<String> adapter;
+    ListViewAdapter_Phar adapter;
     ArrayList<String>  medlist;
     ArrayList<Prescription> prescriptionArrayList;
+    ArrayList<Prescription> SelectedList;
     Long maxID;
+    ArrayList<String> deletelist;
+    Prescription newPrescription1;
+
 
 
 
@@ -44,7 +49,11 @@ public class Pharmacist_PrescData extends AppCompatActivity {
         drugDosage = (EditText) findViewById(R.id.drugDosage1);
         add_btn = findViewById(R.id.add_btn);
         delete_btn = findViewById(R.id.delete_btn);
-        presc_list = findViewById(R.id.Presc_List);
+        presc_list = findViewById(R.id.presc_list);
+
+
+        SelectedList = new ArrayList<Prescription>();
+        newPrescription1 = new Prescription();
 
 
 
@@ -53,6 +62,11 @@ public class Pharmacist_PrescData extends AppCompatActivity {
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference().child("Prescription");
+
+        adapter = new ListViewAdapter_Phar(this , prescriptionArrayList);
+        presc_list.setAdapter(adapter);
+        adapter.setCheckedListner((ListViewAdapter_Phar.CheckboxCheckListner) this);
+
 
 
 
@@ -66,9 +80,6 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                     Prescription prescription = snapshot1.getValue(Prescription.class);
                     medlist.add(prescription.getDrugPrescribed());
                     prescriptionArrayList.add(prescription);
-                    adapter = new ArrayAdapter<String>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, medlist);
-                    //adapter = new ArrayAdapter<Prescription>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, prescriptionArrayList);
-                    presc_list.setAdapter(adapter);
                     maxID = snapshot.getChildrenCount();
                 }
             }
@@ -118,26 +129,73 @@ public class Pharmacist_PrescData extends AppCompatActivity {
 
 
 
-        delete_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Prescription newPrescription = new Prescription();
-
-                newPrescription.setDrugPrescribed(prescdata.getText().toString());
-                newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
-                DatabaseReference ref1 = refrence_;
-                ref1.orderByChild("drugPrescribed").equalTo(newPrescription.getDrugPrescribed());
-                newPrescription.setDrugId(Long.parseLong(ref1.getKey()));
-
-                refrence_.child(newPrescription.getDrugId().toString()).removeValue();
-
-                adapter.notifyDataSetChanged();
-
-            }
-        });
+//        delete_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //newPrescription1 = new Prescription();
+////                for(int i=0; i < presc_list.getCount(); i++) {
+////
+////                    if (presc_list.isItemChecked(i)) {
+////                        deletelist.add(medlist.get(i));
+////                    }
+////                }
+//                //newPrescription1.setDrugPrescribed(SelectedList.get());
+//
+////                newPrescription.setDrugPrescribed(prescdata.getText().toString());
+////                newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
+////                newPrescription.setQuantity(0);
+//                DatabaseReference ref1 = refrence_;
+//                ref1.orderByChild("drugPrescribed").equalTo(newPrescription1.getDrugPrescribed());
+//                //newPrescription1.setDrugId(Long.parseLong(ref1.getKey()));
+//
+//                refrence_.child(ref1.getKey()).removeValue();
+//
+//                adapter.notifyDataSetChanged();
+//
+//
+//
+//            }
+//        });
 
 
 
     }
+
+    public void getCheckBoxCheckedListner(int position)
+    {
+
+        //Toast.makeText(this, "" +prescriptionArrayList.get(position).getDosage(), Toast.LENGTH_SHORT).show();
+        //SelectedList.add(prescriptionArrayList.get(position));
+        newPrescription1.setDrugPrescribed(prescriptionArrayList.get(position).getDrugPrescribed());
+        newPrescription1.setDosage(prescriptionArrayList.get(position).getDosage());
+        newPrescription1.setQuantity(0);
+        newPrescription1.setDrugId(prescriptionArrayList.get(position).getDrugId());
+        prescriptionArrayList.get(position).getDrugPrescribed();
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Pharmacist_PrescData.this);
+        builder.setTitle("Confirm Prescription!").setMessage("Do you want to delete " +prescriptionArrayList.get(position).getDrugPrescribed());
+        builder.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        DatabaseReference ref1 = refrence_;
+                        ref1.orderByChild("drugPrescribed").equalTo(prescriptionArrayList.get(position).getDrugId());
+                        refrence_.child(prescriptionArrayList.get(position).getDrugId().toString()).removeValue();
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+        builder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert11 = builder.create();
+        alert11.show();
+    }
+
+
 }
