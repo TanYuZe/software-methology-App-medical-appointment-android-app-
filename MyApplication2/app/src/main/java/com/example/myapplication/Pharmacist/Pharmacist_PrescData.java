@@ -67,6 +67,7 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                     medlist.add(prescription.getDrugPrescribed());
                     prescriptionArrayList.add(prescription);
                     adapter = new ArrayAdapter<String>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, medlist);
+                    //adapter = new ArrayAdapter<Prescription>(getApplicationContext() , android.R.layout.simple_list_item_multiple_choice, prescriptionArrayList);
                     presc_list.setAdapter(adapter);
                     maxID = snapshot.getChildrenCount();
                 }
@@ -83,6 +84,7 @@ public class Pharmacist_PrescData extends AppCompatActivity {
                 Prescription newPrescription = new Prescription();
                 newPrescription.setDrugPrescribed(prescdata.getText().toString());
                 newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
+                newPrescription.setQuantity(0);
                 newPrescription.setDrugId(maxID + 1);
 
                 for(int i = 0; i < medlist.size(); i++)

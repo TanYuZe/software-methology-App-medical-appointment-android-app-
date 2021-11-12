@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
+        android:layout_width="401dp"
+        android:layout_height="199dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
@@ -34,6 +35,8 @@
         android:ems="10"
         android:hint="Email?"
         android:inputType="textPersonName"
+        android:textColor="#0B0A0A"
+        android:textColorHint="#878585"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,27 +49,26 @@
         android:layout_height="62dp"
         android:layout_marginStart="141dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="104dp"
         android:text="Register"
         android:textColor="#F3EDED"
         android:visibility="visible"
         app:iconTint="#6A3939"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.371"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Login_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginEnd="190dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="196dp"
         android:text="Sign In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText

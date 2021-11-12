@@ -1,7 +1,7 @@
 package com.example.myapplication.Admin;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -59,14 +59,22 @@ public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnIt
                 String email_input = addemail.getText().toString();
                 String pw_input =  addpassword.getText().toString();
                 String phone_input = addphonenum.getText().toString();
-                Intent intent = new Intent(Admin_AddUser.this, Admin_Main.class);
+                //Intent intent = new Intent(Admin_AddUser.this, Admin_Main.class);
+                validateName(name_input);
+                validatePassword(pw_input);
+                validatePhoneNo(phone_input);
+                validateEmailAddress(email_input);
 
 
-                RegObject.AddUser(name_input, email_input, pw_input, Integer.parseInt(phone_input), user_role, Admin_AddUser.this);
 
-                Toast.makeText(Admin_AddUser.this, "User Inserted", Toast.LENGTH_SHORT).show();
-                emptyInputEditText();
-                startActivity(intent);
+                if(validateName(name_input) && validatePassword(pw_input) && validatePhoneNo(phone_input) && validateEmailAddress(email_input)) {
+
+                    RegObject.AddUser(name_input, email_input, pw_input, Integer.parseInt(phone_input), user_role, Admin_AddUser.this);
+
+                    Toast.makeText(Admin_AddUser.this, "User Inserted", Toast.LENGTH_SHORT).show();
+                    emptyInputEditText();
+                }
+                return;
             }
         });
 
@@ -94,8 +102,87 @@ public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnIt
         addemail.setText("");
         addphonenum.setText("");
         addpassword.setText("");
-
-
     }
+
+
+    //validation
+    public boolean validateEmailAddress(String email)
+    {
+        String emailInput = email;
+
+        if(!emailInput.equals("") && !Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) //Invalid Email
+        {
+            addemail.setError("Wrong email Format");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public Boolean validateName(String name) {
+        String val = name;
+
+        if (val.equals(""))
+        {
+            addname.setError("Name cannot be empty");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public Boolean validatePassword(String password) {
+        String val = password;
+        String passwordVal = "^" +
+                //"(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{8,}" +               //at least 4 characters
+                "$";
+
+        if (val.equals("")) {
+            addpassword.setError("Password cannot be empty");
+            return false;
+        } else if (!val.matches(passwordVal)) {
+            addpassword.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public Boolean validatePhoneNo(String phonenum) {
+        String val = phonenum;
+        //String passwordVal = "^\\d{8}$";
+        String passwordVal = "^[0-9]{8}$";
+//        String passwordVal = "^" +
+//                //"(?=.*[0-9])" +         //at least 1 digit
+//                //"(?=.*[a-z])" +         //at least 1 lower case letter
+//                //"(?=.*[A-Z])" +         //at least 1 upper case letter
+//                //"(?=.*[a-zA-Z])" +      //any letter
+//                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+//                "(?=\\S+$)" +           //no white spaces
+//                ".{8}" +               //at least 4 characters
+//                "$";
+        if (val.equals("")) {
+            addphonenum.setError("Field cannot be empty");
+            return false;
+        }
+        else if (!val.matches(passwordVal)) {
+            addphonenum.setError("Please a valid phone number format");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+
 
 }

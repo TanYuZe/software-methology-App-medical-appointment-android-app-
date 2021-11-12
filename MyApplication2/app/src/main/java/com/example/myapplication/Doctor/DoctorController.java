@@ -1,22 +1,20 @@
 package com.example.myapplication.Doctor;
 
+
 import android.provider.ContactsContract;
 import android.view.animation.ScaleAnimation;
 
+
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.Patient.Patient;
 import com.example.myapplication.Prescribed;
 import com.example.myapplication.Prescription;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -73,7 +71,7 @@ public class DoctorController {
                                     Prescribed newPrescribed = new Prescribed();
                                     newPrescribed.set_ID(snapshot2.getKey());
                                     newPrescribed.setDrugID(prescriptionArrayList.get(finalJ).getDrugId());
-                                    newPrescribed.setQuantity(1);
+                                    newPrescribed.setQuantity(prescriptionArrayList.get(finalJ).getQuantity());
                                     newPrescribed.setPrescribed(false);
 
                                     prescribedArrayList.add(newPrescribed);
