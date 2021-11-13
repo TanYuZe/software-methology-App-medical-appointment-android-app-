@@ -66,8 +66,6 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
         presc_list.setAdapter(adapter);
         adapter.setCheckedListner((ListViewAdapter_Phar.CheckboxCheckListner) this);
 
-        
-
 
 
 

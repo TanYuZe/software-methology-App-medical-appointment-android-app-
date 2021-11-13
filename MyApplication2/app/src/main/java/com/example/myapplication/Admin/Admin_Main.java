@@ -13,7 +13,7 @@ import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Admin_Main extends AppCompatActivity {
-    Button Add_User, Delete_User, View_User, Logout_btn, View_profile;
+    Button Add_User, Delete_User, View_User, Logout_btn;
     Intent adduser_intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,19 +23,11 @@ public class Admin_Main extends AppCompatActivity {
         Delete_User = findViewById(R.id.DeleteUser);
         View_User = findViewById(R.id.ViewUser);
         Logout_btn = findViewById(R.id.Admin_Logout);
-        View_profile = findViewById(R.id.viewprofile);
-
         Intent intent_Adduser = new Intent(Admin_Main.this, Admin_AddUser.class);
         Intent intent_Deleteuser = new Intent(Admin_Main.this, Admin_DeleteUser.class);
         Intent intent_Viewuser = new Intent(Admin_Main.this, Admin_ViewUser.class);
-        Intent intent_Viewprofile = new Intent(Admin_Main.this, Admin_ViewProfile.class);
 
-        View_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(intent_Viewprofile);
-            }
-        });
+
 
 
         Add_User.setOnClickListener(new View.OnClickListener() {
