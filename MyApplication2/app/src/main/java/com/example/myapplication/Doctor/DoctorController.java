@@ -1,9 +1,9 @@
 package com.example.myapplication.Doctor;
 
-
-import android.provider.ContactsContract;
-import android.view.animation.ScaleAnimation;
-
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.os.StrictMode;
 
 import androidx.annotation.NonNull;
 
@@ -19,12 +19,24 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import java.util.Properties;
+
 public class DoctorController {
     private static DoctorController INSTANCE = null;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
     DatabaseReference refrence_2;
-
     ArrayList<Prescribed> prescribedArrayList;
 
     public DoctorController() {
@@ -37,12 +49,15 @@ public class DoctorController {
         return (INSTANCE);
     }
 
-    public void validateAddMedicine(ArrayList<Prescription> prescriptionArrayList, String email, ArrayList<String> stringArrayList)
+    public void validateAddMedicine(ArrayList<Prescription> prescriptionArrayList, String email, ArrayList<String> stringArrayList, Context context)
     {
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
         refrence_2 = rootNode_.getReference("Prescribed");
         prescribedArrayList = new ArrayList<Prescribed>();
+
+        final String username = "triple7veryvalidemail@gmail.com";
+        final String password = "!gundamzero1";
 
         final Long[] maxID = new Long[1];
 
@@ -66,12 +81,13 @@ public class DoctorController {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot2)
                                 {
+
                                     final String[] sUID = {snapshot2.getKey() + "_" + String.valueOf(finalI)};
 
                                     Prescribed newPrescribed = new Prescribed();
                                     newPrescribed.set_ID(snapshot2.getKey());
                                     newPrescribed.setDrugID(prescriptionArrayList.get(finalJ).getDrugId());
-                                    newPrescribed.setQuantity(prescriptionArrayList.get(finalJ).getQuantity());
+                                    newPrescribed.setQuantity(1);
                                     newPrescribed.setPrescribed(false);
 
                                     prescribedArrayList.add(newPrescribed);
@@ -82,6 +98,11 @@ public class DoctorController {
                                     if(finalJ == prescriptionArrayList.size()-1)
                                     {
                                         refrence_2.child(sUID[0]).setValue(prescribedArrayList);
+                                        String finalEmail = emailed;
+                                        String subject = "Verification for prescription";
+                                        String finalMessage = sUID[0];
+                                        sendEmail(finalEmail, subject, finalMessage, username, password);
+
                                     }
                                 }
 
@@ -103,5 +124,54 @@ public class DoctorController {
         }
     }
 
+    void sendEmail(String email, String subject, String message, String senderEM, String senderPass)
+    {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        Properties prop = new Properties();
+
+        prop.setProperty("mail.transport.protocol", "smtp");
+        prop.setProperty("mail.host", "smtp.gmail.com");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.port", "465");
+        prop.put("mail.debug", "true");
+        prop.put("mail.smtp.socketFactory.port", "465");
+        prop.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+        prop.put("mail.smtp.socketFactory.fallback", "false");
+
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator(){
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication()
+                    {
+                        return new PasswordAuthentication(senderEM, senderPass);
+                    }
+                });
+
+        
+        Message message1 = new MimeMessage(session);
+        try
+        {
+            message1.setFrom(new InternetAddress(senderEM));
+            message1.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+            message1.setSubject(subject);
+
+            //MimeMultipart mimeMultipart = new MimeMultipart();
+
+            //MimeBodyPart theMessage = new MimeBodyPart();
+            //theMessage.setContent(message, "text/plain");
+
+            //mimeMultipart.addBodyPart(theMessage);
+
+            //message1.setContent(mimeMultipart);
+            message1.setText(message);
+
+            Transport.send(message1);
+        }catch (MessagingException e)
+        {
+            e.printStackTrace();
+        }
+        }
 
 }
