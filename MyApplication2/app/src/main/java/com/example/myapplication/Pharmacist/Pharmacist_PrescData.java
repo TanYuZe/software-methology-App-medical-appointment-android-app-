@@ -26,7 +26,6 @@ public class Pharmacist_PrescData extends AppCompatActivity {
     EditText drugDosage;
     Button add_btn, delete_btn;
     ListView presc_list;
-    String itemSelected;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
     ArrayAdapter<String> adapter;

@@ -1,6 +1,9 @@
 package com.example.myapplication.Doctor;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,6 +25,7 @@ import com.example.myapplication.Patient.Patient;
 import com.example.myapplication.Prescribed;
 import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +52,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity
     DatabaseReference refrence_;
     DatabaseReference refrence_2;
 
-
+    //
 
 
 
@@ -171,7 +175,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity
                                 public void onClick(DialogInterface dialog, int id)
                                 {
                                     String patientsEmail = patient_email_text.getText().toString();
-                                    onAssignMed(drugsSelected, patientsEmail, stringArrayList);
+                                    onAssignMed(drugsSelected, patientsEmail, stringArrayList, getApplicationContext());
                                     finish();
                                     Toast.makeText(Doctor_AssignMedicine.this, "Prescription added to User", Toast.LENGTH_SHORT).show();
                                 }
@@ -197,41 +201,22 @@ public class Doctor_AssignMedicine extends AppCompatActivity
 
     }
 
-    void onAssignMed(ArrayList<Prescription> prescriptionArrayList1, String PatientsEmail, ArrayList<String> stringArrayList)
+    void onAssignMed(ArrayList<Prescription> prescriptionArrayList1, String PatientsEmail, ArrayList<String> stringArrayList, Context context)
     {
         DoctorController doctorController = new DoctorController();
-        doctorController.validateAddMedicine(prescriptionArrayList1, PatientsEmail, stringArrayList);
+       doctorController.validateAddMedicine(prescriptionArrayList1, PatientsEmail, stringArrayList, context);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu)
-//    {
-//        getMenuInflater().inflate(R.menu.assignmed_menu, menu);
-//        return true;
-//        //return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//
-//
-//
-//
-//        if (id == R.id.item_done) {
-//            itemSelected = "Selected items: \n";
-//            for (int i = 0; i < listview_med.getCount(); i++) {
-//                if (listview_med.isItemChecked(i)) {
-//                    itemSelected += listview_med.getItemAtPosition(i) + "\n";
-//                }
-//            }
-//            Toast.makeText(this, itemSelected, Toast.LENGTH_SHORT).show();
-//        }
-//        return super.onOptionsItemSelected(item);
-//
-//    }
+    void sendEmail(String email, String subject, String message, Context context)
+    {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setType("message/rfc822");
 
-
-
-
+        startActivity(Intent.createChooser(intent, "Chooose an email client"));
+    }
 }
