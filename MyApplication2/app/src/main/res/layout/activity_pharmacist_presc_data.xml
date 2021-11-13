@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Pharmacist.Pharmacist_PrescData">
 
+
     <TextView
         android:id="@+id/textView27"
         android:layout_width="72dp"
@@ -36,62 +37,50 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="45dp"
         android:text="Add"
-        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/Presc_List"
-        android:layout_width="407dp"
-        android:layout_height="536dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="2dp"
-        android:choiceMode="multipleChoice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="175dp"
         android:text="Prescription Data"
-        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Presc_name" />
-
-    <Button
-        android:id="@+id/delete_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="19dp"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
+        app:layout_constraintTop_toBottomOf="@+id/drugDosage1" />
 
     <EditText
         android:id="@+id/drugDosage1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Dosage"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="116dp"
         android:ems="10"
+        android:hint="Dosage"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/textView28"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Presc_name"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintTop_toBottomOf="@+id/Presc_name" />
+
+    <ListView
+        android:id="@+id/presc_list"
+        android:layout_width="401dp"
+        android:layout_height="571dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:choiceMode="multipleChoice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
