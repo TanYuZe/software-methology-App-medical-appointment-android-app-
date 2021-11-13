@@ -8,26 +8,41 @@
 
 
     <TextView
+        android:id="@+id/textView30"
+        android:layout_width="100dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="3dp"
+        android:text="Add Dosage:"
+        android:textColor="#090909"
+        app:layout_constraintEnd_toStartOf="@+id/drugDosage1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView27"
         android:layout_width="72dp"
         android:layout_height="26dp"
         android:layout_marginStart="13dp"
         android:layout_marginTop="19dp"
         android:text="Add items:"
+        android:textColor="#090909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Presc_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="186dp"
+        android:layout_height="42dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="12dp"
         android:ems="10"
         android:hint="Drug Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/add_btn"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView27"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,21 +65,25 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="175dp"
         android:text="Prescription Data"
+        android:textColor="#0A0B0A"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drugDosage1" />
 
     <EditText
         android:id="@+id/drugDosage1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="186dp"
+        android:layout_height="42dp"
         android:layout_marginStart="86dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="116dp"
         android:ems="10"
         android:hint="Dosage"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Presc_name" />
 
