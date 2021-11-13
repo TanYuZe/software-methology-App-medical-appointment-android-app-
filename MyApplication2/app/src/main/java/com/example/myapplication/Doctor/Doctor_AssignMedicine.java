@@ -1,25 +1,31 @@
 package com.example.myapplication.Doctor;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.ListViewAdapter;
+import com.example.myapplication.BasicInfo;
 import com.example.myapplication.Patient.Patient;
 import com.example.myapplication.Prescribed;
 import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,13 +34,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Doctor_AssignMedicine extends AppCompatActivity implements ListViewAdapter.CheckboxCheckListner
+public class Doctor_AssignMedicine extends AppCompatActivity
 {
     EditText patient_email_text;
     EditText filter_text;
     ListView listview_med;
     Button assign_med_btn;
-
+    ArrayAdapter<String> adapter;
     ArrayAdapter<Prescription> adapter2;
     ArrayList<String> medlist;
     ArrayList<Prescription> drugsSelected;
@@ -46,9 +52,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
     DatabaseReference refrence_;
     DatabaseReference refrence_2;
 
-    ListViewAdapter adapter;
-
-
+    //
 
 
 
@@ -71,13 +75,6 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
         refrence_ = rootNode_.getReference("Prescription");
         refrence_2 = rootNode_.getReference("Users");
 
-
-
-        adapter = new ListViewAdapter(this, prescriptionArrayList);
-        listview_med.setAdapter(adapter);
-        adapter.setCheckedListner((ListViewAdapter.CheckboxCheckListner) this);
-
-
         refrence_.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
@@ -90,22 +87,22 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
                     medlist.add(prescription.getDrugPrescribed());
                     prescriptionArrayList.add(prescription);
                     //adapter = new ArrayAdapter<String>(getApplication(), android.R.layout.simple_list_item_multiple_choice, medlist);
-//                    adapter2 = new ArrayAdapter<Prescription>(getApplication(), android.R.layout.simple_list_item_multiple_choice, prescriptionArrayList)
-//                    {
-//                        @Override
-//                        public View getView(int position, View convertView, ViewGroup parent)
-//                        {
-//                            View view = super.getView(position, convertView, parent);
-//
-//                            TextView tv = (TextView) view.findViewById(android.R.id.text1);
-//
-//                            String texto = prescriptionArrayList.get(position).getDrugPrescribed();
-//                            tv.setText(texto);
-//
-//                            return view;
-//                        }
-//                    };
-//                    listview_med.setAdapter(adapter2);
+                    adapter2 = new ArrayAdapter<Prescription>(getApplication(), android.R.layout.simple_list_item_multiple_choice, prescriptionArrayList)
+                    {
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent)
+                        {
+                            View view = super.getView(position, convertView, parent);
+
+                            TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                            String texto = prescriptionArrayList.get(position).getDrugPrescribed();
+                            tv.setText(texto);
+
+                            return view;
+                        }
+                    };
+                    listview_med.setAdapter(adapter2);
                 }
             }
 
@@ -162,27 +159,23 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
 
                 //set and get items from listview checkbox
 
-//                for (int i = 0; i < listview_med.getCount(); i++)
-//                {
-//                    if (listview_med.isItemChecked(i))
-//                    {
-//                        drugsSelected.add(prescriptionArrayList.get(i));
-//                    }
-//                }
-
-
-
-
+                for (int i = 0; i < listview_med.getCount(); i++)
+                {
+                    if (listview_med.isItemChecked(i))
+                    {
+                        drugsSelected.add(prescriptionArrayList.get(i));
+                    }
+                }
 
                 if(drugsSelected.size() != 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Doctor_AssignMedicine.this);
-                    builder.setTitle("Confirm Prescription!").setMessage(drugsSelected.toString());
+                    builder.setTitle("Confirm Prescription!");
                     builder.setPositiveButton("Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id)
                                 {
                                     String patientsEmail = patient_email_text.getText().toString();
-                                    onAssignMed(drugsSelected, patientsEmail, stringArrayList);
+                                    onAssignMed(drugsSelected, patientsEmail, stringArrayList, getApplicationContext());
                                     finish();
                                     Toast.makeText(Doctor_AssignMedicine.this, "Prescription added to User", Toast.LENGTH_SHORT).show();
                                 }
@@ -208,19 +201,22 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
 
     }
 
-    void onAssignMed(ArrayList<Prescription> prescriptionArrayList1, String PatientsEmail, ArrayList<String> stringArrayList)
+    void onAssignMed(ArrayList<Prescription> prescriptionArrayList1, String PatientsEmail, ArrayList<String> stringArrayList, Context context)
     {
         DoctorController doctorController = new DoctorController();
-        doctorController.validateAddMedicine(prescriptionArrayList1, PatientsEmail, stringArrayList);
+       doctorController.validateAddMedicine(prescriptionArrayList1, PatientsEmail, stringArrayList, context);
     }
 
-    public void getCheckBoxCheckedListner(int position)
+    void sendEmail(String email, String subject, String message, Context context)
     {
-        //Toast.makeText(this, prescriptionArrayList.get(position).toString(), Toast.LENGTH_SHORT).show();
-        drugsSelected.add(prescriptionArrayList.get(position));
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(intent, "Chooose an email client"));
     }
-
-
-
-
 }
