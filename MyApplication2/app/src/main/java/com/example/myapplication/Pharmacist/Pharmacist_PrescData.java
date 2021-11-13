@@ -121,7 +121,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
                             Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_LONG).show();
 //                            Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
 //                            startActivity(intent);
-                            adapter.notifyDataSetChanged();
+                            //adapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -182,6 +182,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
                         DatabaseReference ref1 = refrence_;
                         ref1.orderByChild("drugPrescribed").equalTo(prescriptionArrayList.get(position).getDrugId());
                         refrence_.child(prescriptionArrayList.get(position).getDrugId().toString()).removeValue();
+                        prescriptionArrayList.remove(prescriptionArrayList.get(position));
                         adapter.notifyDataSetChanged();
                     }
                 });
