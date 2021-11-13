@@ -62,7 +62,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference().child("Prescription");
 
-        adapter = new ListViewAdapter_Phar(this , prescriptionArrayList);
+        adapter = new ListViewAdapter_Phar(Pharmacist_PrescData.this , prescriptionArrayList);
         presc_list.setAdapter(adapter);
         adapter.setCheckedListner((ListViewAdapter_Phar.CheckboxCheckListner) this);
 
@@ -165,9 +165,6 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
 
     public void getCheckBoxCheckedListner(int position)
     {
-
-        //Toast.makeText(this, "" +prescriptionArrayList.get(position).getDosage(), Toast.LENGTH_SHORT).show();
-        //SelectedList.add(prescriptionArrayList.get(position));
         newPrescription1.setDrugPrescribed(prescriptionArrayList.get(position).getDrugPrescribed());
         newPrescription1.setDosage(prescriptionArrayList.get(position).getDosage());
         newPrescription1.setQuantity(0);
