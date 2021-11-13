@@ -3,6 +3,7 @@ package com.example.myapplication.Doctor;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.StrictMode;
 
 import androidx.annotation.NonNull;
 
@@ -125,12 +126,19 @@ public class DoctorController {
 
     void sendEmail(String email, String subject, String message, String senderEM, String senderPass)
     {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         Properties prop = new Properties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.socketFactory.port", "465");
-        prop.put("mail.smtp.socketFactory.class", "java.net.ssl.SSLSocketFactory");
+
+        prop.setProperty("mail.transport.protocol", "smtp");
+        prop.setProperty("mail.host", "smtp.gmail.com");
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.port", "465");
+        prop.put("mail.debug", "true");
+        prop.put("mail.smtp.socketFactory.port", "465");
+        prop.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+        prop.put("mail.smtp.socketFactory.fallback", "false");
 
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator(){
@@ -164,7 +172,6 @@ public class DoctorController {
         {
             e.printStackTrace();
         }
-
         }
 
 }
