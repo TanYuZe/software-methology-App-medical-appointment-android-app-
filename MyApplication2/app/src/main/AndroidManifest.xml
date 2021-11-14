@@ -18,6 +18,15 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Pharmacist.Pharmacist_UpdateInfo"
+            android:exported="true" />
+        <activity
+            android:name=".Patient.Patient_UpdateInfo"
+            android:exported="true" />
+        <activity
+            android:name=".Doctor.Doctor_UpdateInfo"
+            android:exported="true" />
+        <activity
             android:name=".DoctorUpdatePresc"
             android:exported="true" />
         <activity
