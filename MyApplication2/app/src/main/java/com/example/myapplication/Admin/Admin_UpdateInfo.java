@@ -55,10 +55,10 @@ public class Admin_UpdateInfo extends AppCompatActivity {
                     if(userinfo.getId().equals(user.getUid()) )
                     {
                         //maxID = snapshot.getChildrenCount();
-                        et_name.setText(String.valueOf(userinfo.name));
-                        et_email.setText(String.valueOf(userinfo.email));
-                        et_password.setText(String.valueOf(userinfo.password));
-                        et_phoneno.setText(String.valueOf(userinfo.phonenumber));
+                        et_name.setText( ""+userinfo.name);
+                        et_email.setText(""+userinfo.email);
+                        et_password.setText(""+userinfo.password);
+                        et_phoneno.setText(""+userinfo.phonenumber);
 
                     }
 

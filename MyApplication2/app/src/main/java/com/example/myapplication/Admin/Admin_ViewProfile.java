@@ -41,7 +41,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
         admin_password = findViewById(R.id.admin_password);
         admin_role = findViewById(R.id.admin_role);
         admin_phoneno = findViewById(R.id.admin_phoneno);
-        btn_update = findViewById(R.id.admin_update);
+
 
         edit_name = findViewById(R.id.editbtn1);
         edit_email = findViewById(R.id.editbtn2);
