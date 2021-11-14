@@ -22,7 +22,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
     Button btn_update, btn_changepass;
     FirebaseDatabase rootNode_;
 
-    DatabaseReference refrence_;
+    DatabaseReference reference_;
 
 
     @Override
@@ -43,13 +43,13 @@ public class Doctor_ViewProfile extends AppCompatActivity {
 
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
-        refrence_ = rootNode_.getReference("Users");
+        reference_ = rootNode_.getReference("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        refrence_.orderByChild("email").equalTo(user.getEmail());
+        reference_.orderByChild("email").equalTo(user.getEmail());
 
 
-        refrence_.addValueEventListener(new ValueEventListener()
+        reference_.addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)

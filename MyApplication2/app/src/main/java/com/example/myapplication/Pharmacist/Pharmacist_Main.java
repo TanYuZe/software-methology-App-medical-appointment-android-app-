@@ -27,9 +27,15 @@ public class Pharmacist_Main extends AppCompatActivity {
         prescdata_btn = findViewById(R.id.prescdata_btn);
         Intent intent2 = new Intent(Pharmacist_Main.this, Pharmacist_ViewUserPresc.class);
         Intent intent1 = new Intent(Pharmacist_Main.this, Pharmacist_PrescData.class);
+        Intent profIntent = new Intent(Pharmacist_Main.this, Pharmacist_ViewProfile.class);
 
 
-
+        PharmacistProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(profIntent);
+            }
+        });
 
 
         prescdata_btn.setOnClickListener(new View.OnClickListener() {
