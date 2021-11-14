@@ -101,6 +101,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
                 {
                     for(int j = 0; j < prescriptionArrayList.size(); j++)
                     {
+                        Long index = Long.valueOf(j);
                         if(     medlist.get(i).equals(newPrescription.getDrugPrescribed())
                                 && prescriptionArrayList.get(j).getDrugPrescribed().equals(newPrescription.getDrugPrescribed())
                                 && prescriptionArrayList.get(j).getDosage().equals(newPrescription.getDosage()))
@@ -108,7 +109,13 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
                             Toast.makeText(getApplicationContext(), "Medication already exist. Try again", Toast.LENGTH_LONG).show();
                             break;
                         }
-                        if(     i == medlist.size() - 1
+                        if(prescriptionArrayList.get(j).getDrugId() != index + 1
+                            && prescriptionArrayList.get(j).getDrugPrescribed() != newPrescription.getDrugPrescribed())
+                        {
+                            newPrescription.setDrugId(index + 1);
+                            refrence_.child(String.valueOf(index + 1)).setValue(newPrescription);
+                        }
+                        else if(     i == medlist.size() - 1
                                 && medlist.get(i) != newPrescription.getDrugPrescribed()
                                 && j == prescriptionArrayList.size() - 1
                                 && prescriptionArrayList.get(j).getDrugPrescribed() != newPrescription.getDrugPrescribed()
@@ -119,7 +126,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
                             Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_LONG).show();
 //                            Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
 //                            startActivity(intent);
-                            //adapter.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();
                         }
                     }
                 }
