@@ -48,6 +48,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
         edit_password = findViewById(R.id.editbtn4);
         edit_phoneno = findViewById(R.id.editbtn3);
 
+        AdminController adminController = AdminController.getINSTANCE();
 
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
@@ -86,8 +87,6 @@ public class Admin_ViewProfile extends AppCompatActivity {
         edit_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
-//                startActivity(intent);
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
                 final EditText input = new EditText(Admin_ViewProfile.this);
                 mydialog.setMessage("Please enter your name");
@@ -100,6 +99,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id)
                             {
                                 changes = input.getText().toString();
+                                adminController.updateName(changes);
                                 admin_name.setText(changes);
                             }
                         });
@@ -148,8 +148,6 @@ public class Admin_ViewProfile extends AppCompatActivity {
         edit_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
-//                startActivity(intent);
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
                 final EditText input = new EditText(Admin_ViewProfile.this);
                 mydialog.setMessage("Please enter your new password");
@@ -162,6 +160,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id)
                             {
                                 changes = input.getText().toString();
+                                adminController.updatePassword(changes);
                                 admin_password.setText(changes);
                             }
                         });
@@ -179,8 +178,6 @@ public class Admin_ViewProfile extends AppCompatActivity {
         edit_phoneno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
-//                startActivity(intent);
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
                 final EditText input = new EditText(Admin_ViewProfile.this);
                 mydialog.setMessage("Please enter your new Phone Number");
@@ -201,6 +198,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                                 }
                                 else {
                                     admin_phoneno.setText(changes);
+                                    adminController.updateNumber(Integer.parseInt(changes));
                                 }
                             }
                         });

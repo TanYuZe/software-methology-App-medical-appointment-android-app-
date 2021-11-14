@@ -194,17 +194,4 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
         drugsSelected.add(prescriptionArrayList.get(position));
     }
 
-    void sendEmail(String email, String subject, String message, Context context)
-    {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, email);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setType("message/rfc822");
-
-        startActivity(Intent.createChooser(intent, "Chooose an email client"));
-    }
-
 }
