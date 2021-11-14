@@ -5,6 +5,16 @@ public class Prescribed
     String _ID;
     Long drugID;
     int quantity;
+    String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     boolean isPrescribed;
 
     public String get_ID() {
