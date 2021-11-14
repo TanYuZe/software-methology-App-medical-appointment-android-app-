@@ -1,6 +1,9 @@
 package com.example.myapplication.Admin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Admin_ViewProfile extends AppCompatActivity {
     TextView admin_name, admin_email, admin_password, admin_role, admin_phoneno;
+    Button update_btn;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
 
@@ -31,6 +35,16 @@ public class Admin_ViewProfile extends AppCompatActivity {
         admin_password = findViewById(R.id.admin_password);
         admin_role = findViewById(R.id.admin_role);
         admin_phoneno = findViewById(R.id.admin_phoneno);
+        update_btn = findViewById(R.id.admin_update);
+
+
+        update_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
+                startActivity(intent);
+            }
+        });
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");

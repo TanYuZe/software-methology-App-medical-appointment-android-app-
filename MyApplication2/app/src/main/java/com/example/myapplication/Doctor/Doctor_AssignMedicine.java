@@ -150,7 +150,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
 
                 if(drugsSelected.size() != 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Doctor_AssignMedicine.this);
-                    builder.setTitle("Confirm Prescription!");
+                    builder.setTitle("Confirm Prescription!").setMessage(drugsSelected.toString());
                     builder.setPositiveButton("Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id)

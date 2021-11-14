@@ -7,7 +7,7 @@
     <!-- Permission for camera -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- Permission to vibrate -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,9 +18,12 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Admin.Admin_UpdateInfo"
+            android:exported="true" />
+        <activity
             android:name=".Pharmacist.Pharmacist_PrescData"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"/>
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".Admin.Admin_ChangePassword"
             android:exported="true" />

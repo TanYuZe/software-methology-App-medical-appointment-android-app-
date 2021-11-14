@@ -29,6 +29,8 @@
         android:layout_marginTop="200dp"
         android:layout_marginEnd="119dp"
         android:text="TextView"
+        android:textColor="#070707"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@+id/textView44"
@@ -41,6 +43,8 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="208dp"
         android:text="Name:"
+        android:textColor="#0B0A0A"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,6 +56,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="99dp"
         android:text="TextView"
+        android:textColor="#050505"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@+id/textView47"
@@ -64,6 +70,8 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
         android:text="Phone no:"
+        android:textColor="#020202"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView46" />
 
@@ -74,6 +82,8 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:text="Password:"
+        android:textColor="#070707"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
@@ -84,6 +94,8 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
         android:text="Role:"
+        android:textColor="#070707"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
@@ -96,6 +108,8 @@
         android:layout_marginEnd="128dp"
         android:inputType="textPassword"
         android:text="TextView"
+        android:textColor="#070707"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toEndOf="@+id/textView45"
@@ -105,9 +119,15 @@
         android:id="@+id/btn_changepass"
         android:layout_width="250dp"
         android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="92dp"
         android:text="Change Password"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="594dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_update" />
 
     <TextView
         android:id="@+id/doc_email"
@@ -117,6 +137,8 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="119dp"
         android:text="TextView"
+        android:textColor="#0B0A0A"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@+id/textView46"
@@ -126,11 +148,13 @@
         android:id="@+id/btn_update"
         android:layout_width="250dp"
         android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="89dp"
         android:text="Update Particulars"
-        app:layout_constraintEnd_toEndOf="@+id/btn_changepass"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_changepass"
-        tools:layout_editor_absoluteY="511dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doc_role" />
 
     <TextView
         android:id="@+id/doc_role"
@@ -141,6 +165,8 @@
         android:layout_marginEnd="119dp"
         android:layout_marginBottom="96dp"
         android:text="Textview"
+        android:textColor="#070707"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btn_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
@@ -155,6 +181,8 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
         android:text="Email:"
+        android:textColor="#0B0A0A"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
