@@ -1,12 +1,16 @@
 package com.example.myapplication.Patient;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Admin.Admin_UpdateInfo;
+import com.example.myapplication.Admin.Admin_ViewProfile;
 import com.example.myapplication.BasicInfo;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,6 +70,14 @@ public class Patient_ViewProfile extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Patient_ViewProfile.this, Patient_UpdateInfo.class);
+                startActivity(intent);
             }
         });
 

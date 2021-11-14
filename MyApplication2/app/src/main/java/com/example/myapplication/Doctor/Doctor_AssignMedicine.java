@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.ListViewAdapter;
+import com.example.myapplication.ListViewAdapter_DoctorAssignmed;
 import com.example.myapplication.Patient.Patient;
 import com.example.myapplication.Prescribed;
 import com.example.myapplication.Prescription;
@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Doctor_AssignMedicine extends AppCompatActivity implements ListViewAdapter.CheckboxCheckListner
+public class Doctor_AssignMedicine extends AppCompatActivity implements ListViewAdapter_DoctorAssignmed.CheckboxCheckListner
 {
     EditText patient_email_text;
     EditText filter_text;
@@ -49,7 +49,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
     DatabaseReference refrence_;
     DatabaseReference refrence_2;
 
-    ListViewAdapter adapter;
+    ListViewAdapter_DoctorAssignmed adapter;
 
     //
 
@@ -74,9 +74,9 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
         refrence_2 = rootNode_.getReference("Users");
 
 
-        adapter = new ListViewAdapter(this, prescriptionArrayList);
+        adapter = new ListViewAdapter_DoctorAssignmed(this, prescriptionArrayList);
         listview_med.setAdapter(adapter);
-        adapter.setCheckedListner((ListViewAdapter.CheckboxCheckListner) this);
+        adapter.setCheckedListner((ListViewAdapter_DoctorAssignmed.CheckboxCheckListner) this);
 
 
         refrence_.addListenerForSingleValueEvent(new ValueEventListener()

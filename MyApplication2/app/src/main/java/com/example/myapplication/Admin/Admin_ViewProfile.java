@@ -1,12 +1,16 @@
 package com.example.myapplication.Admin;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.BasicInfo;
@@ -21,9 +25,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Admin_ViewProfile extends AppCompatActivity {
     TextView admin_name, admin_email, admin_password, admin_role, admin_phoneno;
-    Button update_btn;
+    Button btn_update;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
+    String changes;
+    ImageButton edit_name, edit_email, edit_password, edit_phoneno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +41,14 @@ public class Admin_ViewProfile extends AppCompatActivity {
         admin_password = findViewById(R.id.admin_password);
         admin_role = findViewById(R.id.admin_role);
         admin_phoneno = findViewById(R.id.admin_phoneno);
-        update_btn = findViewById(R.id.admin_update);
+        btn_update = findViewById(R.id.admin_update);
+
+        edit_name = findViewById(R.id.editbtn1);
+        edit_email = findViewById(R.id.editbtn2);
+        edit_password = findViewById(R.id.editbtn4);
+        edit_phoneno = findViewById(R.id.editbtn3);
 
 
-        update_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
-                startActivity(intent);
-            }
-        });
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
@@ -79,5 +83,151 @@ public class Admin_ViewProfile extends AppCompatActivity {
             }
         });
 
+        edit_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
+//                startActivity(intent);
+                AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
+                final EditText input = new EditText(Admin_ViewProfile.this);
+                mydialog.setMessage("Please enter your name");
+                mydialog.setTitle("Name Change");
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                mydialog.setView(input);
+
+                mydialog.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                changes = input.getText().toString();
+                                admin_name.setText(changes);
+                            }
+                        });
+                mydialog.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = mydialog.create();
+                alert11.show();
+            }
+        });
+
+//        edit_email.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
+////                startActivity(intent);
+//                AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
+//                final EditText input = new EditText(Admin_ViewProfile.this);
+//                mydialog.setMessage("Please enter your email");
+//                mydialog.setTitle("Email Change");
+//                input.setInputType(InputType.TYPE_CLASS_TEXT);
+//                mydialog.setView(input);
+//
+//                mydialog.setPositiveButton("Yes",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id)
+//                            {
+//                                changes = input.getText().toString();
+//                                admin_email.setText(changes);
+//                            }
+//                        });
+//                mydialog.setNegativeButton("No",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                dialog.cancel();
+//                            }
+//                        });
+//                AlertDialog alert11 = mydialog.create();
+//                alert11.show();
+//            }
+//        });
+
+        edit_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
+//                startActivity(intent);
+                AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
+                final EditText input = new EditText(Admin_ViewProfile.this);
+                mydialog.setMessage("Please enter your new password");
+                mydialog.setTitle("Password Change");
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                mydialog.setView(input);
+
+                mydialog.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                changes = input.getText().toString();
+                                admin_password.setText(changes);
+                            }
+                        });
+                mydialog.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = mydialog.create();
+                alert11.show();
+            }
+        });
+
+        edit_phoneno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
+//                startActivity(intent);
+                AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
+                final EditText input = new EditText(Admin_ViewProfile.this);
+                mydialog.setMessage("Please enter your new Phone Number");
+                mydialog.setTitle("Phone Number Change");
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                mydialog.setView(input);
+
+                mydialog.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                changes = input.getText().toString();
+
+                                if(changes.equals(""))
+                                {
+                                    input.setError("Cannot be empty");
+
+                                }
+                                else {
+                                    admin_phoneno.setText(changes);
+                                }
+                            }
+                        });
+                mydialog.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = mydialog.create();
+                alert11.show();
+            }
+        });
+
+
+
     }
+
+
+//    public void open_dialog(View v)
+//    {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View row = inflater.inflate(R.layout.activity_admin_update_info,null);
+//
+//        builder.setView(row);
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//    }
 }

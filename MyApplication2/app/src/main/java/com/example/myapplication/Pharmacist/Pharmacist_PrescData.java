@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.ListViewAdapter_Phar;
+import com.example.myapplication.ListViewAdapter_Phar_precdata;
 import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
@@ -23,14 +23,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Pharmacist_PrescData extends AppCompatActivity implements ListViewAdapter_Phar.CheckboxCheckListner{
+public class Pharmacist_PrescData extends AppCompatActivity implements ListViewAdapter_Phar_precdata.CheckboxCheckListner{
     EditText prescdata;
     EditText drugDosage;
-    Button add_btn, delete_btn;
+    Button add_btn;
     ListView presc_list;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
-    ListViewAdapter_Phar adapter;
+    ListViewAdapter_Phar_precdata adapter;
     ArrayList<String>  medlist;
     ArrayList<Prescription> prescriptionArrayList;
     ArrayList<Prescription> SelectedList;
@@ -62,9 +62,9 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference().child("Prescription");
 
-        adapter = new ListViewAdapter_Phar(Pharmacist_PrescData.this , prescriptionArrayList);
+        adapter = new ListViewAdapter_Phar_precdata(Pharmacist_PrescData.this , prescriptionArrayList);
         presc_list.setAdapter(adapter);
-        adapter.setCheckedListner((ListViewAdapter_Phar.CheckboxCheckListner) this);
+        adapter.setCheckedListner((ListViewAdapter_Phar_precdata.CheckboxCheckListner) this);
 
 
 
@@ -135,40 +135,6 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
                 }
             }
         });
-
-
-
-//        delete_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                //newPrescription1 = new Prescription();
-////                for(int i=0; i < presc_list.getCount(); i++) {
-////
-////                    if (presc_list.isItemChecked(i)) {
-////                        deletelist.add(medlist.get(i));
-////                    }
-////                }
-//                //newPrescription1.setDrugPrescribed(SelectedList.get());
-//
-////                newPrescription.setDrugPrescribed(prescdata.getText().toString());
-////                newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
-////                newPrescription.setQuantity(0);
-//                DatabaseReference ref1 = refrence_;
-//                ref1.orderByChild("drugPrescribed").equalTo(newPrescription1.getDrugPrescribed());
-//                //newPrescription1.setDrugId(Long.parseLong(ref1.getKey()));
-//
-//                refrence_.child(ref1.getKey()).removeValue();
-//
-//                adapter.notifyDataSetChanged();
-//
-//
-//
-//            }
-//        });
-
-
-
     }
 
     public void getCheckBoxCheckedListner(int position)

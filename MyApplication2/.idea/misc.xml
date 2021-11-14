@@ -44,7 +44,7 @@
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_delete_user.xml" value="0.4" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_main.xml" value="0.264" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_update_info.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_view_profile.xml" value="0.6" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_view_profile.xml" value="0.4" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_admin_view_user.xml" value="0.4" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_doctor_assign_medicine.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_doctor_main.xml" value="0.536" />
@@ -56,6 +56,7 @@
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_main2.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_main.xml" value="0.2" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_qrcode.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_patient_update_info.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_pharmacist_presc_data.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/activity_pharmacist_update_info.xml" value="0.35260416666666666" />
@@ -70,9 +71,11 @@
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_delete_user_.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/fragment_item_list.xml" value="0.176" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listview_adapter.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listview_doc.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listview_doc.xml" value="0.25" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listview_doctor_assignmed.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listview_doctor_updatepresc.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listview_phar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listview_phar_viewuserpresc.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/listviewadapter.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yuze1/AndroidStudioProjects/software-metho/MyApplication2/app/src/main/res/layout/mylist.xml" value="0.36666666666666664" />
       </map>

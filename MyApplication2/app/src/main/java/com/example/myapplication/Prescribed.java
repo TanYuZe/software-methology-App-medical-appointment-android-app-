@@ -14,6 +14,10 @@ public class Prescribed
 //        this.dosage = dosage;
 //        this.quantity = quantity;
 //    }
+    public Prescribed()
+    {
+
+    }
 
     public String getToken() {
         return token;

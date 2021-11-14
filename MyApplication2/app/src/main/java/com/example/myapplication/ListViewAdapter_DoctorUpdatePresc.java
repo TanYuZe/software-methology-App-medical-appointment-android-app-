@@ -16,7 +16,7 @@ public class ListViewAdapter_DoctorUpdatePresc extends ArrayAdapter<Prescribed> 
     boolean isOnTextChanged;
     int checkAccumulator;
     ArrayList<Prescribed> array;
-    private ListViewAdapter.CheckboxCheckListner checkedListner;
+    private ListViewAdapter_DoctorAssignmed.CheckboxCheckListner checkedListner;
 
     //private final Context context;
 

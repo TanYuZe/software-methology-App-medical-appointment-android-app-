@@ -24,6 +24,7 @@ public class Pharmacist_ViewUserPresc extends AppCompatActivity {
     Button view_presc , btn_scan;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

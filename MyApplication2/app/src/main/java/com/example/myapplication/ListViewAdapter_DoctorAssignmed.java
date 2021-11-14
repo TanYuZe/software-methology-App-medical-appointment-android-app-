@@ -15,37 +15,24 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends ArrayAdapter<Prescription> {
+public class ListViewAdapter_DoctorAssignmed extends ArrayAdapter<Prescription> {
 
-
-    ArrayList<Prescription> presc;
-    boolean isOnTextChanged;
     int checkAccumulator;
     ArrayList<Prescription> array;
     private CheckboxCheckListner checkedListner;
 
-    //private final Context context;
 
-
-
-    public ListViewAdapter(Context context, ArrayList<Prescription> presc) {
+    public ListViewAdapter_DoctorAssignmed(Context context, ArrayList<Prescription> presc) {
         super(context, 0, presc);
         // TODO Auto-generated constructor stub
         checkAccumulator = 0;
         array = new ArrayList<Prescription>();
-
-
-
     }
-
-
-
-
 
     public View getView(int position, @Nullable View convertview, ViewGroup parent) {
 
         if(convertview == null) {
-            convertview = LayoutInflater.from(getContext()).inflate(R.layout.listview_doc,
+            convertview = LayoutInflater.from(getContext()).inflate(R.layout.listview_doctor_assignmed,
                     parent, false);
         }
 
@@ -53,7 +40,6 @@ public class ListViewAdapter extends ArrayAdapter<Prescription> {
 
         Prescription presc1 = getItem(position);
         TextView titleText = (TextView) convertview.findViewById(R.id.title);
-        //TextView subtitleText = (TextView) convertview.findViewById(R.id.subtitle);
         EditText q_input = (EditText) convertview.findViewById(R.id.Quantity_input);
         ImageButton btnPlus = convertview.findViewById(R.id.ib_addnew1);
         ImageButton btnMinus = convertview.findViewById(R.id.ib_remove1);
@@ -69,7 +55,7 @@ public class ListViewAdapter extends ArrayAdapter<Prescription> {
                 updateQuantity(position,q_input,1);
             }
         });
-        //listViewHolder.edTextQuantity.setText("0");
+
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,22 +64,6 @@ public class ListViewAdapter extends ArrayAdapter<Prescription> {
             }
         });
 
-
-//        CompoundButton.OnCheckedChangeListener checkListener = new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(checkListener !=null)
-//                {
-//                    checkListener.getCheckBoxChecked()
-//                }
-//
-//
-//                countCheck(isChecked);
-//                Log.i("MAIN", checkAccumulator + "");
-//            }
-//        };
-//
-//        cb.setOnCheckedChangeListener(checkListener);
 
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -110,39 +80,7 @@ public class ListViewAdapter extends ArrayAdapter<Prescription> {
 
 
 
-//        cb.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                if(cb.isChecked())
-//                {
-//
-//
-//
-//
-//                }
-//                notifyDataSetChanged();
-//
-//            }
-//        });
-
-
-
-
         titleText.setText(presc1.drugPrescribed);
-//        subtitleText.setText(presc1.dosage.toString());
-
-
-
-
-
-
-
-
-
-
-
         return convertview;
 
     };
