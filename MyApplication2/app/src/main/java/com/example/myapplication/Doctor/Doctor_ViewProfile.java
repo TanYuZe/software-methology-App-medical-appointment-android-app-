@@ -24,8 +24,6 @@ public class Doctor_ViewProfile extends AppCompatActivity {
 
     DatabaseReference refrence_;
 
-    DatabaseReference ref1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +49,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
         refrence_.orderByChild("email").equalTo(user.getEmail());
 
 
-
-
-        ref1.addListenerForSingleValueEvent(new ValueEventListener()
-
+        refrence_.addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
@@ -63,11 +58,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
                 {
                     BasicInfo userinfo = snapshot1.getValue(BasicInfo.class);
 
-
-
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if(user.getEmail() == userinfo.getEmail())
-
+                    if(userinfo.getId().equals(user.getUid()) )
                     {
                         //maxID = snapshot.getChildrenCount();
                         doc_name.setText(userinfo.getName());

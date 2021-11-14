@@ -34,7 +34,8 @@ public class Doctor_Main extends AppCompatActivity {
             public void onClick(View v) {
 
 
-            view_profile = findViewById(R.id.button2);
+                Intent intent = new Intent(Doctor_Main.this, Doctor_ViewProfile.class);
+                startActivity(intent);
             }
         });
 
@@ -42,8 +43,7 @@ public class Doctor_Main extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //
-//                Intent intent = new Intent(Doctor_Main.this, Doctor_ViewProfile.class);
-//                startActivity(intent);
+//
 //            }
 //        });
 

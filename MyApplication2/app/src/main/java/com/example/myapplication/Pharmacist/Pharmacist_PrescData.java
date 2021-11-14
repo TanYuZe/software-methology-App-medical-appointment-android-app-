@@ -110,10 +110,13 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
                             break;
                         }
                         if(prescriptionArrayList.get(j).getDrugId() != index + 1
-                            && prescriptionArrayList.get(j).getDrugPrescribed() != newPrescription.getDrugPrescribed())
+                            && prescriptionArrayList.get(j).getDrugPrescribed() != newPrescription.getDrugPrescribed() )
                         {
                             newPrescription.setDrugId(index + 1);
                             refrence_.child(String.valueOf(index + 1)).setValue(newPrescription);
+                            Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_SHORT).show();
+                            adapter.notifyDataSetChanged();
+                            break;
                         }
                         else if(     i == medlist.size() - 1
                                 && medlist.get(i) != newPrescription.getDrugPrescribed()
