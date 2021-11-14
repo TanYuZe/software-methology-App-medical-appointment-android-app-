@@ -18,6 +18,12 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DoctorUpdatePresc"
+            android:exported="true" />
+        <activity
+            android:name=".Doctor.Doctor_ViewUpdatePresc"
+            android:exported="true" />
+        <activity
             android:name=".Admin.Admin_UpdateInfo"
             android:exported="true" />
         <activity

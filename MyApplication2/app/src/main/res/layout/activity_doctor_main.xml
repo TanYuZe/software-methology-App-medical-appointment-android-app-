@@ -7,6 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".Doctor.Doctor_Main">
 
+    <Button
+        android:id="@+id/Viewpresc_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="141dp"
+        android:text="View User Presc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AssignMed_btn" />
+
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
@@ -56,12 +69,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="146dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="172dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="60dp"
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Viewpresc_btn" />
 
     <Button
         android:id="@+id/button2"

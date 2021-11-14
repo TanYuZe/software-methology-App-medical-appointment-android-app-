@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Doctor_Main extends AppCompatActivity {
 
-    Button Assign_med, doctor_logout, doctorViewProf;
+    Button Assign_med, doctor_logout, doctorViewProf, doctor_viewPresc;
 
     Button view_profile;
 
@@ -26,8 +26,20 @@ public class Doctor_Main extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_main);
         Assign_med = findViewById(R.id.AssignMed_btn);
         doctor_logout = findViewById(R.id.Doctor_Logout);
+        doctor_viewPresc = findViewById(R.id.Viewpresc_btn);
 
         doctorViewProf = findViewById(R.id.button2);
+
+
+        doctor_viewPresc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Doctor_Main.this, Doctor_ViewUpdatePresc.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         doctorViewProf.setOnClickListener(new View.OnClickListener() {
             @Override

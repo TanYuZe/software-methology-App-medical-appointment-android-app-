@@ -6,6 +6,14 @@ public class Prescribed
     Long drugID;
     int quantity;
     String token;
+    boolean isPrescribed;
+
+//    public Prescribed(String _ID, Long drugID, int quantity, int quantity) {
+//        this.drugId = drugId;
+//        this.drugPrescribed = drugPrescribed;
+//        this.dosage = dosage;
+//        this.quantity = quantity;
+//    }
 
     public String getToken() {
         return token;
@@ -15,7 +23,6 @@ public class Prescribed
         this.token = token;
     }
 
-    boolean isPrescribed;
 
     public String get_ID() {
         return _ID;
