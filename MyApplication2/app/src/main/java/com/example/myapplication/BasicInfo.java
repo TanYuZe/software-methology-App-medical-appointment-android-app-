@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class BasicInfo
 {
-    public int id;
+    public String id;
     public String email;
     public String password;
     public String name;
@@ -14,7 +14,7 @@ public class BasicInfo
 
     }
 //constructor
-    public BasicInfo(int id, String name, String email, String password, int phonenumber, String role)
+    public BasicInfo(String id, String name, String email, String password, int phonenumber, String role)
     {
         this.id = id;
         this.email = email;
@@ -31,13 +31,13 @@ public class BasicInfo
 
 
 
-     public int getId()
+     public String getId()
      {
 
          return id;
      }
 
-     public void setId(int id)
+     public void setId(String id)
      {
          this.id = id;
      }

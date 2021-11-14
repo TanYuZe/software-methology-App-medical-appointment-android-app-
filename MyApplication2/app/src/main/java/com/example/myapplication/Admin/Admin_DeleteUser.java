@@ -7,7 +7,6 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.DatabaseManager;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Admin_DeleteUser extends AppCompatActivity {
     EditText user_email;
-    DatabaseManager db;
 
     FirebaseDatabase rootNode_;
     DatabaseReference reference_;
@@ -52,10 +50,5 @@ public class Admin_DeleteUser extends AppCompatActivity {
     public void Delete(View v)
     {
         String email = user_email.getText().toString().trim();
-        db = new DatabaseManager(this);
-        db.DeleteUser(email);
-
-
-
     }
 }

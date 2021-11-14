@@ -12,12 +12,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.DatabaseManager;
 import com.example.myapplication.R;
 import com.example.myapplication.RegisterEntity;
 
 public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-    DatabaseManager dbManager;
     EditText addname , addemail, addphonenum, addpassword;
     Spinner addrole;
     RegisterEntity entity;
@@ -37,14 +35,6 @@ public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnIt
         create_btn = findViewById(R.id.create_btn);
         AdminController RegObject = AdminController.getINSTANCE();
 
-        dbManager = new DatabaseManager(Admin_AddUser.this);
-        try{
-            dbManager.open();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Admin_AddUser.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.roles));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

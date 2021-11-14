@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity
     Button Login_btn, Register_btn;
     EditText editUserID;
     EditText editUserPwd;
-    DatabaseManager dbManager;
-    DatabaseHelper dbhelper;
 
     FirebaseDatabase rootNode;
     DatabaseReference refrence;
@@ -41,15 +39,6 @@ public class MainActivity extends AppCompatActivity
         editUserPwd = (EditText) findViewById(R.id.User_Pw);
         Login_btn = (Button) findViewById(R.id.Login_Button);
         Register_btn = (Button) findViewById(R.id.Register_button);
-
-        dbManager = new DatabaseManager(this);
-        try{
-            dbManager.open();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
 
         //click function for Register button
         Register_btn.setOnClickListener(new View.OnClickListener() {

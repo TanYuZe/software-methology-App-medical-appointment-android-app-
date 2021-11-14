@@ -23,7 +23,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
     String User_roles;
 
-    DatabaseManager dbManager;
     EditText Name_input;
     EditText Email_input;
     EditText Pw_input;
@@ -34,22 +33,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     FirebaseDatabase rootNode;
     DatabaseReference refrence;
 
-    public void doTheFetch()
-    {
-        Cursor cursor = dbManager.fetch();
-        if(cursor.moveToFirst())
-        {
-            do
-            {
-                String ID = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID));
-                String FullName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_FULLNAME));
-
-                Log.i("DATABASE_Tag" , "I have inserted ID: " + ID + ", Name: " + FullName);
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
-
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -61,16 +44,6 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         Pw_input = (EditText) findViewById(R.id.pw_input);
         Pwconfirm_input = (EditText) findViewById(R.id.pw_confirmText);
         Phone_input = (EditText) findViewById(R.id.phone_input);
-
-
-        dbManager = new DatabaseManager(this);
-        try{
-            dbManager.open();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
 
         //Adding an Array into the dropdown box(spinner)
         spinner = (Spinner) findViewById(R.id.spinner1);

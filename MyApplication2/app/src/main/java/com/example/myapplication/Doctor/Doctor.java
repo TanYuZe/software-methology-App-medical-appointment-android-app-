@@ -5,7 +5,7 @@ import com.example.myapplication.BasicInfo;
 public class Doctor extends BasicInfo
 {
 
-    public Doctor(int id, String name, String email, String password, int phonenumber, String role)
+    public Doctor(String id, String name, String email, String password, int phonenumber, String role)
     {
         super (id, name, email, password, phonenumber, role);
     }

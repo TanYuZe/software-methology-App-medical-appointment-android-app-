@@ -24,8 +24,6 @@ public class RegisterEntity {
     private String email;
     private String password;
     private String contact;
-    DatabaseHelper DBHelper;
-    DatabaseManager dbManager;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
     
@@ -33,7 +31,7 @@ public class RegisterEntity {
 
     public RegisterEntity(Context context)
     {
-        DBHelper = new DatabaseHelper(context);
+
     }
 
 
@@ -90,131 +88,21 @@ public class RegisterEntity {
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
 
-        dbManager = new DatabaseManager(context);
-        try{
-            dbManager.open();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        SQLiteDatabase db = DBHelper.getWritableDatabase();
-
         mAuth = FirebaseAuth.getInstance();
 
-        String query = "SELECT _ID FROM Users WHERE fullName = '" + name
-                + "' AND email = '" + email
-                + "' AND password = '" + password
-                + "' AND role = '" + role
-                + "'";
-
-
-        Cursor cursor;
-
-        int idResult;
-        String result;
-
-        switch (role)
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
         {
-            case "Patient":
-                dbManager.insert(name, email, password, contactNum, role);
-
-                cursor = db.rawQuery(query, null);
-                cursor.moveToFirst();
-                result = cursor.getString(0);
-                idResult = Integer.parseInt(result);
-
-                int finalIdResult3 = idResult;
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task)
+            {
+                if(task.isSuccessful())
                 {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if(task.isSuccessful())
-                        {
 
-                            Patient patient = new Patient(finalIdResult3, name, email, password, contactNum, role);
-                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(patient);
-                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
-                        }
-                    }
-                });
-                cursor.close();
-                break;
-
-            case "Doctor":
-                dbManager.insert(name, email, password, contactNum, role);
-
-                cursor = db.rawQuery(query, null);
-                cursor.moveToFirst();
-                result = cursor.getString(0);
-                idResult = Integer.parseInt(result);
-
-                int finalIdResult = idResult;
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if(task.isSuccessful())
-                        {
-                            Doctor doctor = new Doctor(finalIdResult, name, email, password, contactNum, role);
-                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(doctor);
-                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
-                        }
-                    }
-                });
-                cursor.close();
-                break;
-
-            case "Pharmacist":
-                dbManager.insert(name, email, password, contactNum, role);
-
-                cursor = db.rawQuery(query, null);
-                cursor.moveToFirst();
-                result = cursor.getString(0);
-                idResult = Integer.parseInt(result);
-                int finalIdResult1 = idResult;
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if(task.isSuccessful())
-                        {
-                            Phamarcist pharmacist = new Phamarcist(finalIdResult1, name, email, password, contactNum, role);
-                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(pharmacist);
-                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
-                        }
-                    }
-                });
-                cursor.close();
-                break;
-
-            case "Admin":
-                dbManager.insert(name, email, password, contactNum, role);
-
-                cursor = db.rawQuery(query, null);
-                cursor.moveToFirst();
-                result = cursor.getString(0);
-                idResult = Integer.parseInt(result);
-                int finalIdResult2 = idResult;
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if(task.isSuccessful())
-                        {
-                            Admin admin = new Admin(finalIdResult2, name, email, password, contactNum, role);
-                            refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(admin);
-                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
-                        }
-                    }
-                });
-                cursor.close();
-                break;
-        }
+                    BasicInfo basicInfo = new BasicInfo(FirebaseAuth.getInstance().getCurrentUser().getUid(), name, email, password, contactNum, role);
+                    refrence_.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(basicInfo);
+                    FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
+                }
+            }
+        });
     }
 }
