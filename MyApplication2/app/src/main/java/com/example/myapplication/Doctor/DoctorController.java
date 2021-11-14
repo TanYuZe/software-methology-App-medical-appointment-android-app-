@@ -13,21 +13,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Properties;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
 
 public class DoctorController {
     private static DoctorController INSTANCE = null;
@@ -84,7 +81,7 @@ public class DoctorController {
                                     Prescribed newPrescribed = new Prescribed();
                                     newPrescribed.set_ID(snapshot2.getKey());
                                     newPrescribed.setDrugID(prescriptionArrayList.get(finalJ).getDrugId());
-                                    newPrescribed.setQuantity(1);
+                                    newPrescribed.setQuantity(prescriptionArrayList.get(finalJ).getQuantity());
                                     newPrescribed.setPrescribed(false);
                                     newPrescribed.setToken(snapshot2.child("name").getValue(String.class) + snapshot2.child("email").getValue(String.class));
 

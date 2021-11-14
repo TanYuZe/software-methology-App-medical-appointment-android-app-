@@ -10,40 +10,40 @@
         android:id="@+id/editbtn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        app:layout_constraintBottom_toBottomOf="@+id/admin_phoneno"
-        app:layout_constraintStart_toEndOf="@+id/admin_phoneno"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="37dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editbtn4"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/editbtn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="38dp"
-        app:layout_constraintBottom_toBottomOf="@+id/admin_password"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="37dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editbtn1"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/editbtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        app:layout_constraintStart_toStartOf="@+id/editbtn1"
-        app:layout_constraintTop_toBottomOf="@+id/editbtn1"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editbtn3"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="106dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/admin_name"
+        android:layout_marginEnd="106dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
@@ -52,174 +52,139 @@
         android:id="@+id/admin_name"
         android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginTop="184dp"
-        android:layout_marginEnd="116dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="31dp"
         android:text="TextView"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/editbtn1"
+        app:layout_constraintStart_toEndOf="@+id/textView24"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="53dp"
         android:text="Email:"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/admin_email"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-    <Button
-        android:id="@+id/admin_update"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="78dp"
-        android:layout_marginBottom="44dp"
-        android:text="Update Particulars"
-        app:layout_constraintBottom_toTopOf="@+id/admin_changepass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_role" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="79dp"
-        android:layout_marginTop="192dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="38dp"
         android:text="Name:"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/admin_name"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="30dp"
         android:text="Phone no:"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/admin_phoneno"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="311dp" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="44dp"
         android:text="Password:"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/admin_password"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="89dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginTop="40dp"
         android:text="Role:"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/admin_update"
-        app:layout_constraintEnd_toStartOf="@+id/admin_role"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-    <Button
-        android:id="@+id/admin_changepass"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="83dp"
-        android:layout_marginEnd="79dp"
-        android:layout_marginBottom="83dp"
-        android:text="Change Password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <TextView
         android:id="@+id/admin_email"
-        android:layout_width="142dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="116dp"
+        android:layout_width="160dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="12dp"
         android:text="TextView"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_name" />
+        app:layout_constraintEnd_toStartOf="@+id/editbtn2"
+        app:layout_constraintStart_toEndOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/admin_phoneno" />
 
     <TextView
         android:id="@+id/admin_password"
-        android:layout_width="133dp"
+        android:layout_width="150dp"
         android:layout_height="27dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="124dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="23dp"
         android:inputType="textPassword"
         android:text="TextView"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_phoneno" />
+        app:layout_constraintEnd_toStartOf="@+id/editbtn4"
+        app:layout_constraintStart_toEndOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/admin_name" />
 
     <TextView
         android:id="@+id/admin_role"
         android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="38dp"
         android:layout_marginEnd="116dp"
         android:text="Textview"
         android:textColor="#090909"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_password" />
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/admin_email" />
 
     <TextView
         android:id="@+id/admin_phoneno"
         android:layout_width="162dp"
         android:layout_height="28dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="11dp"
         android:text="TextView"
         android:textColor="#090909"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_email" />
+        app:layout_constraintEnd_toStartOf="@+id/editbtn3"
+        app:layout_constraintStart_toEndOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/admin_password" />
 
     <ImageButton
         android:id="@+id/editbtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="38dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="37dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
