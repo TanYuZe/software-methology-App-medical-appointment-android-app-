@@ -48,13 +48,13 @@
         android:layout_marginBottom="56dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/ViewAcc_btn"
+        app:layout_constraintBottom_toTopOf="@+id/DeleteAcc_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/ViewAcc_btn"
+        android:id="@+id/DeleteAcc_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="135dp"

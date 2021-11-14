@@ -1,9 +1,6 @@
 package com.example.myapplication.Doctor;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
-import android.os.StrictMode;
 
 import androidx.annotation.NonNull;
 
@@ -18,19 +15,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-
-import java.util.Properties;
 
 public class DoctorController {
     private static DoctorController INSTANCE = null;
@@ -101,7 +85,7 @@ public class DoctorController {
                                         String finalEmail = emailed;
                                         String subject = "Verification for prescription";
                                         String finalMessage = sUID[0];
-                                        sendEmail(finalEmail, subject, finalMessage, username, password);
+                                        //sendEmail(finalEmail, subject, finalMessage, username, password);
 
                                     }
                                 }
@@ -124,54 +108,54 @@ public class DoctorController {
         }
     }
 
-    void sendEmail(String email, String subject, String message, String senderEM, String senderPass)
-    {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        Properties prop = new Properties();
-
-        prop.setProperty("mail.transport.protocol", "smtp");
-        prop.setProperty("mail.host", "smtp.gmail.com");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.port", "465");
-        prop.put("mail.debug", "true");
-        prop.put("mail.smtp.socketFactory.port", "465");
-        prop.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-        prop.put("mail.smtp.socketFactory.fallback", "false");
-
-        Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator(){
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication()
-                    {
-                        return new PasswordAuthentication(senderEM, senderPass);
-                    }
-                });
-
-        
-        Message message1 = new MimeMessage(session);
-        try
-        {
-            message1.setFrom(new InternetAddress(senderEM));
-            message1.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message1.setSubject(subject);
-
-            //MimeMultipart mimeMultipart = new MimeMultipart();
-
-            //MimeBodyPart theMessage = new MimeBodyPart();
-            //theMessage.setContent(message, "text/plain");
-
-            //mimeMultipart.addBodyPart(theMessage);
-
-            //message1.setContent(mimeMultipart);
-            message1.setText(message);
-
-            Transport.send(message1);
-        }catch (MessagingException e)
-        {
-            e.printStackTrace();
-        }
-        }
+//    void sendEmail(String email, String subject, String message, String senderEM, String senderPass)
+//    {
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//
+//        Properties prop = new Properties();
+//
+//        prop.setProperty("mail.transport.protocol", "smtp");
+//        prop.setProperty("mail.host", "smtp.gmail.com");
+//        prop.put("mail.smtp.auth", "true");
+//        prop.put("mail.smtp.port", "465");
+//        prop.put("mail.debug", "true");
+//        prop.put("mail.smtp.socketFactory.port", "465");
+//        prop.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+//        prop.put("mail.smtp.socketFactory.fallback", "false");
+//
+//        Session session = Session.getInstance(prop,
+//                new javax.mail.Authenticator(){
+//                    @Override
+//                    protected PasswordAuthentication getPasswordAuthentication()
+//                    {
+//                        return new PasswordAuthentication(senderEM, senderPass);
+//                    }
+//                });
+//
+//
+//        Message message1 = new MimeMessage(session);
+//        try
+//        {
+//            message1.setFrom(new InternetAddress(senderEM));
+//            message1.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+//            message1.setSubject(subject);
+//
+//            //MimeMultipart mimeMultipart = new MimeMultipart();
+//
+//            //MimeBodyPart theMessage = new MimeBodyPart();
+//            //theMessage.setContent(message, "text/plain");
+//
+//            //mimeMultipart.addBodyPart(theMessage);
+//
+//            //message1.setContent(mimeMultipart);
+//            message1.setText(message);
+//
+//            Transport.send(message1);
+//        }catch (MessagingException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        }
 
 }

@@ -40,7 +40,7 @@ public class Admin_ViewUser extends AppCompatActivity {
         t_email = findViewById(R.id.t_phoneno);
         t_phoneno = findViewById(R.id.t_roles);
 
-        View_btn = findViewById(R.id.ViewAcc_btn);
+        View_btn = findViewById(R.id.DeleteAcc_btn);
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");

@@ -21,7 +21,11 @@ public class Doctor_ViewProfile extends AppCompatActivity {
     TextView doc_name, doc_email, doc_password, doc_role, doc_phoneno;
     Button btn_update, btn_changepass;
     FirebaseDatabase rootNode_;
+
     DatabaseReference refrence_;
+
+    DatabaseReference ref1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,10 @@ public class Doctor_ViewProfile extends AppCompatActivity {
         doc_role = findViewById(R.id.doc_role);
         doc_phoneno = findViewById(R.id.doc_phoneno);
 
+
         btn_update = findViewById(R.id.btn_update);
         btn_changepass = findViewById(R.id.btn_changepass);
+
 
 
 
@@ -45,7 +51,10 @@ public class Doctor_ViewProfile extends AppCompatActivity {
         refrence_.orderByChild("email").equalTo(user.getEmail());
 
 
-        refrence_.addValueEventListener(new ValueEventListener()
+
+
+        ref1.addListenerForSingleValueEvent(new ValueEventListener()
+
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
@@ -54,7 +63,11 @@ public class Doctor_ViewProfile extends AppCompatActivity {
                 {
                     BasicInfo userinfo = snapshot1.getValue(BasicInfo.class);
 
-                    if(userinfo.getId().equals(user.getUid()) )
+
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if(user.getEmail() == userinfo.getEmail())
+
                     {
                         //maxID = snapshot.getChildrenCount();
                         doc_name.setText(userinfo.getName());
@@ -70,6 +83,11 @@ public class Doctor_ViewProfile extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+
+
+
+
 
     }
 }

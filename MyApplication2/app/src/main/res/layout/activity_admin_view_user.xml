@@ -111,7 +111,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/ViewAcc_btn"
+        android:id="@+id/DeleteAcc_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="135dp"
@@ -143,7 +143,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ViewAcc_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/DeleteAcc_btn" />
 
     <TextView
         android:id="@+id/textView4"
