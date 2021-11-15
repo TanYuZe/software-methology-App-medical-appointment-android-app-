@@ -88,11 +88,69 @@ public class Admin_ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
+                AlertDialog dialog = mydialog.create();
                 final EditText input = new EditText(Admin_ViewProfile.this);
                 mydialog.setMessage("Please enter your name");
                 mydialog.setTitle("Name Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+//                mydialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        changes = input.getText().toString();
+//                            if(changes.equals(""))
+//                            {
+//                                input.setError("you must enter a text");
+//                            }
+//                            else {
+//                                adminController.updateName(changes);
+//                                admin_name.setText(changes);
+//                                dialog.cancel();
+//                            }
+//
+//                    }
+//                });
+
+//                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//                mydialog.show();
+//
+//                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
+//
+//                positiveButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                            changes = input.getText().toString();
+//                            if(changes.equals(""))
+//                            {
+//                                input.setError("you must enter a text");
+//                            }
+//                            else
+//                            {
+//                                adminController.updateName(changes);
+//                                admin_name.setText(changes);
+//                                dialog.dismiss();
+//
+//
+//
+//                            }
+//
+//                    }
+//                });
+
+//                Button negativeButton = mydialog.show().getButton(AlertDialog.BUTTON_NEGATIVE);
+//                negativeButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.cancel();
+//                    }
+//                });
+
 
                 mydialog.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
@@ -110,7 +168,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                             }
                         });
                 AlertDialog alert11 = mydialog.create();
-                alert11.show();
+
             }
         });
 

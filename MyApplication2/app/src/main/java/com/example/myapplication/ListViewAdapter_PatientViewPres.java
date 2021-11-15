@@ -5,14 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListViewAdapter_PatientViewPres extends ArrayAdapter<Prescribed>
 {
@@ -36,6 +33,7 @@ public class ListViewAdapter_PatientViewPres extends ArrayAdapter<Prescribed>
         TextView tv_drugName = (TextView) convertview.findViewById(R.id.TheMedicationID);
         TextView tV_isPrescribed = (TextView) convertview.findViewById(R.id.PrescribedYet);
         TextView tV_quantity = (TextView) convertview.findViewById(R.id.MedicineQuantity);
+        TextView tv_date = convertview.findViewById(R.id.tv_date);
         //uncomment this later
         //TextView tV_Date = (TextView) convertview.findViewById(R.id.PrescribedDate);
 
@@ -43,6 +41,7 @@ public class ListViewAdapter_PatientViewPres extends ArrayAdapter<Prescribed>
         tv_drugName.setText(presc1.getDrugName());
         tV_isPrescribed.setText(String.valueOf(presc1.isPrescribed()));
         tV_quantity.setText(String.valueOf(presc1.getQuantity()));
+        tv_date.setText(presc1.getDate());
         //tV_Date.setText(presc1.presc1.getDate();)
 
         return convertview;
