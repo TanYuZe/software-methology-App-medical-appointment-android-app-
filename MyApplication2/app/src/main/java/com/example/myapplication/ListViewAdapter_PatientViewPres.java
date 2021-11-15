@@ -33,7 +33,7 @@ public class ListViewAdapter_PatientViewPres extends ArrayAdapter<Prescribed>
         TextView tv_drugName = (TextView) convertview.findViewById(R.id.TheMedicationID);
         TextView tV_isPrescribed = (TextView) convertview.findViewById(R.id.PrescribedYet);
         TextView tV_quantity = (TextView) convertview.findViewById(R.id.MedicineQuantity);
-        TextView tv_date = convertview.findViewById(R.id.tv_date);
+        TextView tv_date = (TextView) convertview.findViewById(R.id.Date);
         //uncomment this later
         //TextView tV_Date = (TextView) convertview.findViewById(R.id.PrescribedDate);
 
