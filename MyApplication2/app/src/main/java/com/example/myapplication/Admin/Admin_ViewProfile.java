@@ -96,7 +96,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
                 mydialog.setPositiveButton("Ok", null);
-                mydialog.setNegativeButton("Done", new DialogInterface.OnClickListener() {
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -141,7 +141,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
                 mydialog.setPositiveButton("Ok", null);
-                mydialog.setNegativeButton("Done", new DialogInterface.OnClickListener() {
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.dismiss();
                             }
@@ -184,7 +184,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
                 mydialog.setPositiveButton("Ok", null);
-                mydialog.setNegativeButton("Done", new DialogInterface.OnClickListener() {
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }

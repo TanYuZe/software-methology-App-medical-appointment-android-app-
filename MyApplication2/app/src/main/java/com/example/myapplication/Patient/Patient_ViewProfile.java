@@ -1,9 +1,11 @@
 package com.example.myapplication.Patient;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -84,29 +86,43 @@ public class Patient_ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Patient_ViewProfile.this);
+                //AlertDialog dialog = mydialog.create();
                 final EditText input = new EditText(Patient_ViewProfile.this);
                 mydialog.setMessage("Please enter your name");
                 mydialog.setTitle("Name Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
-                                Controller.updateName(changes);
-                                pat_name.setText(changes);
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+                        dialog.dismiss();
+
+                    }
+                });
+
+
+
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else {
+                            Controller.updateName(changes);
+                            pat_name.setText(changes);
+                            Intent intent = new Intent(Patient_ViewProfile.this, Patient_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
@@ -121,24 +137,37 @@ public class Patient_ViewProfile extends AppCompatActivity {
                 mydialog.setTitle("Password Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
-                                Controller.updatePassword(changes);
-                                pat_password.setText(changes);
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else if(!validatePassword(changes))
+                        {
+                            input.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
+                        }
+                        else {
+                            Controller.updatePassword(changes);
+                            pat_password.setText(changes);
+                            Intent intent = new Intent(Patient_ViewProfile.this, Patient_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
@@ -151,32 +180,37 @@ public class Patient_ViewProfile extends AppCompatActivity {
                 mydialog.setTitle("Phone Number Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
 
-                                if(changes.equals(""))
-                                {
-                                    input.setError("Cannot be empty");
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
 
-                                }
-                                else {
-                                    pat_phoneno.setText(changes);
-                                    Controller.updateNumber(Integer.parseInt(changes));
-                                }
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else if(!validatePhoneNo(changes))
+                        {
+                            input.setError("Please a valid phone number format. Hint: only 8 digit!");
+                        }
+                        else {
+                            Controller.updateNumber(Integer.parseInt(changes));
+                            pat_phoneno.setText(changes);
+                            Intent intent = new Intent(Patient_ViewProfile.this, Patient_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
@@ -184,4 +218,41 @@ public class Patient_ViewProfile extends AppCompatActivity {
 
 
     }
+    public Boolean validatePassword(String password) {
+        String val = password;
+        String passwordVal = "^" +
+                //"(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{8,}" +               //at least 4 characters
+                "$";
+
+        if (val.equals("")) {
+            return false;
+        } else if (!val.matches(passwordVal)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Boolean validatePhoneNo(String phonenum) {
+        String val = phonenum;
+
+        String passwordVal = "^[0-9]{8}$";
+        if (val.equals("")) {
+            return false;
+        }
+        else if (!val.matches(passwordVal)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+
 }
