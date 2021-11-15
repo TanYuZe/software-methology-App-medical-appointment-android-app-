@@ -37,7 +37,6 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
     EditText filter_text;
     ListView listview_med;
     Button assign_med_btn;
-    //ArrayAdapter<String> adapter;
     ArrayAdapter<Prescription> adapter2;
     ArrayList<String> medlist;
     ArrayList<Prescription> drugsSelected;
@@ -50,9 +49,6 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
     DatabaseReference refrence_2;
 
     ListViewAdapter_DoctorAssignmed adapter;
-
-    //
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
