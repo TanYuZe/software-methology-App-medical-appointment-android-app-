@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/TheMedicationID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prescribed ID"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="20dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/PrescribedYet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="Prescribed?"
+        app:layout_constraintTop_toBottomOf="@+id/TheMedicationID"
+        tools:layout_editor_absoluteX="11dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/MedicineQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="208dp"
+        android:text="How Many"
+        app:layout_constraintStart_toEndOf="@+id/TheMedicationID"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="20dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
