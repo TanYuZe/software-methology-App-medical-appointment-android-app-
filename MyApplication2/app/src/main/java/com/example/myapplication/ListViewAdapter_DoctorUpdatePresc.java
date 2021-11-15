@@ -60,7 +60,7 @@ public class ListViewAdapter_DoctorUpdatePresc extends ArrayAdapter<Prescribed> 
 
         tv_prescribed.setText(String.valueOf(presc1.isPrescribed));
         tv_drugname.setText(presc1.getDate());
-        tv_quantity.setText(presc1.quantity);
+        tv_quantity.setText(String.valueOf(presc1.getQuantity()));
         tv_date.setText(presc1.getDate());
 
 

@@ -6,15 +6,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.ListViewAdapter_DoctorUpdatePresc;
 import com.example.myapplication.Prescribed;
 import com.example.myapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListViewAdapter_DoctorUpdatePresc.CheckboxCheckListner{
 
@@ -25,6 +31,7 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListVie
     ListViewAdapter_DoctorUpdatePresc adapter;
     FirebaseDatabase rootNode_;
     DatabaseReference reference_;
+    DatabaseReference reference_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,7 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListVie
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         reference_ = rootNode_.getReference("Prescribed");
+        reference_2 = rootNode_.getReference("Users");
 
 
 
@@ -54,8 +62,49 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListVie
             @Override
             public void onClick(View v) {
 
-                //get presc base on user email
+                String email = email_input.getText().toString();
 
+                if(!presc.isEmpty())
+                {
+                    presc.clear();
+                }
+
+                //get presc base on user email
+                reference_.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren())
+                        {
+                            for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                            {
+                                Prescribed prescribed = dataSnapshot1.getValue(Prescribed.class);
+
+                                reference_2.child(prescribed.get_ID()).child("email").addListenerForSingleValueEvent(new ValueEventListener()
+                                {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot2nd)
+                                    {
+                                        if(snapshot2nd.getValue(String.class).equals(email))
+                                        {
+                                            presc.add(prescribed);
+                                            adapter.notifyDataSetChanged();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 
             }
@@ -70,10 +119,36 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListVie
     {
         //write code here to be able to delete listview entries
 
+        Prescribed removingPrescribed = presc.get(position);
 
+        reference_.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren())
+                {
+                    for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                    {
+                        Prescribed prescribed = dataSnapshot1.getValue(Prescribed.class);
+                        if(presc.isEmpty() || position >= presc.size())
+                        {
+                            break;
+                        }
+                        else if(prescribed.getDrugID().equals(removingPrescribed.getDrugID())
+                                && prescribed.getDate().equals(removingPrescribed.getDate()))
+                        {
+                            reference_.child(dataSnapshot.getKey()).child(dataSnapshot1.getKey()).removeValue();
+                            presc.remove(removingPrescribed);
+                            adapter.notifyDataSetChanged();
+                            break;
+                        }
+                    }
+                }
+            }
 
-        //frontend code to delete visually
-        presc.remove(presc.get(position));
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
     }
 }
