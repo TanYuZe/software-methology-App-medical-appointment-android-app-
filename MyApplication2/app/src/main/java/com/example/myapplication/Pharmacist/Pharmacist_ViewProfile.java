@@ -26,8 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Pharmacist_ViewProfile extends AppCompatActivity {
     TextView phar_name, phar_email, phar_password, phar_role, phar_phoneno;
-    ImageButton edit_name, edit_email, edit_password, edit_phoneno;
-    Button btn_update;
+    ImageButton edit_name, edit_password, edit_phoneno;
+
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
     String changes;
@@ -83,41 +83,49 @@ public class Pharmacist_ViewProfile extends AppCompatActivity {
             }
         });
 
-        btn_update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Pharmacist_ViewProfile.this, Pharmacist_UpdateInfo.class);
-                startActivity(intent);
-            }
-        });
+
 
         edit_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Pharmacist_ViewProfile.this);
+                //AlertDialog dialog = mydialog.create();
                 final EditText input = new EditText(Pharmacist_ViewProfile.this);
                 mydialog.setMessage("Please enter your name");
                 mydialog.setTitle("Name Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
-                                Controller.updateName(changes);
-                                phar_name.setText(changes);
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+                        dialog.dismiss();
+
+                    }
+                });
+
+
+
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else {
+                            Controller.updateName(changes);
+                            phar_name.setText(changes);
+                            Intent intent = new Intent(Pharmacist_ViewProfile.this, Pharmacist_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
@@ -132,24 +140,37 @@ public class Pharmacist_ViewProfile extends AppCompatActivity {
                 mydialog.setTitle("Password Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
-                                Controller.updatePassword(changes);
-                                phar_password.setText(changes);
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else if(!validatePassword(changes))
+                        {
+                            input.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
+                        }
+                        else {
+                            Controller.updatePassword(changes);
+                            phar_password.setText(changes);
+                            Intent intent = new Intent(Pharmacist_ViewProfile.this, Pharmacist_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
@@ -162,34 +183,79 @@ public class Pharmacist_ViewProfile extends AppCompatActivity {
                 mydialog.setTitle("Phone Number Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
 
-                                if(changes.equals(""))
-                                {
-                                    input.setError("Cannot be empty");
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
 
-                                }
-                                else {
-                                    phar_phoneno.setText(changes);
-                                    Controller.updateNumber(Integer.parseInt(changes));
-                                }
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else if(!validatePhoneNo(changes))
+                        {
+                            input.setError("Please a valid phone number format. Hint: only 8 digit!");
+                        }
+                        else {
+                            Controller.updateNumber(Integer.parseInt(changes));
+                            phar_phoneno.setText(changes);
+                            Intent intent = new Intent(Pharmacist_ViewProfile.this, Pharmacist_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
+
+
+
+
     }
+    public Boolean validatePassword(String password) {
+        String val = password;
+        String passwordVal = "^" +
+                //"(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{8,}" +               //at least 4 characters
+                "$";
+
+        if (val.equals("")) {
+            return false;
+        } else if (!val.matches(passwordVal)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Boolean validatePhoneNo(String phonenum) {
+        String val = phonenum;
+
+        String passwordVal = "^[0-9]{8}$";
+        if (val.equals("")) {
+            return false;
+        }
+        else if (!val.matches(passwordVal)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 
 }
