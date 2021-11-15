@@ -83,6 +83,7 @@ public class DoctorController {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot2)
                                 {
+                                    Date currentTime = Calendar.getInstance().getTime();
 
                                     final String[] sUID = {snapshot2.getKey() + "_" + String.valueOf(finalI)};
 
@@ -90,12 +91,13 @@ public class DoctorController {
                                     newPrescribed.set_ID(snapshot2.getKey());
                                     newPrescribed.setDrugID(prescriptionArrayList.get(finalJ).getDrugId());
                                     newPrescribed.setQuantity(prescriptionArrayList.get(finalJ).getQuantity());
+                                    newPrescribed.setDrugName(prescriptionArrayList.get(finalJ).getDrugPrescribed());
+                                    newPrescribed.setDate(currentTime.toString());
                                     newPrescribed.setPrescribed(false);
                                     newPrescribed.setToken(snapshot2.child("name").getValue(String.class) + snapshot2.child("email").getValue(String.class));
 
                                     prescribedArrayList.add(newPrescribed);
 
-                                    Date currentTime = Calendar.getInstance().getTime();
                                     String currentTimeS = currentTime.toString();
                                     sUID[0] = snapshot2.getKey() + "_" + currentTimeS;
                                     if(finalJ == prescriptionArrayList.size()-1)

@@ -44,7 +44,7 @@ public class ListViewAdapter_Phar_viewuserpresc extends ArrayAdapter<Prescribed>
         TextView tv_drugid = (TextView) convertview.findViewById(R.id.tv_drugID);
         TextView tv_drugname = (TextView) convertview.findViewById(R.id.tv_medname);
         TextView tv_quantity = (TextView) convertview.findViewById(R.id.tv_quantity);
-        ImageButton imgbtn = convertview.findViewById(R.id.imageButton1);
+        ImageButton imgbtn = convertview.findViewById(R.id.imageButton);
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +60,7 @@ public class ListViewAdapter_Phar_viewuserpresc extends ArrayAdapter<Prescribed>
 
         tv_drugid.setText(String.valueOf(presc1.drugID));
         tv_drugname.setText(String.valueOf(presc1.drugID));
-        tv_quantity.setText(presc1.quantity);
+        tv_quantity.setText(String.valueOf(presc1.getQuantity()));
 
         return convertview;
 

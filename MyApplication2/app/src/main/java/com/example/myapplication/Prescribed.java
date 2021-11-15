@@ -7,6 +7,25 @@ public class Prescribed
     int quantity;
     String token;
     boolean isPrescribed;
+    String Date;
+    String DrugName;
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getDrugName() {
+        return DrugName;
+    }
+
+    public void setDrugName(String drugName) {
+        DrugName = drugName;
+    }
+
     public Prescribed()
     {
 

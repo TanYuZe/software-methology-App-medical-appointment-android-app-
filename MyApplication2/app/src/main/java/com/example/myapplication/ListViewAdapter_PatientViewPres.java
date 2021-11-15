@@ -33,14 +33,17 @@ public class ListViewAdapter_PatientViewPres extends ArrayAdapter<Prescribed>
 
         Prescribed presc1 = getItem(position);
 
-        TextView tv_drugID = (TextView) convertview.findViewById(R.id.TheMedicationID);
+        TextView tv_drugName = (TextView) convertview.findViewById(R.id.TheMedicationID);
         TextView tV_isPrescribed = (TextView) convertview.findViewById(R.id.PrescribedYet);
         TextView tV_quantity = (TextView) convertview.findViewById(R.id.MedicineQuantity);
+        //uncomment this later
+        //TextView tV_Date = (TextView) convertview.findViewById(R.id.PrescribedDate);
 
 
-        tv_drugID.setText(presc1.getDrugID().toString());
+        tv_drugName.setText(presc1.getDrugName());
         tV_isPrescribed.setText(String.valueOf(presc1.isPrescribed()));
         tV_quantity.setText(String.valueOf(presc1.getQuantity()));
+        //tV_Date.setText(presc1.presc1.getDate();)
 
         return convertview;
     }

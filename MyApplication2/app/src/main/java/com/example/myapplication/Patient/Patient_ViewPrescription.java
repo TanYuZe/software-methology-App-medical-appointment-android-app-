@@ -53,7 +53,6 @@ public class Patient_ViewPrescription extends AppCompatActivity{
                     for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                     {
                         prescribedArrayList.add(dataSnapshot1.getValue(Prescribed.class));
-
                     }
                 }
             }
@@ -63,18 +62,6 @@ public class Patient_ViewPrescription extends AppCompatActivity{
 
             }
         });
-
-        //for(int i = 1; i < 50; i++)
-        //{
-        //    presclist.add("medicine:\n med1\n med2\n med3\n ");
-        //}
-
-
-
-
-
-        //adapter = new ArrayAdapter<String>(Patient_ViewPrescription.this, android.R.layout.simple_list_item_1, presclist);
-        //listview_presc.setAdapter(adapter);
 
     }
 }
