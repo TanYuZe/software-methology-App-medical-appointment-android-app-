@@ -2,10 +2,10 @@ package com.example.myapplication.Admin;
 
 import com.example.myapplication.BasicInfo;
 
-public class Admin extends BasicInfo
+public class AdminEntity extends BasicInfo
 {
 
-    public Admin(String id, String name, String email, String password, int phonenumber, String role)
+    public AdminEntity(String id, String name, String email, String password, int phonenumber, String role)
     {
         super (id, name, email, password, phonenumber, role);
     }

@@ -90,4 +90,17 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/viewQR" />
 
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="458dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:filterTouchesWhenObscured="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/ic_twotone_email_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
