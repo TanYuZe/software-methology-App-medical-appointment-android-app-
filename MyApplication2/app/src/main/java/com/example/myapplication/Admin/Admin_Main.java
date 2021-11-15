@@ -19,12 +19,12 @@ public class Admin_Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
-        Add_User = findViewById(R.id.AddUser);
+
         Delete_User = findViewById(R.id.DeleteUser);
         View_User = findViewById(R.id.ViewUser);
         Logout_btn = findViewById(R.id.Admin_Logout);
         View_profile = findViewById(R.id.admin_viewprofile_btn);
-        Intent intent_Adduser = new Intent(Admin_Main.this, Admin_AddUser.class);
+
         Intent intent_Deleteuser = new Intent(Admin_Main.this, Admin_DeleteUser.class);
         Intent intent_Viewuser = new Intent(Admin_Main.this, Admin_ViewUser.class);
         Intent intent_Viewprofile = new Intent(Admin_Main.this, Admin_ViewProfile.class);
@@ -40,14 +40,7 @@ public class Admin_Main extends AppCompatActivity {
 
 
 
-        Add_User.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(intent_Adduser);
-
-            }
-        });
+//
 
         Delete_User.setOnClickListener(new View.OnClickListener() {
             @Override

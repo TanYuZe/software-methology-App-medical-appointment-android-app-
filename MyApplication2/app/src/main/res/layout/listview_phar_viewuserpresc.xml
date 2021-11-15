@@ -9,104 +9,109 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="23dp"
+        android:layout_marginEnd="292dp"
         android:text="TextView"
         android:textColor="#42AA46"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_drugID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView54"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="27dp"
         android:text="Drug ID"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_drugID"
-        app:layout_constraintStart_toEndOf="@+id/textView60" />
+        app:layout_constraintBottom_toTopOf="@+id/textView55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
     <TextView
         android:id="@+id/textView55"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="24dp"
         android:text="Medicine name:"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_medname"
+        app:layout_constraintBottom_toTopOf="@+id/textView56"
+        app:layout_constraintEnd_toStartOf="@+id/tv_medname"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView56"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginBottom="560dp"
         android:text="Quantity"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_quantity"
-        app:layout_constraintEnd_toEndOf="@+id/textView55" />
-
-    <TextView
-        android:id="@+id/textView60"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="16dp"
-        android:text="Date:"
-        android:textColor="#42AA46"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_drugID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="189dp"
+        android:layout_marginBottom="27dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_medname"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView54"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_medname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="24dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_drugID"
-        app:layout_constraintTop_toBottomOf="@+id/tv_drugID" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_quantity"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton" />
 
     <TextView
         android:id="@+id/tv_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="189dp"
+        android:layout_marginBottom="560dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_medname"
-        app:layout_constraintTop_toBottomOf="@+id/tv_medname" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView56" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="56dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_medname"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="603dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_drugID"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_done_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

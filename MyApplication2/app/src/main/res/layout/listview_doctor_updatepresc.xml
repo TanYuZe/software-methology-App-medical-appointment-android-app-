@@ -25,14 +25,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
-        android:layout_marginTop="33dp"
         android:layout_marginBottom="22dp"
         android:text="Drug Name:"
         android:textColor="#050505"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView36"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView63" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView36"
@@ -52,13 +50,17 @@
         android:id="@+id/date1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
         android:layout_marginTop="26dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginEnd="196dp"
+        android:layout_marginBottom="33dp"
         android:text="Prescribed ID"
         android:textColor="#4CAF50"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView35"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -81,30 +83,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="34dp"
         android:layout_marginEnd="57dp"
         android:text="Prescribed ID"
         android:textColor="#050505"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageButton11"
         app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/date1"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView63"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="33dp"
-        android:text="Date:"
-        android:textColor="#4CAF50"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/date1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="89dp" />
 
     <TextView
         android:id="@+id/medicineQuantity"

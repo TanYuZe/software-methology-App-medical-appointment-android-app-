@@ -6,187 +6,187 @@
     android:layout_height="match_parent"
     tools:context=".Doctor.Doctor_ViewProfile">
 
-    <ImageButton
-        android:id="@+id/imageButton4"
+    <TextView
+        android:id="@+id/textView37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="366dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/doc_phoneno"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="39dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/doc_password"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
+        android:layout_marginBottom="11dp"
+        android:text="Your Profile"
+        android:textColor="#273EBD"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15" />
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="288dp"
-        android:layout_height="177dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="64dp"
+        android:id="@+id/imageView15"
+        android:layout_width="178dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView37"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/images" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="141dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="53dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView48"
+        app:layout_constraintTop_toBottomOf="@+id/textView48"
         app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/doc_name"
-        android:layout_width="142dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="158dp"
         android:text="TextView"
         android:textColor="#070707"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView44"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
-
-    <TextView
-        android:id="@+id/textView44"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="21dp"
-        android:text="Name:"
-        android:textColor="#0B0A0A"
-        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
-
-    <TextView
-        android:id="@+id/doc_phoneno"
-        android:layout_width="162dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="33dp"
-        android:text="TextView"
-        android:textColor="#050505"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView47"
-        app:layout_constraintTop_toBottomOf="@+id/doc_password" />
-
-    <TextView
-        android:id="@+id/textView47"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="37dp"
-        android:text="Phone no:"
-        android:textColor="#020202"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/doc_phoneno"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView45" />
-
-    <TextView
-        android:id="@+id/textView45"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="43dp"
-        android:text="Password:"
-        android:textColor="#070707"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/doc_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView44" />
-
-    <TextView
-        android:id="@+id/textView48"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="271dp"
-        android:text="Role:"
-        android:textColor="#070707"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView46" />
-
-    <TextView
-        android:id="@+id/doc_password"
-        android:layout_width="134dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="29dp"
-        android:inputType="textPassword"
-        android:text="TextView"
-        android:textColor="#070707"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/doc_name"
-        tools:layout_editor_absoluteX="143dp" />
-
-    <TextView
-        android:id="@+id/doc_email"
-        android:layout_width="142dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="126dp"
-        android:text="TextView"
-        android:textColor="#0B0A0A"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView46"
-        app:layout_constraintTop_toBottomOf="@+id/doc_phoneno" />
-
-    <TextView
-        android:id="@+id/doc_role"
-        android:layout_width="142dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="127dp"
-        android:layout_marginBottom="272dp"
-        android:text="Textview"
-        android:textColor="#070707"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView48"
-        app:layout_constraintTop_toBottomOf="@+id/doc_email" />
+        app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
     <TextView
         android:id="@+id/textView46"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginEnd="1dp"
         android:text="Email:"
         android:textColor="#0B0A0A"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView47" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/doc_email"
+        app:layout_constraintEnd_toEndOf="@+id/textView47" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:text="Name:"
+        android:textColor="#0B0A0A"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/doc_name"
+        app:layout_constraintEnd_toEndOf="@+id/textView45" />
+
+    <TextView
+        android:id="@+id/doc_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="34dp"
+        android:inputType="textPassword"
+        android:text="TextView"
+        android:textColor="#070707"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/doc_name"
+        app:layout_constraintTop_toBottomOf="@+id/doc_name" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:text="Password:"
+        android:textColor="#070707"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/doc_password"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Role:"
+        android:textColor="#070707"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/doc_role"
+        app:layout_constraintEnd_toEndOf="@+id/textView46" />
+
+    <TextView
+        android:id="@+id/doc_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginBottom="224dp"
+        android:text="Textview"
+        android:textColor="#070707"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView48"
+        app:layout_constraintTop_toTopOf="@+id/doc_name" />
+
+    <TextView
+        android:id="@+id/doc_phoneno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="40dp"
+        android:text="TextView"
+        android:textColor="#050505"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/doc_email"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintStart_toEndOf="@+id/textView47" />
+
+    <TextView
+        android:id="@+id/doc_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="35dp"
+        android:text="TextView"
+        android:textColor="#0B0A0A"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/doc_role"
+        app:layout_constraintStart_toStartOf="@+id/doc_role" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone no:"
+        android:textColor="#020202"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/doc_phoneno"
+        app:layout_constraintEnd_toEndOf="@+id/textView45" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        app:layout_constraintStart_toStartOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="35dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/doc_name"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        app:layout_constraintStart_toStartOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
 

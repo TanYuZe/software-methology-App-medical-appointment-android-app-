@@ -17,6 +17,8 @@
         android:layout_marginBottom="41dp"
         android:text="Welcome!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#4CAF50"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/viewProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

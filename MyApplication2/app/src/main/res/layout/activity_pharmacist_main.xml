@@ -16,6 +16,8 @@
         android:layout_marginBottom="46dp"
         android:text="Welcome!"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#308F34"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/PharmacistProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

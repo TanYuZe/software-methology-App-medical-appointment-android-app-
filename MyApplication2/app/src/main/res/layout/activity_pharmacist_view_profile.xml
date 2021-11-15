@@ -6,14 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".Pharmacist.Pharmacist_ViewProfile">
 
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="38dp"
+        android:text="Your Profile"
+        android:textColor="#273EBD"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/phar_name"
+        app:layout_constraintEnd_toEndOf="@+id/imageView14" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="207dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/images" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="182dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <ImageButton
         android:id="@+id/imageButton8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/phar_password"
         app:layout_constraintTop_toBottomOf="@+id/imageButton9"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
@@ -21,175 +55,132 @@
         android:id="@+id/imageButton9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/phar_name"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView34"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
-    <ImageButton
-        android:id="@+id/imageButton10"
+    <TextView
+        android:id="@+id/phar_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/phar_phoneno"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton8"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/phar_name"
-        android:layout_width="0dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="33dp"
+        android:inputType="textPassword"
         android:text="TextView"
         android:textColor="#040303"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/phar_password"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton9"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/imageButton9" />
-
-    <TextView
-        android:id="@+id/phar_email"
-        android:layout_width="0dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="30dp"
-        android:text="Textview"
-        android:textColor="#040303"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/phar_role"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton10" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="66dp"
-        android:layout_marginEnd="42dp"
-        android:text="Name:"
-        android:textColor="#040303"
-        android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/phar_name"
-        app:layout_constraintEnd_toStartOf="@+id/phar_name"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/phar_role"
-        android:layout_width="0dp"
-        android:layout_height="27dp"
-        android:layout_marginEnd="120dp"
-        android:text="TextView"
-        android:textColor="#040303"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/phar_phoneno"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="7dp"
-        android:text="TextView"
-        android:textColor="#040303"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton10"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton10"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="@+id/imageButton10"
-        android:textStyle="bold" />
+        app:layout_constraintBottom_toTopOf="@+id/phar_phoneno"
+        app:layout_constraintStart_toStartOf="@+id/phar_phoneno" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="43dp"
         android:text="Phone no:"
         android:textColor="#040303"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/phar_phoneno"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="45dp"
-        android:text="Email:"
-        android:textColor="#040303"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/phar_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <TextView
-        android:id="@+id/phar_password"
-        android:layout_width="0dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="66dp"
-        android:layout_marginBottom="63dp"
-        android:inputType="textPassword"
-        android:text="TextView"
-        android:textColor="#040303"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton10"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton8"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/imageButton9" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="1dp"
-        android:text="Password:"
-        android:textColor="#040303"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/phar_password"
-        app:layout_constraintEnd_toStartOf="@+id/phar_password"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/phar_phoneno"
+        app:layout_constraintEnd_toEndOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="42dp"
         android:text="Role:"
         android:textColor="#040303"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/phar_role"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/phar_role"
+        app:layout_constraintEnd_toEndOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:text="Password:"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/phar_password"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:text="Email:"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/phar_email"
+        app:layout_constraintEnd_toEndOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/phar_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:text="Textview"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/phar_phoneno"
+        app:layout_constraintTop_toBottomOf="@+id/phar_phoneno" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:text="Name:"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/phar_phoneno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="327dp"
+        android:text="TextView"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/phar_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/phar_email"
+        app:layout_constraintTop_toBottomOf="@+id/phar_email" />
+
+    <TextView
+        android:id="@+id/phar_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:text="TextView"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/textView16" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton8"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

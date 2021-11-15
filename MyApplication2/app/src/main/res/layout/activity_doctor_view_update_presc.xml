@@ -10,49 +10,85 @@
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="16dp"
         android:text="User Email:"
-        app:layout_constraintBottom_toTopOf="@+id/listview1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#0C0C0C"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/viewupdate_emailinput"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/viewupdate_emailinput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="18dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView30"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/update_btn"
+        app:layout_constraintStart_toEndOf="@+id/textView30" />
 
     <ListView
         android:id="@+id/listview1"
-        android:layout_width="367dp"
-        android:layout_height="477dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="33dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewupdate_emailinput" />
+        app:layout_constraintTop_toTopOf="@+id/textView38" />
 
     <Button
         android:id="@+id/update_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="178dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginStart="25dp"
         android:text="Update"
+        app:layout_constraintBottom_toTopOf="@+id/textView38"
+        app:layout_constraintStart_toStartOf="@+id/viewupdate_emailinput" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="17dp"
+        android:text="View Prescriptions"
+        android:textColor="#3F51B5"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/viewupdate_emailinput"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="178dp"
+        android:layout_marginEnd="4dp"
+        android:text="=============================="
+        android:textColor="#2473B3"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="1dp"
+        android:text="=============================="
+        android:textColor="#2473B3"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listview1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

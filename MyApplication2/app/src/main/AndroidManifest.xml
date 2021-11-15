@@ -19,7 +19,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Doctor.Doctor_ViewUpdatePresc"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".Pharmacist.Pharmacist_PrescData"
             android:exported="true"
