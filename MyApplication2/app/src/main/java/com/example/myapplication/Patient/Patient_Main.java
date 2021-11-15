@@ -58,8 +58,6 @@ public class Patient_Main extends AppCompatActivity {
             }
         });
 
-
-
         Logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,10 +82,5 @@ public class Patient_Main extends AppCompatActivity {
                 alert11.show();
             }
         });
-
-        
-        
-        
-        
     }
 }

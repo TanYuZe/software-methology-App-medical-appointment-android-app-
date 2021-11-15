@@ -116,7 +116,7 @@ public class Patient_ViewProfile extends AppCompatActivity {
                             input.setError("you must enter a text");
                         }
                         else {
-                            Controller.updateName(changes);
+                            Controller.validateUpdateName(changes, getApplicationContext());
                             pat_name.setText(changes);
                             Intent intent = new Intent(Patient_ViewProfile.this, Patient_ViewProfile.class);
                             startActivity(intent);
@@ -161,7 +161,7 @@ public class Patient_ViewProfile extends AppCompatActivity {
                             input.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
                         }
                         else {
-                            Controller.updatePassword(changes);
+                            Controller.validateUpdatePassword(changes, getApplicationContext());
                             pat_password.setText(changes);
                             Intent intent = new Intent(Patient_ViewProfile.this, Patient_ViewProfile.class);
                             startActivity(intent);
@@ -204,7 +204,7 @@ public class Patient_ViewProfile extends AppCompatActivity {
                             input.setError("Please a valid phone number format. Hint: only 8 digit!");
                         }
                         else {
-                            Controller.updateNumber(Integer.parseInt(changes));
+                            Controller.validateUpdateNumber(Integer.parseInt(changes), getApplicationContext());
                             pat_phoneno.setText(changes);
                             Intent intent = new Intent(Patient_ViewProfile.this, Patient_ViewProfile.class);
                             startActivity(intent);

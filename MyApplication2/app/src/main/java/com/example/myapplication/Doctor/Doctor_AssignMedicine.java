@@ -2,8 +2,6 @@ package com.example.myapplication.Doctor;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.BasicInfo;
 import com.example.myapplication.ListViewAdapter_DoctorAssignmed;
-import com.example.myapplication.Patient.Patient;
 import com.example.myapplication.Prescribed;
 import com.example.myapplication.Prescription;
 import com.example.myapplication.R;
@@ -42,7 +40,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
     ArrayList<Prescription> drugsSelected;
     ArrayList<Prescription> prescriptionArrayList;
     ArrayList<Prescribed> prescribedArrayList;
-    ArrayList<Patient> patientArrayList;
+    ArrayList<BasicInfo> patientArrayList;
     ArrayList<String> stringArrayList;
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
@@ -63,7 +61,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
         prescriptionArrayList = new ArrayList<Prescription>();
         prescribedArrayList = new ArrayList<Prescribed>();
         stringArrayList = new ArrayList<String>();
-        patientArrayList = new ArrayList<Patient>();
+        patientArrayList = new ArrayList<BasicInfo>();
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Prescription");
@@ -104,7 +102,7 @@ public class Doctor_AssignMedicine extends AppCompatActivity implements ListView
                 for(DataSnapshot snapshot1: snapshot.getChildren())
                 {
 
-                    Patient patient = snapshot1.getValue(Patient.class);
+                    BasicInfo patient = snapshot1.getValue(BasicInfo.class);
                     stringArrayList.add(snapshot1.getKey());
                     patientArrayList.add(patient);
                 }

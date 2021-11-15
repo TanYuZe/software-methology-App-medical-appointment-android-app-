@@ -204,7 +204,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
                         } else if (!validatePhoneNo(changes)) {
                             input.setError("Please a valid phone number format. Hint: only 8 digit!");
                         } else {
-                            doctorController.validateUpdateName(Integer.parseInt(changes), getApplicationContext());
+                            doctorController.validateUpdateNumber(Integer.parseInt(changes), getApplicationContext());
                             doc_phoneno.setText(changes);
                             Intent intent = new Intent(Doctor_ViewProfile.this, Doctor_ViewProfile.class);
                             startActivity(intent);

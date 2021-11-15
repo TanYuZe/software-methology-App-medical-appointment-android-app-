@@ -68,7 +68,7 @@ public class DoctorController {
         DoctorEntity doctorEntity = new DoctorEntity(context);
         doctorEntity.updatePassword(password);
     }
-    public void validateUpdateName(int number, Context context)
+    public void validateUpdateNumber(int number, Context context)
     {
         DoctorEntity doctorEntity = new DoctorEntity(context);
         doctorEntity.updateNumber(number);
