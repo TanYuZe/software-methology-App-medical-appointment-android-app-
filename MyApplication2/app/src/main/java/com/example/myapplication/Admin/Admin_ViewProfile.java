@@ -88,7 +88,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
-                AlertDialog dialog = mydialog.create();
+                //AlertDialog dialog = mydialog.create();
                 final EditText input = new EditText(Admin_ViewProfile.this);
                 mydialog.setMessage("Please enter your name");
                 mydialog.setTitle("Name Change");
@@ -168,6 +168,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                             }
                         });
                 AlertDialog alert11 = mydialog.create();
+                alert11.show();
 
             }
         });
