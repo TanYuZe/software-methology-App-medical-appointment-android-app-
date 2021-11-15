@@ -48,8 +48,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
         edit_phoneno = findViewById(R.id.imageButton4);
 
 
-        btn_update = findViewById(R.id.btn_update);
-        btn_changepass = findViewById(R.id.btn_changepass);
+
 
         DoctorController doctorController = DoctorController.getINSTANCE();
 

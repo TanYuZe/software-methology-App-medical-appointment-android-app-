@@ -10,134 +10,188 @@
         android:id="@+id/imageButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        tools:layout_editor_absoluteX="348dp"
-        tools:layout_editor_absoluteY="176dp" />
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pat_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/imageButton7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        tools:layout_editor_absoluteX="348dp"
-        tools:layout_editor_absoluteY="283dp" />
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pat_phoneno"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageButton
         android:id="@+id/imageButton6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        tools:layout_editor_absoluteX="348dp"
-        tools:layout_editor_absoluteY="227dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pat_password"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="200dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/pat_name"
-        android:layout_width="142dp"
+        android:layout_width="0dp"
         android:layout_height="27dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="24dp"
         android:text="TextView"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="192dp" />
+        app:layout_constraintBottom_toTopOf="@+id/pat_password"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="65dp"
         android:text="Role:"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="75dp"
-        tools:layout_editor_absoluteY="418dp" />
+        app:layout_constraintEnd_toStartOf="@+id/pat_role"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="61dp"
         android:text="Name:"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="198dp" />
+        app:layout_constraintEnd_toStartOf="@+id/pat_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="60dp"
         android:text="Password:"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="253dp" />
+        app:layout_constraintEnd_toStartOf="@+id/pat_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/pat_phoneno"
-        android:layout_width="162dp"
+        android:layout_width="0dp"
         android:layout_height="28dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="96dp"
         android:text="TextView"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="294dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView20"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton7"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/pat_role"
-        android:layout_width="142dp"
+        android:layout_width="0dp"
         android:layout_height="27dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="97dp"
         android:text="Textview"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="410dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/pat_email" />
 
     <TextView
         android:id="@+id/pat_password"
-        android:layout_width="133dp"
+        android:layout_width="0dp"
         android:layout_height="27dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="24dp"
         android:inputType="textPassword"
         android:text="TextView"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintBottom_toTopOf="@+id/pat_phoneno"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton6"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
 
     <TextView
         android:id="@+id/pat_email"
-        android:layout_width="142dp"
+        android:layout_width="0dp"
         android:layout_height="27dp"
+        android:layout_marginEnd="104dp"
         android:text="TextView"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="355dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="58dp"
         android:text="Email:"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="362dp" />
+        app:layout_constraintEnd_toStartOf="@+id/pat_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="59dp"
         android:text="Phone no:"
         android:textColor="#070707"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="307dp" />
+        app:layout_constraintEnd_toStartOf="@+id/pat_phoneno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
