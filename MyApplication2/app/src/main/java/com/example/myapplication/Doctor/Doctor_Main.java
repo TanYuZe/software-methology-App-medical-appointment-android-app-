@@ -16,9 +16,6 @@ public class Doctor_Main extends AppCompatActivity {
 
     Button Assign_med, doctor_logout, doctorViewProf, doctor_viewPresc;
 
-    Button view_profile;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -50,14 +47,6 @@ public class Doctor_Main extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-//        view_profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//            }
-//        });
 
 
         Assign_med.setOnClickListener(new View.OnClickListener() {

@@ -53,11 +53,6 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListVie
         reference_ = rootNode_.getReference("Prescribed");
         reference_2 = rootNode_.getReference("Users");
 
-
-
-
-
-
         update_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +64,6 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListVie
                     presc.clear();
                 }
 
-                //get presc base on user email
                 reference_.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -117,8 +111,6 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListVie
     }
     public void getCheckBoxCheckedListner(int position)
     {
-        //write code here to be able to delete listview entries
-
         Prescribed removingPrescribed = presc.get(position);
 
         reference_.addListenerForSingleValueEvent(new ValueEventListener() {

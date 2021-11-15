@@ -119,7 +119,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
                                     input.setError("you must enter a text");
                                 }
                                 else {
-                                    doctorController.updateName(changes);
+                                    doctorController.validateUpdateName(changes, getApplicationContext());
                                     doc_name.setText(changes);
                                     Intent intent = new Intent(Doctor_ViewProfile.this, Doctor_ViewProfile.class);
                                     startActivity(intent);
@@ -165,7 +165,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
                         }
                         else {
 
-                            doctorController.updatePassword(changes);
+                            doctorController.validateUpdatePassword(changes, getApplicationContext());
                             doc_password.setText(changes);
                             Intent intent = new Intent(Doctor_ViewProfile.this, Doctor_ViewProfile.class);
                             startActivity(intent);
@@ -204,7 +204,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
                         } else if (!validatePhoneNo(changes)) {
                             input.setError("Please a valid phone number format. Hint: only 8 digit!");
                         } else {
-                            doctorController.updateNumber(Integer.parseInt(changes));
+                            doctorController.validateUpdateName(Integer.parseInt(changes), getApplicationContext());
                             doc_phoneno.setText(changes);
                             Intent intent = new Intent(Doctor_ViewProfile.this, Doctor_ViewProfile.class);
                             startActivity(intent);
