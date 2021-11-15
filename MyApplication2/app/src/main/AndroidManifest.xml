@@ -33,9 +33,6 @@
             android:name=".Doctor.Doctor_ViewUpdatePresc"
             android:exported="true" />
         <activity
-            android:name=".Admin.Admin_UpdateInfo"
-            android:exported="true" />
-        <activity
             android:name=".Pharmacist.Pharmacist_PrescData"
             android:exported="true"
             android:windowSoftInputMode="adjustNothing" />

@@ -6,17 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".Doctor.Doctor_ViewProfile">
 
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="39dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/doc_phoneno"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="39dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/doc_password"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="18dp"
+        android:layout_width="288dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="59dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="34dp"
-        app:layout_constraintBottom_toTopOf="@+id/doc_name"
+        android:layout_marginEnd="64dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
@@ -25,166 +46,144 @@
         android:id="@+id/doc_name"
         android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="119dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="13dp"
         android:text="TextView"
         android:textColor="#070707"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@+id/textView44"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <TextView
         android:id="@+id/textView44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="21dp"
         android:text="Name:"
         android:textColor="#0B0A0A"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <TextView
         android:id="@+id/doc_phoneno"
         android:layout_width="162dp"
         android:layout_height="28dp"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="99dp"
+        android:layout_marginTop="33dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@+id/textView47"
-        app:layout_constraintTop_toBottomOf="@+id/doc_email" />
+        app:layout_constraintTop_toBottomOf="@+id/doc_password" />
 
     <TextView
         android:id="@+id/textView47"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="37dp"
         android:text="Phone no:"
         android:textColor="#020202"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/doc_phoneno"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView46" />
+        app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
     <TextView
         android:id="@+id/textView45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="43dp"
         android:text="Password:"
         android:textColor="#070707"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/doc_password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView47" />
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
     <TextView
         android:id="@+id/textView48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="271dp"
         android:text="Role:"
         android:textColor="#070707"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView45" />
+        app:layout_constraintTop_toBottomOf="@+id/textView46" />
 
     <TextView
         android:id="@+id/doc_password"
-        android:layout_width="133dp"
+        android:layout_width="134dp"
         android:layout_height="27dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="128dp"
         android:inputType="textPassword"
         android:text="TextView"
         android:textColor="#070707"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@+id/textView45"
-        app:layout_constraintTop_toBottomOf="@+id/doc_phoneno" />
-
-    <Button
-        android:id="@+id/btn_changepass"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="89dp"
-        android:layout_marginBottom="92dp"
-        android:text="Change Password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_update" />
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="262dp" />
 
     <TextView
         android:id="@+id/doc_email"
         android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="119dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="126dp"
         android:text="TextView"
         android:textColor="#0B0A0A"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@+id/textView46"
-        app:layout_constraintTop_toBottomOf="@+id/doc_name" />
-
-    <Button
-        android:id="@+id/btn_update"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="89dp"
-        android:text="Update Particulars"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doc_role" />
+        app:layout_constraintTop_toBottomOf="@+id/doc_phoneno" />
 
     <TextView
         android:id="@+id/doc_role"
         android:layout_width="142dp"
         android:layout_height="27dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="119dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="272dp"
         android:text="Textview"
         android:textColor="#070707"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_update"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toEndOf="@+id/textView48"
-        app:layout_constraintTop_toBottomOf="@+id/doc_password"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/doc_email" />
 
     <TextView
         android:id="@+id/textView46"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="61dp"
         android:layout_marginTop="36dp"
         android:text="Email:"
         android:textColor="#0B0A0A"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+        app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="39dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/doc_name"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
