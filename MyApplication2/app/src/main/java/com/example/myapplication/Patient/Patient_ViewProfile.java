@@ -1,16 +1,17 @@
 package com.example.myapplication.Patient;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Admin.Admin_UpdateInfo;
-import com.example.myapplication.Admin.Admin_ViewProfile;
 import com.example.myapplication.BasicInfo;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,9 +24,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Patient_ViewProfile extends AppCompatActivity {
     TextView pat_name, pat_email, pat_password, pat_role, pat_phoneno;
-    Button btn_update, btn_changepass;
+
     FirebaseDatabase rootNode_;
     DatabaseReference refrence_;
+    ImageButton edit_name, edit_email, edit_password, edit_phoneno;
+    String changes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,12 @@ public class Patient_ViewProfile extends AppCompatActivity {
         pat_role = findViewById(R.id.pat_role);
         pat_phoneno = findViewById(R.id.pat_phoneno);
 
-        btn_update = findViewById(R.id.btn_update);
-        btn_changepass = findViewById(R.id.btn_changepass);
+        edit_name = findViewById(R.id.imageButton5);
+        edit_password = findViewById(R.id.imageButton6);
+        edit_phoneno = findViewById(R.id.imageButton7);
+
+        PatientController Controller = PatientController.getINSTANCE();
+
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
@@ -73,13 +80,107 @@ public class Patient_ViewProfile extends AppCompatActivity {
             }
         });
 
-        btn_update.setOnClickListener(new View.OnClickListener() {
+        edit_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Patient_ViewProfile.this, Patient_UpdateInfo.class);
-                startActivity(intent);
+                AlertDialog.Builder mydialog = new AlertDialog.Builder(Patient_ViewProfile.this);
+                final EditText input = new EditText(Patient_ViewProfile.this);
+                mydialog.setMessage("Please enter your name");
+                mydialog.setTitle("Name Change");
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                mydialog.setView(input);
+
+                mydialog.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                changes = input.getText().toString();
+                                Controller.updateName(changes);
+                                pat_name.setText(changes);
+                            }
+                        });
+                mydialog.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = mydialog.create();
+                alert11.show();
             }
         });
+
+
+
+        edit_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mydialog = new AlertDialog.Builder(Patient_ViewProfile.this);
+                final EditText input = new EditText(Patient_ViewProfile.this);
+                mydialog.setMessage("Please enter your new password");
+                mydialog.setTitle("Password Change");
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                mydialog.setView(input);
+
+                mydialog.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                changes = input.getText().toString();
+                                Controller.updatePassword(changes);
+                                pat_password.setText(changes);
+                            }
+                        });
+                mydialog.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = mydialog.create();
+                alert11.show();
+            }
+        });
+
+        edit_phoneno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mydialog = new AlertDialog.Builder(Patient_ViewProfile.this);
+                final EditText input = new EditText(Patient_ViewProfile.this);
+                mydialog.setMessage("Please enter your new Phone Number");
+                mydialog.setTitle("Phone Number Change");
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                mydialog.setView(input);
+
+                mydialog.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                changes = input.getText().toString();
+
+                                if(changes.equals(""))
+                                {
+                                    input.setError("Cannot be empty");
+
+                                }
+                                else {
+                                    pat_phoneno.setText(changes);
+                                    Controller.updateNumber(Integer.parseInt(changes));
+                                }
+                            }
+                        });
+                mydialog.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = mydialog.create();
+                alert11.show();
+            }
+        });
+
+
 
 
     }

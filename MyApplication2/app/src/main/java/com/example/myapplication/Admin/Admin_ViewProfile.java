@@ -114,36 +114,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
             }
         });
 
-//        edit_email.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Intent intent = new Intent(Admin_ViewProfile.this, Admin_UpdateInfo.class);
-////                startActivity(intent);
-//                AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
-//                final EditText input = new EditText(Admin_ViewProfile.this);
-//                mydialog.setMessage("Please enter your email");
-//                mydialog.setTitle("Email Change");
-//                input.setInputType(InputType.TYPE_CLASS_TEXT);
-//                mydialog.setView(input);
-//
-//                mydialog.setPositiveButton("Yes",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id)
-//                            {
-//                                changes = input.getText().toString();
-//                                admin_email.setText(changes);
-//                            }
-//                        });
-//                mydialog.setNegativeButton("No",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                dialog.cancel();
-//                            }
-//                        });
-//                AlertDialog alert11 = mydialog.create();
-//                alert11.show();
-//            }
-//        });
+
 
         edit_password.setOnClickListener(new View.OnClickListener() {
             @Override
