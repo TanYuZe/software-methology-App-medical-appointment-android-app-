@@ -1,6 +1,7 @@
 package com.example.myapplication.Admin;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -44,7 +45,6 @@ public class Admin_ViewProfile extends AppCompatActivity {
 
 
         edit_name = findViewById(R.id.editbtn1);
-        edit_email = findViewById(R.id.editbtn2);
         edit_password = findViewById(R.id.editbtn4);
         edit_phoneno = findViewById(R.id.editbtn3);
 
@@ -88,12 +88,15 @@ public class Admin_ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
-                //AlertDialog dialog = mydialog.create();
+                AlertDialog dialog = mydialog.create();
                 final EditText input = new EditText(Admin_ViewProfile.this);
                 mydialog.setMessage("Please enter your name");
                 mydialog.setTitle("Name Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Done", null);
+
 //                mydialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 //                    @Override
 //                    public void onClick(DialogInterface dialog, int which) {
@@ -105,6 +108,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
 //                            else {
 //                                adminController.updateName(changes);
 //                                admin_name.setText(changes);
+//                                Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
 //                                dialog.cancel();
 //                            }
 //
@@ -120,55 +124,60 @@ public class Admin_ViewProfile extends AppCompatActivity {
 //
 //                mydialog.show();
 //
-//                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
-//
-//                positiveButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                            changes = input.getText().toString();
-//                            if(changes.equals(""))
-//                            {
-//                                input.setError("you must enter a text");
-//                            }
-//                            else
-//                            {
-//                                adminController.updateName(changes);
-//                                admin_name.setText(changes);
-//                                dialog.dismiss();
-//
-//
-//
-//                            }
-//
-//                    }
-//                });
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
 
-//                Button negativeButton = mydialog.show().getButton(AlertDialog.BUTTON_NEGATIVE);
-//                negativeButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.cancel();
-//                    }
-//                });
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                            changes = input.getText().toString();
 
-
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
+                            if(changes.equals(""))
                             {
-                                changes = input.getText().toString();
+                                input.setError("you must enter a text");
+                            }
+                            else {
                                 adminController.updateName(changes);
                                 admin_name.setText(changes);
+                                Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
+                                startActivity(intent);
+
                             }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+
+                    }
+                });
+
+                Button negativeButton = mydialog.show().getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                negativeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
+                        startActivity(intent);
+                    }
+                });
+
+
+                //dialog.show();
+
+
+
+//                mydialog.setPositiveButton("Yes",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id)
+//                            {
+//                                changes = input.getText().toString();
+//                                adminController.updateName(changes);
+//                                admin_name.setText(changes);
+//                            }
+//                        });
+//                mydialog.setNegativeButton("No",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                dialog.cancel();
+//                            }
+//                        });
+                //AlertDialog alert11 = mydialog.create();
+                //alert11.show();
 
             }
         });

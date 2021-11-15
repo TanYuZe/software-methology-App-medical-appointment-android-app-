@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class Doctor_ViewUpdatePresc extends AppCompatActivity {
+public class Doctor_ViewUpdatePresc extends AppCompatActivity implements ListViewAdapter_DoctorUpdatePresc.CheckboxCheckListner{
 
     EditText email_input;
     ListView list;
@@ -24,7 +24,7 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity {
     ArrayList<Prescribed> presc;
     ListViewAdapter_DoctorUpdatePresc adapter;
     FirebaseDatabase rootNode_;
-    DatabaseReference refrence_;
+    DatabaseReference reference_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,34 +39,24 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity {
         adapter = new ListViewAdapter_DoctorUpdatePresc(this, presc);
 
         list.setAdapter(adapter);
+        adapter.setCheckedListner((ListViewAdapter_DoctorUpdatePresc.CheckboxCheckListner) this);
 
 
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
-        refrence_ = rootNode_.getReference("Prescribed");
+        reference_ = rootNode_.getReference("Prescribed");
 
 
 
-//        refrence_.addListenerForSingleValueEvent(new ValueEventListener() {
-//             @Override
-//             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-//                     Prescribed prescription;
-//                     prescription = snapshot1.getValue(Prescribed.class);
-//
-//                     presc.add(prescription);
-//
-//                 }
-//             }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
+
 
         update_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //get presc base on user email
+
+
 
             }
         });
@@ -74,6 +64,16 @@ public class Doctor_ViewUpdatePresc extends AppCompatActivity {
 
 
 
+
+    }
+    public void getCheckBoxCheckedListner(int position)
+    {
+        //write code here to be able to delete listview entries
+
+
+
+        //frontend code to delete visually
+        presc.remove(presc.get(position));
 
     }
 }

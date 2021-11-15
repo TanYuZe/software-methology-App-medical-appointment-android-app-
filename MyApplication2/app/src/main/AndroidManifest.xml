@@ -27,9 +27,6 @@
             android:name=".Doctor.Doctor_UpdateInfo"
             android:exported="true" />
         <activity
-            android:name=".Doctor.DoctorUpdatePresc"
-            android:exported="true" />
-        <activity
             android:name=".Doctor.Doctor_ViewUpdatePresc"
             android:exported="true" />
         <activity

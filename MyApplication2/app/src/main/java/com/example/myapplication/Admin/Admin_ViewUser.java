@@ -65,7 +65,7 @@ public class Admin_ViewUser extends AppCompatActivity {
 
                             if (userinfo.getEmail().equals(email)) {
                                 //maxID = snapshot.getChildrenCount();
-                                t_name.setText(userinfo.getName());
+                                t_name.setText(userinfo.name);
                                 t_email.setText((userinfo.getEmail()));
                                 t_password.setText(userinfo.getPassword());
                                 t_phoneno.setText(String.valueOf(userinfo.getPhonenumber()));

@@ -5,7 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -16,7 +17,7 @@ public class ListViewAdapter_DoctorUpdatePresc extends ArrayAdapter<Prescribed> 
     boolean isOnTextChanged;
     int checkAccumulator;
     ArrayList<Prescribed> array;
-    private ListViewAdapter_DoctorAssignmed.CheckboxCheckListner checkedListner;
+    private ListViewAdapter_DoctorUpdatePresc.CheckboxCheckListner checkedListner;
 
     //private final Context context;
 
@@ -39,18 +40,43 @@ public class ListViewAdapter_DoctorUpdatePresc extends ArrayAdapter<Prescribed> 
 
         Prescribed presc1 = getItem(position);
 
-        EditText et_drugid = (EditText) convertview.findViewById(R.id.et_drugid);
-        EditText q_input = (EditText) convertview.findViewById(R.id.et_quantity);
+        TextView tv_prescribed = (TextView) convertview.findViewById(R.id.tvv_prescribed);
+        TextView tv_drugname = (TextView) convertview.findViewById(R.id.tvv_drugname);
+        TextView tv_quantity = (TextView) convertview.findViewById(R.id.tvv_quantity);
+        TextView tv_date = convertview.findViewById(R.id.date1);
+        ImageButton imgbtn = convertview.findViewById(R.id.imageButton11);
+        imgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkedListner != null)
+                {
+                    checkedListner.getCheckBoxCheckedListner(position);
+
+                }
+
+            }
+        });
 
 
-        et_drugid.setText(presc1.getDrugID().toString());
-        q_input.setText(presc1.getQuantity());
+        tv_prescribed.setText(String.valueOf(presc1.isPrescribed));
+        tv_drugname.setText(presc1.getDate());
+        tv_quantity.setText(presc1.quantity);
+        tv_date.setText(presc1.getDate());
 
 
 
 
 
         return convertview;
+    }
+    public interface CheckboxCheckListner
+    {
+        void getCheckBoxCheckedListner(int position);
+    }
+
+    public void setCheckedListner(ListViewAdapter_DoctorUpdatePresc.CheckboxCheckListner checkedListner)
+    {
+        this.checkedListner = checkedListner;
     }
 
 
