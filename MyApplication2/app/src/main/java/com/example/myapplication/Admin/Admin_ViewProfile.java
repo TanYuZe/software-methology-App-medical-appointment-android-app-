@@ -51,6 +51,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
         AdminController adminController = AdminController.getINSTANCE();
 
 
+
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -88,42 +89,24 @@ public class Admin_ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mydialog = new AlertDialog.Builder(Admin_ViewProfile.this);
-                AlertDialog dialog = mydialog.create();
+                //AlertDialog dialog = mydialog.create();
                 final EditText input = new EditText(Admin_ViewProfile.this);
                 mydialog.setMessage("Please enter your name");
                 mydialog.setTitle("Name Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
                 mydialog.setPositiveButton("Ok", null);
-                mydialog.setNegativeButton("Done", null);
+                mydialog.setNegativeButton("Done", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-//                mydialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        changes = input.getText().toString();
-//                            if(changes.equals(""))
-//                            {
-//                                input.setError("you must enter a text");
-//                            }
-//                            else {
-//                                adminController.updateName(changes);
-//                                admin_name.setText(changes);
-//                                Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
-//                                dialog.cancel();
-//                            }
-//
-//                    }
-//                });
+                        dialog.dismiss();
 
-//                mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//                mydialog.show();
-//
+                    }
+                });
+
+
+
                 Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
 
                 positiveButton.setOnClickListener(new View.OnClickListener() {
@@ -140,45 +123,9 @@ public class Admin_ViewProfile extends AppCompatActivity {
                                 admin_name.setText(changes);
                                 Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
                                 startActivity(intent);
-
                             }
-
                     }
                 });
-
-                Button negativeButton = mydialog.show().getButton(AlertDialog.BUTTON_NEGATIVE);
-
-                negativeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
-                        startActivity(intent);
-                    }
-                });
-
-
-                //dialog.show();
-
-
-
-//                mydialog.setPositiveButton("Yes",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id)
-//                            {
-//                                changes = input.getText().toString();
-//                                adminController.updateName(changes);
-//                                admin_name.setText(changes);
-//                            }
-//                        });
-//                mydialog.setNegativeButton("No",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                dialog.cancel();
-//                            }
-//                        });
-                //AlertDialog alert11 = mydialog.create();
-                //alert11.show();
-
             }
         });
 
@@ -193,24 +140,37 @@ public class Admin_ViewProfile extends AppCompatActivity {
                 mydialog.setTitle("Password Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
-
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
-                                adminController.updatePassword(changes);
-                                admin_password.setText(changes);
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Done", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
+                                dialog.dismiss();
                             }
                         });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+
+
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
+
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else if(!validatePassword(changes))
+                        {
+                            input.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
+                        }
+                        else {
+                            adminController.updatePassword(changes);
+                            admin_password.setText(changes);
+                            Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
@@ -223,37 +183,86 @@ public class Admin_ViewProfile extends AppCompatActivity {
                 mydialog.setTitle("Phone Number Change");
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 mydialog.setView(input);
+                mydialog.setPositiveButton("Ok", null);
+                mydialog.setNegativeButton("Done", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
-                mydialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                changes = input.getText().toString();
 
-                                if(changes.equals(""))
-                                {
-                                    input.setError("Cannot be empty");
+                Button positiveButton = mydialog.show().getButton(AlertDialog.BUTTON_POSITIVE);
 
-                                }
-                                else {
-                                    admin_phoneno.setText(changes);
-                                    adminController.updateNumber(Integer.parseInt(changes));
-                                }
-                            }
-                        });
-                mydialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = mydialog.create();
-                alert11.show();
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        changes = input.getText().toString();
+
+                        if(changes.equals(""))
+                        {
+                            input.setError("you must enter a text");
+                        }
+                        else if(!validatePhoneNo(changes))
+                        {
+                            input.setError("Please a valid phone number format. Hint: only 8 digit!");
+                        }
+                        else {
+                            adminController.updateNumber(Integer.parseInt(changes));
+                            admin_phoneno.setText(changes);
+                            Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
 
 
+    }
+    public Boolean validatePassword(String password) {
+        String val = password;
+        String passwordVal = "^" +
+                //"(?=.*[0-9])" +         //at least 1 digit
+                //"(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{8,}" +               //at least 4 characters
+                "$";
+
+        if (val.equals("")) {
+            return false;
+        } else if (!val.matches(passwordVal)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Boolean validatePhoneNo(String phonenum) {
+        String val = phonenum;
+        //String passwordVal = "^\\d{8}$";
+        String passwordVal = "^[0-9]{8}$";
+//        String passwordVal = "^" +
+//                //"(?=.*[0-9])" +         //at least 1 digit
+//                //"(?=.*[a-z])" +         //at least 1 lower case letter
+//                //"(?=.*[A-Z])" +         //at least 1 upper case letter
+//                //"(?=.*[a-zA-Z])" +      //any letter
+//                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
+//                "(?=\\S+$)" +           //no white spaces
+//                ".{8}" +               //at least 4 characters
+//                "$";
+        if (val.equals("")) {
+            return false;
+        }
+        else if (!val.matches(passwordVal)) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
 
@@ -267,4 +276,5 @@ public class Admin_ViewProfile extends AppCompatActivity {
 //        AlertDialog dialog = builder.create();
 //        dialog.show();
 //    }
+
 }
