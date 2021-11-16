@@ -9,41 +9,25 @@
         android:id="@+id/Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="248dp"
         android:text="Prescribed ID"
         android:textColor="#4CAF50"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/TheMedicationID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="162dp"
         android:text="Prescribed ID"
         android:textColor="#050505"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Date"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/PrescribedYet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Prescribed?"
-        android:textColor="#050505"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/TheMedicationID"
-        app:layout_constraintTop_toBottomOf="@+id/TheMedicationID"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -51,44 +35,64 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="181dp"
+        android:layout_marginBottom="584dp"
         android:text="How Many"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/PrescribedYet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PrescribedYet"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/PrescribedYet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="172dp"
+        android:text="Prescribed?"
+        android:textColor="#050505"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TheMedicationID"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView57"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="18dp"
         android:text="Drug Name:"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView59"
-        tools:layout_editor_absoluteY="56dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView59"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
 
     <TextView
         android:id="@+id/textView58"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="29dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="583dp"
         android:text="Quantity:"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/MedicineQuantity"
-        app:layout_constraintTop_toBottomOf="@+id/textView59" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView59"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="17dp"
         android:text="Precription status"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView58"
-        app:layout_constraintStart_toStartOf="@+id/textView58"
-        app:layout_constraintTop_toBottomOf="@+id/textView57" />
+        app:layout_constraintBottom_toTopOf="@+id/textView58"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
