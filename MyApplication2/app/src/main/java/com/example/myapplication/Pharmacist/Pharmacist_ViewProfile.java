@@ -119,7 +119,7 @@ public class Pharmacist_ViewProfile extends AppCompatActivity {
                             input.setError("you must enter a text");
                         }
                         else {
-                            Controller.updateName(changes);
+                            Controller.validateUpdateName(changes, getApplicationContext());
                             phar_name.setText(changes);
                             Intent intent = new Intent(Pharmacist_ViewProfile.this, Pharmacist_ViewProfile.class);
                             startActivity(intent);
@@ -164,7 +164,7 @@ public class Pharmacist_ViewProfile extends AppCompatActivity {
                             input.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
                         }
                         else {
-                            Controller.updatePassword(changes);
+                            Controller.validateUpdatePassword(changes, getApplicationContext());
                             phar_password.setText(changes);
                             Intent intent = new Intent(Pharmacist_ViewProfile.this, Pharmacist_ViewProfile.class);
                             startActivity(intent);
@@ -207,7 +207,7 @@ public class Pharmacist_ViewProfile extends AppCompatActivity {
                             input.setError("Please a valid phone number format. Hint: only 8 digit!");
                         }
                         else {
-                            Controller.updateNumber(Integer.parseInt(changes));
+                            Controller.validateUpdateNumber(Integer.parseInt(changes), getApplicationContext());
                             phar_phoneno.setText(changes);
                             Intent intent = new Intent(Pharmacist_ViewProfile.this, Pharmacist_ViewProfile.class);
                             startActivity(intent);

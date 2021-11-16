@@ -9,12 +9,12 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="149dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="292dp"
+        android:layout_marginEnd="196dp"
         android:text="TextView"
         android:textColor="#42AA46"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,11 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="87dp"
         android:layout_marginTop="19dp"
+        android:layout_marginEnd="61dp"
         android:layout_marginBottom="27dp"
         android:text="Drug ID"
         android:textColor="#050505"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView55"
+        app:layout_constraintEnd_toStartOf="@+id/tv_drugID"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
@@ -39,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="24dp"
         android:text="Medicine name:"
         android:textColor="#050505"
@@ -53,65 +55,64 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="79dp"
+        android:layout_marginEnd="63dp"
         android:layout_marginBottom="560dp"
         android:text="Quantity"
         android:textColor="#050505"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_drugID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="63dp"
-        android:layout_marginEnd="189dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="157dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_medname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView54"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_medname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="82dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_quantity"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton" />
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/tv_drugID" />
 
     <TextView
         android:id="@+id/tv_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="189dp"
-        android:layout_marginBottom="560dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="556dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView56" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_medname" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="85dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="603dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_baseline_done_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

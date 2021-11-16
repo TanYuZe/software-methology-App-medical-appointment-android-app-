@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -53,7 +52,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
 
         SelectedList = new ArrayList<Prescription>();
         newPrescription1 = new Prescription();
-
+        PharmacistController pharmacistController = PharmacistController.getINSTANCE();
 
 
         medlist = new ArrayList<String>();
@@ -91,64 +90,25 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Prescription newPrescription = new Prescription();
-                newPrescription.setDrugPrescribed(prescdata.getText().toString());
-                newPrescription.setDosage(Long.parseLong(drugDosage.getText().toString()));
-                newPrescription.setQuantity(0);
-                newPrescription.setDrugId(maxID + 1);
 
-                for(int i = 0; i < medlist.size(); i++)
-                {
-                    for(int j = 0; j < prescriptionArrayList.size(); j++)
-                    {
-                        Long index = Long.valueOf(j);
-                        if(     medlist.get(i).equals(newPrescription.getDrugPrescribed())
-                                && prescriptionArrayList.get(j).getDrugPrescribed().equals(newPrescription.getDrugPrescribed())
-                                && prescriptionArrayList.get(j).getDosage().equals(newPrescription.getDosage()))
-                        {
-                            Toast.makeText(getApplicationContext(), "Medication already exist. Try again", Toast.LENGTH_LONG).show();
-                            break;
-                        }
-                        if(prescriptionArrayList.get(j).getDrugId() != index + 1
-                            && prescriptionArrayList.get(j).getDrugPrescribed() != newPrescription.getDrugPrescribed() )
-                        {
-                            newPrescription.setDrugId(index + 1);
-                            refrence_.child(String.valueOf(index + 1)).setValue(newPrescription);
-                            Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_SHORT).show();
-                            adapter.notifyDataSetChanged();
-                            break;
-                        }
-                        else if(     i == medlist.size() - 1
-                                && medlist.get(i) != newPrescription.getDrugPrescribed()
-                                && j == prescriptionArrayList.size() - 1
-                                && prescriptionArrayList.get(j).getDrugPrescribed() != newPrescription.getDrugPrescribed()
-                                && prescriptionArrayList.get(j).getDosage() != newPrescription.getDosage()  )
-                        {
-                            refrence_.child(String.valueOf(maxID + 1)).setValue(newPrescription);
-
-                            Toast.makeText(getApplicationContext(), "Medicine Added!", Toast.LENGTH_LONG).show();
-//                            Intent intent = new Intent(getApplicationContext(), Pharmacist_Main.class);
-//                            startActivity(intent);
-                            adapter.notifyDataSetChanged();
-                        }
-                    }
-                }
+                pharmacistController.validateAddPrescription(maxID, prescdata.getText().toString(), drugDosage.getText().toString(),prescriptionArrayList, medlist, getApplicationContext());
+                adapter.notifyDataSetChanged();
             }
         });
     }
 
     public void getCheckBoxCheckedListner(int position)
     {
-        newPrescription1.setDrugPrescribed(prescriptionArrayList.get(position).getDrugPrescribed());
-        newPrescription1.setDosage(prescriptionArrayList.get(position).getDosage());
-        newPrescription1.setQuantity(0);
-        newPrescription1.setDrugId(prescriptionArrayList.get(position).getDrugId());
-        prescriptionArrayList.get(position).getDrugPrescribed();
+//        newPrescription1.setDrugPrescribed(prescriptionArrayList.get(position).getDrugPrescribed());
+//        newPrescription1.setDosage(prescriptionArrayList.get(position).getDosage());
+//        newPrescription1.setQuantity(0);
+//        newPrescription1.setDrugId(prescriptionArrayList.get(position).getDrugId());
+//        prescriptionArrayList.get(position).getDrugPrescribed();
 
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Pharmacist_PrescData.this);
-        builder.setTitle("Confirm Prescription!").setMessage("Do you want to delete " +prescriptionArrayList.get(position).getDrugPrescribed());
+        builder.setTitle("Confirm Prescription!").setMessage("Do you want to delete " + prescriptionArrayList.get(position).getDrugPrescribed());
         builder.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id)
