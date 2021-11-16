@@ -119,7 +119,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                                 input.setError("you must enter a text");
                             }
                             else {
-                                adminController.updateName(changes);
+                                adminController.validateUpdateName(changes, getApplicationContext());
                                 admin_name.setText(changes);
                                 Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
                                 startActivity(intent);
@@ -164,7 +164,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                             input.setError("Password must include at least one uppercase letter, no white spaces and at least 8 characters");
                         }
                         else {
-                            adminController.updatePassword(changes);
+                            adminController.validateUpdatePassword(changes, getApplicationContext());
                             admin_password.setText(changes);
                             Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
                             startActivity(intent);
@@ -207,7 +207,7 @@ public class Admin_ViewProfile extends AppCompatActivity {
                             input.setError("Please a valid phone number format. Hint: only 8 digit!");
                         }
                         else {
-                            adminController.updateNumber(Integer.parseInt(changes));
+                            adminController.validateUpdateNumber(Integer.parseInt(changes), getApplicationContext());
                             admin_phoneno.setText(changes);
                             Intent intent = new Intent(Admin_ViewProfile.this, Admin_ViewProfile.class);
                             startActivity(intent);

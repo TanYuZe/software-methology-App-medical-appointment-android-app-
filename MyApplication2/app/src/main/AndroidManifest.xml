@@ -56,7 +56,7 @@
             android:name=".Admin.Admin_ViewUser"
             android:exported="true" />
         <activity
-            android:name=".Admin.Admin_DeleteUser"
+            android:name=".Admin.Admin_Redirect_FireBase"
             android:exported="true" />
         <activity
             android:name=".Admin.Admin_AddUser"

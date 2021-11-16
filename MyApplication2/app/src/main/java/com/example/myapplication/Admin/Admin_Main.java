@@ -25,7 +25,7 @@ public class Admin_Main extends AppCompatActivity {
         Logout_btn = findViewById(R.id.Admin_Logout);
         View_profile = findViewById(R.id.admin_viewprofile_btn);
 
-        Intent intent_Deleteuser = new Intent(Admin_Main.this, Admin_DeleteUser.class);
+        Intent intent_Deleteuser = new Intent(Admin_Main.this, Admin_Redirect_FireBase.class);
         Intent intent_Viewuser = new Intent(Admin_Main.this, Admin_ViewUser.class);
         Intent intent_Viewprofile = new Intent(Admin_Main.this, Admin_ViewProfile.class);
 

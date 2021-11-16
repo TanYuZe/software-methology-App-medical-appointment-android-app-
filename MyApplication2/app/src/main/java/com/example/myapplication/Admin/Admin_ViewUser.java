@@ -60,9 +60,7 @@ public class Admin_ViewUser extends AppCompatActivity {
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference("Users");
 
-        //basicInfoArrayList = new ArrayList<BasicInfo>();
-        //listViewAdapter_admin_viewUsers = new ListViewAdapter_Admin_ViewUsers(Admin_ViewUser.this, basicInfoArrayList);
-        //listView.setAdapter(listViewAdapter_admin_viewUsers);
+        AdminController adminController = AdminController.getINSTANCE();
 
 
         refrence_.orderByChild("email").equalTo(email);
@@ -92,6 +90,12 @@ public class Admin_ViewUser extends AppCompatActivity {
 
                     }
                 });
+//                    BasicInfo userinfo = adminController.validateGetUserInfo(email, getApplicationContext());
+//                    t_name.setText(userinfo.getName());
+//                  t_email.setText((userinfo.getEmail()));
+//                  t_password.setText(userinfo.getPassword());
+//                  t_phoneno.setText(String.valueOf(userinfo.getPhonenumber()));
+//                  t_role.setText((userinfo.getRole()));
 
 
             }

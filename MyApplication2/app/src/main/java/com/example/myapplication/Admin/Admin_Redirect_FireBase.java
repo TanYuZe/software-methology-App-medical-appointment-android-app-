@@ -1,23 +1,16 @@
 package com.example.myapplication.Admin;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
+import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
-public class Admin_DeleteUser extends AppCompatActivity {
-    EditText user_email;
-
-    Button delete_btn;
-
-    FirebaseDatabase rootNode_;
-    DatabaseReference refrence_;
+public class Admin_Redirect_FireBase extends AppCompatActivity {
+    WebView myWebView;
 
 
     DatabaseReference reference_;
@@ -26,13 +19,16 @@ public class Admin_DeleteUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_delete_user);
-        user_email = (EditText) findViewById(R.id.Email_input);
-        delete_btn = findViewById(R.id.DeleteAcc_btn);
-        rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
-        refrence_ = rootNode_.getReference().child("Users");
+        setContentView(R.layout.activity_admin_firebase_redirect);
+        myWebView = findViewById(R.id.webView);
+        myWebView.loadUrl("https://firebase.google.com/");
 
-        String Useremail = user_email.getText().toString();
+
+
+
+
+
+        //String Useremail = user_email.getText().toString();
 
 //        delete_btn.setOnClickListener(new View.OnClickListener() {
 //            @Override

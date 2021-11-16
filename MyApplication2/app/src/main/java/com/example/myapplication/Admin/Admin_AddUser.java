@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +32,7 @@ public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnIt
         addphonenum = (EditText) findViewById(R.id.add_phonenum);
         addrole = (Spinner) findViewById(R.id.add_role);
         create_btn = findViewById(R.id.create_btn);
-        AdminController RegObject = AdminController.getINSTANCE();
+        //AdminEntity RegObject = AdminEntity.getINSTANCE();
 
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(Admin_AddUser.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.roles));
@@ -57,14 +56,14 @@ public class Admin_AddUser extends AppCompatActivity implements AdapterView.OnIt
 
 
 
-                if(validateName(name_input) && validatePassword(pw_input) && validatePhoneNo(phone_input) && validateEmailAddress(email_input)) {
-
-                    RegObject.AddUser(name_input, email_input, pw_input, Integer.parseInt(phone_input), user_role, Admin_AddUser.this);
-
-                    Toast.makeText(Admin_AddUser.this, "User Inserted", Toast.LENGTH_SHORT).show();
-                    emptyInputEditText();
-                }
-                return;
+//                if(validateName(name_input) && validatePassword(pw_input) && validatePhoneNo(phone_input) && validateEmailAddress(email_input)) {
+//
+//                    RegObject.AddUser(name_input, email_input, pw_input, Integer.parseInt(phone_input), user_role, Admin_AddUser.this);
+//
+//                    Toast.makeText(Admin_AddUser.this, "User Inserted", Toast.LENGTH_SHORT).show();
+//                    emptyInputEditText();
+//                }
+//                return;
             }
         });
 
