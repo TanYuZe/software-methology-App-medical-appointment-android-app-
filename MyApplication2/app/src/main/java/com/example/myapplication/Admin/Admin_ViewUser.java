@@ -90,13 +90,6 @@ public class Admin_ViewUser extends AppCompatActivity {
 
                     }
                 });
-//                    BasicInfo userinfo = adminController.validateGetUserInfo(email, getApplicationContext());
-//                    t_name.setText(userinfo.getName());
-//                  t_email.setText((userinfo.getEmail()));
-//                  t_password.setText(userinfo.getPassword());
-//                  t_phoneno.setText(String.valueOf(userinfo.getPhonenumber()));
-//                  t_role.setText((userinfo.getRole()));
-
 
             }
         });

@@ -29,6 +29,8 @@ public class PharmacistEntity
     DatabaseReference refrence_;
     DatabaseReference refrence_2;
     ArrayList<Prescribed> prescribedArrayList;
+    Long maxid;
+
 
 
     public PharmacistEntity(Context context)
@@ -36,7 +38,40 @@ public class PharmacistEntity
 
     }
 
-    public void AddPrescription(Long maxID, String drugprescribed, String drugdosage, ArrayList<Prescription> prescriptionArrayList,ArrayList<String>  medlist, Context context)
+//    public void FetchPrescTable(Long maxID,ArrayList<String>  medlist, ArrayList<Prescription> prescriptionArrayList)
+//    {
+//        rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
+//        refrence_ = rootNode_.getReference().child("Prescription");
+//        Long maxid = maxID;
+//
+//        refrence_.addListenerForSingleValueEvent(new ValueEventListener()
+//        {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot)
+//            {
+//                for(DataSnapshot snapshot1 : snapshot.getChildren())
+//                {
+//                    Prescription prescription = snapshot1.getValue(Prescription.class);
+//                    medlist.add(prescription.getDrugPrescribed());
+//                    prescriptionArrayList.add(prescription);
+//                    maxid = snapshot.getChildrenCount();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+//    }
+
+    public void DeletePrescription(ArrayList<Prescription> prescriptionArrayList, int position)
+    {
+        rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
+        refrence_ = rootNode_.getReference().child("Prescription");
+        refrence_.orderByChild("drugPrescribed").equalTo(prescriptionArrayList.get(position).getDrugId());
+        refrence_.child(prescriptionArrayList.get(position).getDrugId().toString()).removeValue();
+    }
+
+    public void AddPrescription(Long maxID,String drugprescribed, String drugdosage, ArrayList<Prescription> prescriptionArrayList,ArrayList<String>  medlist, Context context)
     {
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
         refrence_ = rootNode_.getReference().child("Prescription");

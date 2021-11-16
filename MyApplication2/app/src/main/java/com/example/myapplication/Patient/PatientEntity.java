@@ -31,6 +31,8 @@ public class PatientEntity
     }
 
 
+
+
     public void updateName(String Name)
     {
         rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");

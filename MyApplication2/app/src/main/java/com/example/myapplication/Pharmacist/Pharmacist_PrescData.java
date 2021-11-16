@@ -36,6 +36,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
     Long maxID;
     ArrayList<String> deletelist;
     Prescription newPrescription1;
+    PharmacistController pharmacistController;
 
 
 
@@ -52,7 +53,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
 
         SelectedList = new ArrayList<Prescription>();
         newPrescription1 = new Prescription();
-        PharmacistController pharmacistController = PharmacistController.getINSTANCE();
+        pharmacistController = PharmacistController.getINSTANCE();
 
 
         medlist = new ArrayList<String>();
@@ -65,7 +66,7 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
         presc_list.setAdapter(adapter);
         adapter.setCheckedListner((ListViewAdapter_Phar_precdata.CheckboxCheckListner) this);
 
-
+        //pharmacistController.validateFetchPrescTable(maxID, medlist, prescriptionArrayList, getApplicationContext());
 
 
         refrence_.addListenerForSingleValueEvent(new ValueEventListener()
@@ -90,7 +91,6 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 pharmacistController.validateAddPrescription(maxID, prescdata.getText().toString(), drugDosage.getText().toString(),prescriptionArrayList, medlist, getApplicationContext());
                 adapter.notifyDataSetChanged();
             }
@@ -99,23 +99,13 @@ public class Pharmacist_PrescData extends AppCompatActivity implements ListViewA
 
     public void getCheckBoxCheckedListner(int position)
     {
-//        newPrescription1.setDrugPrescribed(prescriptionArrayList.get(position).getDrugPrescribed());
-//        newPrescription1.setDosage(prescriptionArrayList.get(position).getDosage());
-//        newPrescription1.setQuantity(0);
-//        newPrescription1.setDrugId(prescriptionArrayList.get(position).getDrugId());
-//        prescriptionArrayList.get(position).getDrugPrescribed();
-
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(Pharmacist_PrescData.this);
         builder.setTitle("Confirm Prescription!").setMessage("Do you want to delete " + prescriptionArrayList.get(position).getDrugPrescribed());
         builder.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        DatabaseReference ref1 = refrence_;
-                        ref1.orderByChild("drugPrescribed").equalTo(prescriptionArrayList.get(position).getDrugId());
-                        refrence_.child(prescriptionArrayList.get(position).getDrugId().toString()).removeValue();
+                        pharmacistController.validateDeletePrescription(prescriptionArrayList, position, getApplicationContext());
                         prescriptionArrayList.remove(prescriptionArrayList.get(position));
                         adapter.notifyDataSetChanged();
                     }

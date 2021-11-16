@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.RegisterEntity;
+import com.example.myapplication.BasicInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -28,40 +28,35 @@ public class AdminEntity {
     public AdminEntity(Context context) {
     }
 
-//    public BasicInfo GetUserInfo(String email)
-//    {
-//        rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
-//        refrence_ = rootNode_.getReference("Users");
-//        refrence_.orderByChild("email").equalTo(email);
-//        BasicInfo Userinfo = new BasicInfo();
-//
-//        refrence_.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-//                    BasicInfo userinfo = snapshot1.getValue(BasicInfo.class);
-//                    Userinfo.setPhonenumber(userinfo.getPhonenumber());
-//                    Userinfo.setEmail(userinfo.getEmail());
-//                    Userinfo.setPassword(userinfo.getPassword());
-//                    Userinfo.setId(userinfo.getId());
-//                    Userinfo.setName(userinfo.getName());
-//                    Userinfo.setRole(userinfo.getRole());
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//        return Userinfo;
-//
-//    }
-    public void AddUser(String email, String password, String name, int contactNum, String role, Context context )
+    public BasicInfo GetUserInfo(String email)
     {
-        RegisterEntity registerEntity = new RegisterEntity(context);
-        registerEntity.addUser(email, password, name, contactNum, role, context);
+        rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
+        refrence_ = rootNode_.getReference("Users");
+        refrence_.orderByChild("email").equalTo(email);
+        BasicInfo Userinfo = new BasicInfo();
+
+        refrence_.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    BasicInfo userinfo = snapshot1.getValue(BasicInfo.class);
+                    Userinfo.setPhonenumber(userinfo.getPhonenumber());
+                    Userinfo.setEmail(userinfo.getEmail());
+                    Userinfo.setPassword(userinfo.getPassword());
+                    Userinfo.setId(userinfo.getId());
+                    Userinfo.setName(userinfo.getName());
+                    Userinfo.setRole(userinfo.getRole());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return Userinfo;
+
     }
 
     public void updateName(String Name)

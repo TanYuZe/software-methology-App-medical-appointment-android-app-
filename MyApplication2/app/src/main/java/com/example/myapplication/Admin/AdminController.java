@@ -25,12 +25,12 @@ public class AdminController extends BasicInfo
     }
 
 
-//    public BasicInfo validateGetUserInfo(String email, Context context)
-//    {
-//        AdminEntity AdminEntity = new AdminEntity(context);
-//        AdminEntity.GetUserInfo(email);
-//        return AdminEntity.GetUserInfo(email);
-//    }
+    public BasicInfo validateGetUserInfo(String email, Context context)
+    {
+        AdminEntity AdminEntity = new AdminEntity(context);
+        AdminEntity.GetUserInfo(email);
+        return AdminEntity.GetUserInfo(email);
+    }
 
     public void validateUpdateName(String name, Context context)
     {

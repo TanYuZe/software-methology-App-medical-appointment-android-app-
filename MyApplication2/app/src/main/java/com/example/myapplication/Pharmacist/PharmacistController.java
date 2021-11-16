@@ -52,4 +52,17 @@ public class PharmacistController {
         pharmacistEntity.AddPrescription(maxID, drugprescribed, drugdosage, prescriptionArrayList, medlist, context);
     }
 
+    public void validateDeletePrescription(ArrayList<Prescription> prescriptionArrayList, int position, Context context)
+    {
+        PharmacistEntity pharmacistEntity = new PharmacistEntity(context);
+        pharmacistEntity.DeletePrescription(prescriptionArrayList, position);
+    }
+
+    public void validateFetchPrescTable(Long maxID, ArrayList<String>  medlist, ArrayList<Prescription> prescriptionArrayList, Context context)
+    {
+        PharmacistEntity pharmacistEntity = new PharmacistEntity(context);
+        //pharmacistEntity.FetchPrescTable(maxID, medlist, prescriptionArrayList);
+
+    }
+
 }
