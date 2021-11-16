@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.Prescribed;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +30,32 @@ public class PatientEntity
     public PatientEntity(Context context)
     {
 
+    }
+
+    public void ViewPrescription(ArrayList<Prescribed> prescribedArrayList, Context context)
+    {
+        rootNode_ = FirebaseDatabase.getInstance("https://csci314-3846f-default-rtdb.asia-southeast1.firebasedatabase.app");
+        refrence_ = rootNode_.getReference().child("Prescribed");
+        refrence_.orderByChild("_ID");
+
+        refrence_.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren())
+                {
+                    for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                    {
+                        prescribedArrayList.add(dataSnapshot1.getValue(Prescribed.class));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 

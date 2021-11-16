@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Doctor_ViewProfile extends AppCompatActivity {
     TextView doc_name, doc_email, doc_password, doc_role, doc_phoneno;
     Button btn_update, btn_changepass;
-    ImageButton edit_name, edit_email, edit_password, edit_phoneno;
+    ImageButton edit_name, edit_password, edit_phoneno;
     String changes;
     FirebaseDatabase rootNode_;
     DatabaseReference reference_;
@@ -217,15 +217,11 @@ public class Doctor_ViewProfile extends AppCompatActivity {
     public Boolean validatePassword(String password) {
         String val = password;
         String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
                 "(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +      //any letter
-                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
                 "(?=\\S+$)" +           //no white spaces
                 ".{8,}" +               //at least 4 characters
                 "$";
-
         if (val.equals("")) {
             return false;
         } else if (!val.matches(passwordVal)) {
@@ -237,17 +233,7 @@ public class Doctor_ViewProfile extends AppCompatActivity {
 
     public Boolean validatePhoneNo(String phonenum) {
         String val = phonenum;
-        //String passwordVal = "^\\d{8}$";
         String passwordVal = "^[0-9]{8}$";
-//        String passwordVal = "^" +
-//                //"(?=.*[0-9])" +         //at least 1 digit
-//                //"(?=.*[a-z])" +         //at least 1 lower case letter
-//                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-//                //"(?=.*[a-zA-Z])" +      //any letter
-//                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
-//                "(?=\\S+$)" +           //no white spaces
-//                ".{8}" +               //at least 4 characters
-//                "$";
         if (val.equals("")) {
             return false;
         }
